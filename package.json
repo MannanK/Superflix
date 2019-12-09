@@ -29,6 +29,10 @@
     "start": "webpack --watch --mode=development",
     "postinstall": "webpack"
   },
+  "engines": {
+    "node": "12.13.0",
+    "npm": "6.12.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MannanK/Superflix.git"
