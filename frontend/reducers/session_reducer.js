@@ -4,17 +4,21 @@ import {
 } from '../actions/session_actions';
 import { merge } from 'lodash';
 
-const usersReducer = (state = {}, action) => {
+const _nullSession = {
+  id: null
+};
+
+const sessionReducer = (state = _nullSession, action) => {
   Object.freeze(state);
 
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return merge({}, action.user);
+      return merge({}, { currentUserId: action.user.id });
     case LOGOUT_CURRENT_USER:
-      return {};
+      return _nullSession;
     default:
       return state;
   }
-};
+}
 
-export default usersReducer;
+export default sessionReducer;
