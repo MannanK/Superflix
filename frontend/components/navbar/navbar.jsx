@@ -4,11 +4,20 @@ import { Link } from 'react-router-dom';
 const NavBar = (props) => {
   // use props.location.pathname here to decide if you want to show sign in on the page we're currently on
 
+  const handleDemoLogin = (e) => {
+    e.preventDefault();
+
+    // TODO: change demo user info later
+
+    const demoUser = { email: "tommy@tommy.com", password: "hunter2" };
+    props.login(demoUser);
+  };
+  
   const userLoggedIn = () => (
     // logout button will be replaced with a modal that has a logout link inside
     <div className="nav-bar signed-in">
       <p>Welcome, {props.currentUser.email}!</p>
-      <button onClick={logout}>Logout</button>
+      <button onClick={props.logout}>Logout</button>
     </div>
   );
 
@@ -16,7 +25,7 @@ const NavBar = (props) => {
     if (props.location.pathname === "/login") {
       return (
         <div className="nav-bar signed-out">
-          There will be a link to demo user here
+          <button className="demo-login-nav" onClick={handleDemoLogin}>Demo Superflix!</button>
         </div>
       );
     } else {

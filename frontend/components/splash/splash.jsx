@@ -2,6 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default class Splash extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
+  }
+
+  handleDemoLogin(e) {
+    e.preventDefault();
+
+    // TODO: change demo user info later
+
+    const demoUser = { email: "tommy@tommy.com", password: "hunter2" };
+    this.props.login(demoUser);
+  }
+
   render() {
     return (
       <div className="splash">
@@ -14,9 +29,11 @@ export default class Splash extends React.Component {
         <h2 className="splash-subtext">
           Never cancel and you still won't be charged.
         </h2>
-      </div>
 
-      // show link at the bottom of div to tell user "try a demo!"
+        <button className="demo-login-splash" onClick={this.handleDemoLogin}>Demo Superflix!</button>
+
+        <span>Already have an account? </span><Link to="/login" className="signin-link">Sign in.</Link>
+      </div>
     );
   }
 }

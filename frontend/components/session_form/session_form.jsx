@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class SessionForm extends React.Component {
   constructor(props) {
@@ -48,6 +49,12 @@ export default class SessionForm extends React.Component {
       return <li key={i}>{error}</li>
     });
 
+    let signupLink = formType === "Sign In" ? (
+      <div>
+        <span>New to Superflix? </span><Link to="/signup" className="signup-link">Sign up now.</Link>
+      </div>
+    ) : ""
+
     return (
       <div className="session-form">
         <h1>{formType}</h1>
@@ -67,6 +74,8 @@ export default class SessionForm extends React.Component {
 
           <button>{formType}</button>
         </form>
+
+        { signupLink }
       </div>
     );
   }
