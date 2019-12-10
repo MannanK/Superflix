@@ -42,8 +42,8 @@ export default class SessionForm extends React.Component {
   }
 
   render() {
-    document.body.classList = "";
-    document.body.classList.add('session-bg');
+    // document.body.classList = "";
+    // document.body.classList.add('session-bg');
 
     const { formType, errors } = this.props;
     const { email, password } = this.state;
@@ -59,26 +59,29 @@ export default class SessionForm extends React.Component {
     ) : ""
 
     return (
-      <div className="session-form">
-        <h1>{formType}</h1>
+      <div className="session-form-container">
+        <span className="session-form-bg"></span>
+        <div className="session-form">
+          <h1>{formType}</h1>
 
-        <ul className="errors">
-          {errorLis}
-        </ul>
+          <ul className="errors">
+            {errorLis}
+          </ul>
 
-        <form onSubmit={this.handleSubmit}>
-          <label>Email:
+          <form onSubmit={this.handleSubmit}>
+            <label>Email:
             <input type="text" value={email} onChange={this.updateField("email")} />
-          </label>
+            </label>
 
-          <label>Password:
+            <label>Password:
             <input type="password" value={password} onChange={this.updateField("password")} />
-          </label>
+            </label>
 
-          <button>{formType}</button>
-        </form>
+            <button>{formType}</button>
+          </form>
 
-        { signupLink }
+          {signupLink}
+        </div>
       </div>
     );
   }

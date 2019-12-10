@@ -23,18 +23,28 @@ html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
 }
 
-.session-bg {
+.session-form-bg {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
   background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
 }
 
-.session-bg::after {
+.session-form-bg::after {
   content: "";
   opacity: 0.5;
   top: 0;
@@ -42,7 +52,7 @@ html {
   bottom: 0;
   right: 0;
   position: absolute;
-  z-index: -1;
+  z-index: -2;
   background: url(session_form/background.jpg) no-repeat center center fixed;
-  filter:blur(5px)
+  filter:blur(0.7px)
 }
