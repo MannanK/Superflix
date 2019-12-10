@@ -42,6 +42,9 @@ export default class SessionForm extends React.Component {
   }
 
   render() {
+    document.body.classList = "";
+    document.body.classList.add('session-bg');
+
     const { formType, errors } = this.props;
     const { email, password } = this.state;
 

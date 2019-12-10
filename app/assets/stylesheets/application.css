@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+  
+}
+
+.splash-bg {
+  background: url(splash/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.session-bg {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
+}
+
+.session-bg::after {
+  content: "";
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  background: url(session_form/background.jpg) no-repeat center center fixed;
+  filter:blur(5px)
+}

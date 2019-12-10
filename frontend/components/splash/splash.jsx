@@ -18,8 +18,11 @@ export default class Splash extends React.Component {
   }
 
   render() {
+    document.body.classList = "";
+    document.body.classList.add('splash-bg');
+
     return (
-      <div className="splash">
+      <div className="splash-container">
         <h1 className="splash-header">All of Superflix.</h1>
         <h1 className="splash-header">Free forever.</h1>
         <span className="timeline"></span>
