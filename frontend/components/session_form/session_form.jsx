@@ -53,34 +53,40 @@ export default class SessionForm extends React.Component {
     });
 
     let signupLink = formType === "Sign In" ? (
-      <div>
-        <span>New to Superflix? </span><Link to="/signup" className="signup-link">Sign up now.</Link>
+      <div className="signup-link">
+        <span>New to Superflix? </span><Link to="/signup">Sign up now.</Link>
       </div>
     ) : ""
 
     return (
       <div className="session-form-container">
         <span className="session-form-bg"></span>
-        <div className="session-form">
-          <h1>{formType}</h1>
+        <div className="session-form-div">
+          <form className="session-form" onSubmit={this.handleSubmit}>
+            <h1>{formType}</h1>
 
-          <ul className="errors">
-            {errorLis}
-          </ul>
+            <ul className="errors">
+              {errorLis}
+            </ul>
 
-          <form onSubmit={this.handleSubmit}>
-            <label>Email:
-            <input type="text" value={email} onChange={this.updateField("email")} />
-            </label>
+            <input
+              type="text"
+              value={email}
+              onChange={this.updateField("email")}
+              placeholder="Email"  
+            />
 
-            <label>Password:
-            <input type="password" value={password} onChange={this.updateField("password")} />
-            </label>
+            <input
+              type="password"
+              value={password}
+              onChange={this.updateField("password")}
+              placeholder="Password"
+            />
 
             <button>{formType}</button>
-          </form>
 
-          {signupLink}
+            {signupLink}
+          </form>
         </div>
       </div>
     );

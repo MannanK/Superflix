@@ -1,9 +1,50 @@
+.splash-container {
+  width: 100%;
+}
+
 .splash {
-  display: flex;
-  justify-content: center;
   color: white;
+  width: 100%;
+  margin: 0 auto;
+  flex-direction: column;
+  text-align: center;
 }
 
 .splash-header {
-  font-size: 45px;
+  font-size: 50px;
+  margin-bottom: 5px;
+}
+
+.splash-header:first-child {
+  margin-top: 75px;
+}
+
+.timeline {
+  width: 1000px;
+  height: 39px;
+  background-color: #1DBE54;
+  border-radius: 25px;
+  margin: 115px auto;
+}
+
+.splash-subtext {
+  font-size: 27px;
+  font-weight: normal;
+  margin-bottom: 9px;
+  text-shadow: 2px 2px 7o input type px black;
+}
+
+.splash-subtext.last {
+  margin-bottom: 30px;
+}
+
+.splash-demo-button {
+  display: block;
+  margin: 0 auto;
+  background: #E51314;
+  font-size: 30px;
+  font-weight: 400;
+  border-radius: 3px;
+  color: white;
+  padding: 19px 34px;
 }

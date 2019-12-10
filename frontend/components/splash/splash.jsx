@@ -27,17 +27,15 @@ export default class Splash extends React.Component {
         <div className="splash">
           <h1 className="splash-header">All of Superflix.</h1>
           <h1 className="splash-header">Free forever.</h1>
-          <span className="timeline"></span>
+          <div className="timeline"></div>
           <h2 className="splash-subtext">
             We'll never email you since you'll never have to pay.
           </h2>
-          <h2 className="splash-subtext">
+          <h2 className="splash-subtext last">
             Never cancel and you still won't be charged.
           </h2>
 
-          <button className="demo-login-splash" onClick={this.handleDemoLogin}>Demo Superflix!</button>
-
-          <span>Already have an account? </span><Link to="/login" className="signin-link">Sign in.</Link>
+          <button className="splash-demo-button" onClick={this.handleDemoLogin}>DEMO SUPERFLIX ></button>
         </div>
       </div>
     );

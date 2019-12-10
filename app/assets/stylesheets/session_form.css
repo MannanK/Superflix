@@ -1,0 +1,81 @@
+.session-form-container {
+  width: 100%;
+}
+
+.session-form-div {
+  width: 314px;
+  height: 560px;
+  margin: 0 auto;
+  border-radius: 7px;
+  background: rgb(0, 0, 0); /* for older browsers */
+  background: rgba(0, 0, 0, 0.75);
+  padding: 60px 68px 40px;
+}
+
+.session-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.session-form h1 {
+  font-size: 32px;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.session-form input {
+  width: 314px;
+  height: 48px;
+  background-color: #333333;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.session-form input::-webkit-input-placeholder {
+  color: gray;
+  padding-left: 20px;
+}
+.session-form input::-moz-placeholder {
+  color: gray;
+  padding-left: 20px;
+}
+.session-form input:-ms-input-placeholder {
+  color: gray;
+  padding-left: 20px;
+}
+.session-form input::placeholder {
+  color: gray;
+  padding-left: 20px;
+}
+
+.session-form button {
+  margin-top: 23px;
+  background-color: #E51314;
+  color: white;
+  padding: 14px 18px;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.signup-link {
+  margin-top: 265px;
+  color: #737373;
+}
+
+.signup-link a {
+  text-decoration: none;
+  color: white;
+}
+
+.signup-link a:visited {
+  color: white;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
