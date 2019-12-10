@@ -1,0 +1,28 @@
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.logo {
+  position: relative;
+  height: 60px;
+  width: 220px;
+  left: 30px;
+}
+
+.nav-bar-button {
+  background: #E51314;
+  height: 34px;
+  padding: 0px 17px;
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+  border-radius: 3px;
+  margin-right: 51px;
+  margin-top: 9px;
+}
+
+.nav-bar-button:hover {
+  cursor: pointer;
+}

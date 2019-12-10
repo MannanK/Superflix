@@ -1,0 +1,9 @@
+.splash {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.splash-header {
+  font-size: 45px;
+}

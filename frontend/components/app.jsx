@@ -9,7 +9,6 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = () => (
   <div>
     <header>
-      <h1>Superflix</h1>
       <NavBarContainer />
     </header>
 
