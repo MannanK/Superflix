@@ -18,10 +18,31 @@ export default class NavBar extends React.Component {
   handleDemoLogin(e) {
     e.preventDefault();
 
-    // TODO: change demo user info later
-
     const demoUser = { email: "peter@parker.com", password: "uncleben" };
     this.props.login(demoUser);
+  }
+
+  getLinkTag(route) {
+    let linkText;
+
+    switch (route) {
+      case "/browse":
+        linkText = "Home";
+        break;
+      default:
+        linkText = "This isn't supposed to be here!";
+        break;
+    }
+
+    if (this.props.location.pathname === route) {
+      return (
+        <Link to={route} className="nav-bar-link active">{linkText}</Link>
+      );
+    } else {
+      return (
+        <Link to={route} className="nav-bar-link">{linkText}</Link>
+      );
+    }
   }
 
   userLoggedIn() {
@@ -39,6 +60,14 @@ export default class NavBar extends React.Component {
     return (
       <div className="nav-bar signed-in">
         <Link to="/browse"><img src={window.logo} className="logo-small"></img></Link>
+
+        <div className="nav-bar-links-container">
+          {this.getLinkTag("/browse")}
+          <Link to='#' className="nav-bar-link">TV Shows</Link>
+          <Link to='#' className="nav-bar-link">Movies</Link>
+          <Link to='#' className="nav-bar-link">My List</Link>
+        </div>
+
         <div className="user-logo-container"
           onMouseEnter={() => this.setState({ showDropdown: true })}
           // onMouseLeave={() => this.setState({ showDropdown: false })}
