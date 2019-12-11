@@ -12,6 +12,13 @@
   left: 30px;
 }
 
+.logo-small {
+  position: relative;
+  left: 30px;
+  height: 35px;
+  width: 135px;
+}
+
 .nav-bar-button {
   background: #E51314;
   height: 34px;
@@ -22,4 +29,67 @@
   border-radius: 3px;
   margin-right: 51px;
   margin-top: 9px;
+}
+
+.user-logo {
+  height: 32px;
+  width: 40px;
+  margin-right: 7px;
+}
+
+.user-logo:hover {
+  cursor: pointer;
+}
+
+.user-logo + span {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid white;
+  margin-right: 55px;
+}
+
+.dropdown-tooltip {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 6px solid white;
+  position: absolute;
+  top: 64px;
+  right: 104px;
+}
+
+.dropdown {
+  box-sizing: border-box;
+  width: 180px;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 70px;
+  right: 75px;
+  box-shadow: 0px 7px 15px 0px rgba(0,0,0,0.5);
+  padding: 23px 12px;
+  padding-bottom: 14px;
+  color: white;
+}
+
+.dropdown-item {
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.dropdown .border {
+  border: 0.5px solid gray;
+  margin-bottom: 12px;
+}
+
+.dropdown-item.logout {
+  font-weight: bold;
+  margin-bottom: 0px;
+  background-color: Transparent;
+  border: none;
+  overflow: hidden;
+  outline:none;
+  color: white;
 }

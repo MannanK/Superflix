@@ -1,33 +1,69 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Dropdown from './dropdown';
 
-const NavBar = (props) => {
+export default class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showDropdown: false
+    };
+
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
+  }
+
+  componentWillMount() {
+    this.setState({
+      showDropdown: false
+    });
+  }
+
   // use props.location.pathname here to decide if you want to show sign in on the page we're currently on
 
-  const handleDemoLogin = (e) => {
+  handleDemoLogin(e) {
     e.preventDefault();
 
     // TODO: change demo user info later
 
     const demoUser = { email: "tommy@tommy.com", password: "hunter2" };
-    props.login(demoUser);
-  };
-  
-  const userLoggedIn = () => (
-    // logout button will be replaced with a modal that has a logout link inside
-    <div className="nav-bar signed-in">
-      <Link to="/browse"><img src={window.logo} className="logo"></img></Link>
-      <p>Welcome, {props.currentUser.email}!</p>
-      <button className="nav-bar-button" onClick={props.logout}>Logout</button>
-    </div>
-  );
+    this.props.login(demoUser);
+  }
 
-  const userLoggedOut = () => {
-    if (props.location.pathname === "/login") {
+  userLoggedIn() {
+    const { currentUser, logout } = this.props;
+    const { showDropdown } = this.state;
+
+    let dropdown = showDropdown ? (
+      <Dropdown
+        user={currentUser}
+        hideDropdown={() => this.setState({ showDropdown: false })}
+        logout={logout}
+      />
+    ) : "";
+
+    return (
+      <div className="nav-bar signed-in">
+        <Link to="/browse"><img src={window.logo} className="logo-small"></img></Link>
+        <div className="user-logo-container">
+          <img
+            onMouseEnter={() => this.setState({ showDropdown : true })}
+            className="user-logo"
+            src={window.userLogo}
+          />
+          <span></span>
+          { dropdown }
+        </div>
+      </div>
+    );
+  }
+
+  userLoggedOut() {
+    if (this.props.location.pathname === "/login") {
       return (
         <div className="nav-bar signed-out">
           <Link to="/"><img src={window.logo} className="logo"></img></Link>
-          <button className="nav-bar-button" onClick={handleDemoLogin}>Demo Superflix!</button>
+          <button className="nav-bar-button" onClick={this.handleDemoLogin}>Demo Superflix!</button>
         </div>
       );
     } else {
@@ -41,9 +77,9 @@ const NavBar = (props) => {
       );
     }
   };
-  
-  // if currentUser exists, render userLoggedIn(), otherwise userLoggedOut()
-  return props.currentUser ? userLoggedIn() : userLoggedOut();
-};
 
-export default NavBar;
+  // if currentUser exists, render userLoggedIn(), otherwise userLoggedOut()
+  render() {
+    return this.props.currentUser ? this.userLoggedIn() : this.userLoggedOut();
+  }
+};
