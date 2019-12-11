@@ -122,7 +122,7 @@ export default class SessionForm extends React.Component {
     let passwordClasses = password_hover ? "password-placeholder focused" : "password-placeholder";
     if (user.password.length > 0) passwordClasses += " non-active";
 
-    let emailError = email_blank ? <span className="error">Please enter an email.</span> : "";
+    let emailError = email_blank ? <span className="error">Please enter a valid email.</span> : "";
     let passwordError = password_blank ? <span className="error">Your password must contain at least 6 characters.</span> : "";
 
     let signupEmailError = errors.email ? <span className="error">{ errors.email }</span> : "";
