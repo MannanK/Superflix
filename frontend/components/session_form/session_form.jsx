@@ -6,57 +6,100 @@ export default class SessionForm extends React.Component {
     super(props);
 
     this.state = {
-      email: "",
-      password: ""
+      user: {
+        email: "",
+        password: ""
+      },
+      email_hover: false,
+      password_hover: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearForm = this.clearForm.bind(this);
+    this.updateEmail = this.updateEmail.bind(this);
+    this.updatePassword = this.updatePassword.bind(this);
   }
 
   componentWillUnmount() {
     this.props.deleteSessionErrors();
   }
 
-  updateField(field) {
-    return (e) => {
-      this.setState({
-        [field]: e.target.value
-      });
-    };
+  updateEmail(e) {
+    this.setState({
+      user: {
+        email: e.target.value,
+        password: this.state.user.password
+      }
+    });
+  }
+
+  updatePassword(e) {
+    this.setState({
+      user: {
+        email: this.state.user.email,
+        password: e.target.value
+      }
+    });
   }
 
   clearForm() {
     this.setState({
-      email: "",
-      password: ""
+      user: {
+        email: "",
+        password: ""
+      }
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
+    const user = Object.assign({}, this.state.user);
     // TODO: remove clearForm?
     // this.clearForm();
     this.props.processForm(user);
   }
 
+  focusField(field) {
+    let value;
+
+    if (field === "email_hover") {
+      value = this.state.email_hover;
+    } else {
+      value = this.state.password_hover;
+    }
+
+    return () => {
+      this.setState({
+        [field]: !value
+      });
+    }
+  }
+
   render() {
-    // document.body.classList = "";
-    // document.body.classList.add('session-bg');
-
     const { formType, errors } = this.props;
-    const { email, password } = this.state;
+    const { user, email_hover, password_hover } = this.state;
 
-    let errorLis = errors.map((error, i) => {
-      return <li key={i}>{error}</li>
-    });
+    // let errorLis = errors.map((error, i) => {
+    //   return <li key={i}>{error}</li>
+    // });
 
     let signupLink = formType === "Sign In" ? (
       <div className="signup-link">
         <span>New to Superflix? </span><Link to="/signup">Sign up now.</Link>
       </div>
     ) : ""
+
+    let invalidCredentials = errors.user ? (
+      <div className="invalid-credentials-error">
+        {errors.user}
+      </div>
+    ) : ""
+
+    let emailClasses = email_hover ? "email-placeholder focused" : "email-placeholder";
+    if (user.email.length > 0) emailClasses += " non-active";
+
+    let passwordClasses = password_hover ? "password-placeholder focused" : "password-placeholder";
+    if (user.password.length > 0) passwordClasses += " non-active";
 
     return (
       <div className="session-form-container">
@@ -65,23 +108,29 @@ export default class SessionForm extends React.Component {
           <form className="session-form" onSubmit={this.handleSubmit}>
             <h1>{formType}</h1>
 
-            <ul className="errors">
-              {errorLis}
-            </ul>
+            { invalidCredentials }
 
+            <span className={emailClasses}>Email</span>
             <input
               type="text"
-              value={email}
-              onChange={this.updateField("email")}
-              placeholder="Email"  
+              value={user.email}
+              onChange={this.updateEmail}
+              onFocus={this.focusField("email_hover")}
+              onBlur={this.focusField("email_hover")}
             />
 
+            {errors.email}
+
+            <span className={passwordClasses}>Password</span>
             <input
               type="password"
-              value={password}
-              onChange={this.updateField("password")}
-              placeholder="Password"
+              value={user.password}
+              onChange={this.updatePassword}
+              onFocus={this.focusField("password_hover")}
+              onBlur={this.focusField("password_hover")}
             />
+
+            { errors.password }
 
             <button>{formType}</button>
 

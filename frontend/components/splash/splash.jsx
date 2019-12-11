@@ -18,9 +18,6 @@ export default class Splash extends React.Component {
   }
 
   render() {
-    // document.body.classList = "";
-    // document.body.classList.add('splash-bg');
-
     return (
       <div className="splash-container">
         <span className="splash-bg"></span>
