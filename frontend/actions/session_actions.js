@@ -12,7 +12,7 @@ const receiveCurrentUser = user => ({
 
 const logoutCurrentUser = () => ({
   type: LOGOUT_CURRENT_USER
-})
+});
 
 const receiveSessionErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
@@ -21,7 +21,7 @@ const receiveSessionErrors = errors => ({
 
 export const deleteSessionErrors = () => ({
   type: DELETE_SESSION_ERRORS
-})
+});
 
 export const signup = user => dispatch => (
   SessionAPIUtil.postUser(user).then(
