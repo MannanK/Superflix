@@ -19,7 +19,7 @@ html {
 }
 
 .splash-bg {
-  background: url(splash/background.jpg) no-repeat center center fixed;
+  background: url(splash_background.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -53,7 +53,7 @@ html {
   right: 0;
   position: absolute;
   z-index: -2;
-  background: url(session_form/background.jpg) no-repeat center center fixed;
+  background: url(session_background.jpg) no-repeat center center fixed;
   filter:blur(0.7px)
 }
 
