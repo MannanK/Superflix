@@ -56,3 +56,13 @@ html {
   background: url(session_form/background.jpg) no-repeat center center fixed;
   filter:blur(0.7px)
 }
+
+.media-index-container-bg {
+  background-color: #141414;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}

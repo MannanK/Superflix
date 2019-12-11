@@ -16,9 +16,9 @@ const NavBar = (props) => {
   const userLoggedIn = () => (
     // logout button will be replaced with a modal that has a logout link inside
     <div className="nav-bar signed-in">
-      <img src={window.logo} className="logo"></img>
+      <Link to="/browse"><img src={window.logo} className="logo"></img></Link>
       <p>Welcome, {props.currentUser.email}!</p>
-      <button onClick={props.logout}>Logout</button>
+      <button className="nav-bar-button" onClick={props.logout}>Logout</button>
     </div>
   );
 
@@ -26,14 +26,14 @@ const NavBar = (props) => {
     if (props.location.pathname === "/login") {
       return (
         <div className="nav-bar signed-out">
-          <img src={window.logo} className="logo"></img>
+          <Link to="/"><img src={window.logo} className="logo"></img></Link>
           <button className="nav-bar-button" onClick={handleDemoLogin}>Demo Superflix!</button>
         </div>
       );
     } else {
       return (
         <div className="nav-bar signed-out">
-          <img src={window.logo} className="logo"></img>
+          <Link to="/"><img src={window.logo} className="logo"></img></Link>
           <Link to="/login" className="login-link">
             <button className="nav-bar-button">Sign In</button>
           </Link>
