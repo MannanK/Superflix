@@ -13,12 +13,6 @@ export default class NavBar extends React.Component {
     this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
-  componentWillMount() {
-    this.setState({
-      showDropdown: false
-    });
-  }
-
   // use props.location.pathname here to decide if you want to show sign in on the page we're currently on
 
   handleDemoLogin(e) {
@@ -45,13 +39,20 @@ export default class NavBar extends React.Component {
     return (
       <div className="nav-bar signed-in">
         <Link to="/browse"><img src={window.logo} className="logo-small"></img></Link>
-        <div className="user-logo-container">
-          <img
-            onMouseEnter={() => this.setState({ showDropdown : true })}
-            className="user-logo"
-            src={window.userLogo}
-          />
-          <span></span>
+        <div className="user-logo-container"
+          onMouseEnter={() => this.setState({ showDropdown: true })}
+          // onMouseLeave={() => this.setState({ showDropdown: false })}
+        >
+          <div
+            className="dropdown-container"
+            onMouseEnter={() => this.setState({ showDropdown: true })}
+          >
+            <img
+              className="user-logo"
+              src={window.userLogo}
+            />
+            <span></span>
+          </div>
           { dropdown }
         </div>
       </div>

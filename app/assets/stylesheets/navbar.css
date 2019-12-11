@@ -93,3 +93,15 @@
   outline:none;
   color: white;
 }
+
+.dropdown-container:hover {
+  cursor: pointer;
+}
+
+.nav-dropdown-container {
+  
+}
+
+.user-logo-container {
+  
+}
