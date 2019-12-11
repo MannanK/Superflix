@@ -110,6 +110,14 @@
   padding: 11px 22px;
   color: white;
   font-size: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 2px;
   border-radius: 4px;
+}
+
+.error {
+  color: #E87C03;
+  font-size: 13px;
+  border-top: 2px solid #E87C03;
+  padding-top: 8px;
+  padding-left: 4px;
 }

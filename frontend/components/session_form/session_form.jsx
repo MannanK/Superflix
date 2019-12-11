@@ -11,7 +11,9 @@ export default class SessionForm extends React.Component {
         password: ""
       },
       email_hover: false,
-      password_hover: false
+      password_hover: false,
+      email_blank: false,
+      password_blank: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -62,22 +64,41 @@ export default class SessionForm extends React.Component {
   focusField(field) {
     let value;
 
-    if (field === "email_hover") {
-      value = this.state.email_hover;
-    } else {
-      value = this.state.password_hover;
-    }
+    // if (field === "email_hover") {
+    //   value = this.state.email_hover;
+    // } else {
+    //   value = this.state.password_hover;
+    // }
 
     return () => {
       this.setState({
-        [field]: !value
+        [field]: !(this.state[field])
       });
+    }
+  }
+
+  blurField(field) {
+    let hoverVal = field === "email" ? "email_hover" : "password_hover";
+    let blankVal = field === "email" ? "email_blank" : "password_blank";
+
+    return (e) => {
+      if (this.state.user[field] === "") {
+        this.setState({
+          [hoverVal]: !(this.state[hoverVal]),
+          [blankVal]: true
+        });
+      } else {
+        this.setState({
+          [hoverVal]: !(this.state[hoverVal]),
+          [blankVal]: false
+        });
+      }
     }
   }
 
   render() {
     const { formType, errors } = this.props;
-    const { user, email_hover, password_hover } = this.state;
+    const { user, email_hover, password_hover, email_blank, password_blank } = this.state;
 
     // let errorLis = errors.map((error, i) => {
     //   return <li key={i}>{error}</li>
@@ -101,6 +122,12 @@ export default class SessionForm extends React.Component {
     let passwordClasses = password_hover ? "password-placeholder focused" : "password-placeholder";
     if (user.password.length > 0) passwordClasses += " non-active";
 
+    let emailError = email_blank ? <span className="error">Please enter an email.</span> : "";
+    let passwordError = password_blank ? <span className="error">Your password must contain at least 6 characters.</span> : "";
+
+    let signupEmailError = errors.email ? <span className="error">{ errors.email }</span> : "";
+    let signupPasswordError = errors.password ? <span className="error">{ errors.password }</span> : "";
+
     return (
       <div className="session-form-container">
         <span className="session-form-bg"></span>
@@ -116,10 +143,9 @@ export default class SessionForm extends React.Component {
               value={user.email}
               onChange={this.updateEmail}
               onFocus={this.focusField("email_hover")}
-              onBlur={this.focusField("email_hover")}
+              onBlur={this.blurField("email")}
             />
-
-            {errors.email}
+            { signupEmailError || emailError }
 
             <span className={passwordClasses}>Password</span>
             <input
@@ -127,10 +153,9 @@ export default class SessionForm extends React.Component {
               value={user.password}
               onChange={this.updatePassword}
               onFocus={this.focusField("password_hover")}
-              onBlur={this.focusField("password_hover")}
+              onBlur={this.blurField("password")}
             />
-
-            { errors.password }
+            { signupPasswordError || passwordError }
 
             <button>{formType}</button>
 
