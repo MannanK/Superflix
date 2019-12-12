@@ -12,4 +12,4 @@ elsif
   json.url "404 NO URL"
 end
 
-json.genreIds video.video_genres.pluck(:id)
+json.genreIds video.genres.pluck(:id)
