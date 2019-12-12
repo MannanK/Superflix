@@ -5,13 +5,11 @@
   top: 0;
   bottom: 0;
   width: 100%;
-  height: auto;
+  height: 55vw;
   z-index: -1;
-  max-height: 100%;
 }
 
 .main-video {
-  max-height: 100%;
   width: 100%;
-  height: auto;
+  height: 56vw;
 }

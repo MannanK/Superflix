@@ -4,7 +4,7 @@ import Footer from './footer/footer';
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import SplashContainer from './splash/splash_container';
-import VideoIndexContainer from './media/video_index_container';
+import VideoIndexContainer from './videos/video_index_container';
 import { Route, Switch, Link, withRouter } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 

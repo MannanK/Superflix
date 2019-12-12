@@ -3,7 +3,8 @@ import { fetchVideos } from '../../actions/video_actions';
 import VideoIndex from './video_index';
 
 const msp = state => ({
-  videos: state.entities.videos
+  videos: state.entities.videos,
+  genres: state.entities.genres
 });
 
 const mdp = dispatch => ({
