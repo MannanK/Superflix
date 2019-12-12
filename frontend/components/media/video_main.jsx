@@ -14,7 +14,8 @@ export default class VideoMain extends React.Component {
       <div className="video-main-container">
         {/*<h1 style={{ color: 'yellow' }}>We're on the browse page in the VideoMain!</h1> */}
 
-        <img className="main-video" src={video["thumbnail"]} />
+        {/* TODO replace img src with video["thumbnail"] */}
+        <img className="main-video" src={window.demoThumbnail} />
       </div>
     );
   }

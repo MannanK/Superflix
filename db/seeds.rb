@@ -13,6 +13,14 @@ Video.destroy_all
 
 demoUser = User.create!(email: "peter@parker.com", password: "uncleben")
 
+# ---------------- GENRES ----------------
+
+action = Genre.create!(name: "action")
+adventure = Genre.create!(name: "adventure")
+comedy = Genre.create!(name: "comedy")
+scifi = Genre.create!(name: "sci-fi")
+animated = Genre.create!(name: "animated")
+
 # ---------------- MOVIES ----------------
 
 # Movie descriptions are from synopsises released online for each movie/show.
@@ -28,6 +36,8 @@ avengersEndgame = Video.create!(
 # avengersEndgame.url.attach(io: open("https://superflix-seeds.s3.amazonaws.com/avengers_endgame.mp4"), filename: "avengers_endgame.mp4")
 # avengersEndgame.thumbnail.attach(io: open("https://superflix-seeds.s3.amazonaws.com/avengers_endgame.jpg"), filename: "avengers_endgame.jpg")
 avengersEndgame.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+avengersEndgame.genres += [action, adventure, scifi]
+
 
 avengersInfinityWar = Video.create!(
   title: "Avengers: Infinity War",
@@ -38,6 +48,7 @@ avengersInfinityWar = Video.create!(
   duration: 12
 )
 avengersInfinityWar.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+avengersInfinityWar.genres += [action, adventure, scifi]
 
 spidermanFarFromHome = Video.create!(
   title: "Spider-Man: Far From Home",
@@ -48,6 +59,7 @@ spidermanFarFromHome = Video.create!(
   duration: 12
 )
 spidermanFarFromHome.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+spidermanFarFromHome.genres += [action, adventure, comedy]
 
 spidermanHomecoming = Video.create!(
   title: "Spider-Man: Homecoming",
@@ -58,6 +70,7 @@ spidermanHomecoming = Video.create!(
   duration: 12
 )
 spidermanHomecoming.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+spidermanHomecoming.genres += [action, comedy]
 
 logan = Video.create!(
   title: "Logan",
@@ -68,6 +81,7 @@ logan = Video.create!(
   duration: 12
 )
 logan.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+logan.genres += [action, adventure]
 
 deadpool = Video.create!(
   title: "Deadpool",
@@ -78,6 +92,7 @@ deadpool = Video.create!(
   duration: 12
 )
 deadpool.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+deadpool.genres += [action, comedy, scifi]
 
 deadpool2 = Video.create!(
   title: "Deadpool 2",
@@ -88,6 +103,7 @@ deadpool2 = Video.create!(
   duration: 12
 )
 deadpool2.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+deadpool2.genres += [action, comedy, scifi]
 
 theDarkKnight = Video.create!(
   title: "The Dark Knight,",
@@ -98,6 +114,7 @@ theDarkKnight = Video.create!(
   duration: 12
 )
 theDarkKnight.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+theDarkKnight.genres += [action, adventure]
 
 theDarkKnightRises = Video.create!(
   title: "title",
@@ -108,6 +125,7 @@ theDarkKnightRises = Video.create!(
   duration: 12
 )
 theDarkKnightRises.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+theDarkKnightRises.genres += [action, adventure]
 
 thorRagnarok = Video.create!(
   title: "Thor: Ragnarok",
@@ -118,6 +136,7 @@ thorRagnarok = Video.create!(
   duration: 12
 )
 thorRagnarok.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+thorRagnarok.genres += [action, adventure, scifi, comedy]
 
 joker = Video.create!(
   title: "Joker",
@@ -128,6 +147,7 @@ joker = Video.create!(
   duration: 12
 )
 joker.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+joker.genres += [action]
 
 captainAmericaCivilWar = Video.create!(
   title: "Captain America: Civil War",
@@ -138,6 +158,7 @@ captainAmericaCivilWar = Video.create!(
   duration: 12
 )
 captainAmericaCivilWar.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+captainAmericaCivilWar.genres += [action, adventure, scifi]
 
 captainAmericaWinterSoldier = Video.create!(
   title: "Captain America: The Winter Soldier",
@@ -148,6 +169,7 @@ captainAmericaWinterSoldier = Video.create!(
   duration: 12
 )
 captainAmericaWinterSoldier.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+captainAmericaWinterSoldier.genres += [action, adventure]
 
 marvelsDaredevil = Video.create!(
   title: "Marvel's Daredevil",
@@ -158,6 +180,7 @@ marvelsDaredevil = Video.create!(
   duration: 12
 )
 marvelsDaredevil.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+marvelsDaredevil.genres += [action]
 
 marvelsPunisher = Video.create!(
   title: "Marvel's Punisher",
@@ -168,6 +191,7 @@ marvelsPunisher = Video.create!(
   duration: 12
 )
 marvelsPunisher.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+marvelsPunisher.genres += [action]
 
 watchmenMovie = Video.create!(
   title: "Watchmen",
@@ -178,6 +202,7 @@ watchmenMovie = Video.create!(
   duration: 12
 )
 watchmenMovie.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+watchmenMovie.genres += [action, adventure, scifi]
 
 watchmenShow = Video.create!(
   title: "Watchmen",
@@ -188,6 +213,7 @@ watchmenShow = Video.create!(
   duration: 12
 )
 watchmenShow.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+watchmenShow.genres += [action, scifi]
 
 theBoys = Video.create!(
   title: "The Boys",
@@ -198,6 +224,7 @@ theBoys = Video.create!(
   duration: 12
 )
 theBoys.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+theBoys.genres += [action]
 
 guardiansOfTheGalaxy = Video.create!(
   title: "Guardians of the Galaxy",
@@ -208,6 +235,7 @@ guardiansOfTheGalaxy = Video.create!(
   duration: 12
 )
 guardiansOfTheGalaxy.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+guardiansOfTheGalaxy.genres += [action, adventure, scifi]
 
 blackWidow = Video.create!(
   title: "Black Widow",
@@ -218,6 +246,7 @@ blackWidow = Video.create!(
   duration: 12
 )
 blackWidow.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+blackWidow.genres += [action]
 
 wonderWoman1984 = Video.create!(
   title: "Wonder Woman: 1984",
@@ -228,6 +257,7 @@ wonderWoman1984 = Video.create!(
   duration: 12
 )
 wonderWoman1984.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+wonderWoman1984.genres += [action, adventure, scifi]
 
 flashpointParadox = Video.create!(
   title: "Justice League: The Flashpoint Paradox",
@@ -238,6 +268,7 @@ flashpointParadox = Video.create!(
   duration: 12
 )
 flashpointParadox.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+flashpointParadox.genres += [action, adventure, animated]
 
 intoTheSpiderverse = Video.create!(
   title: "Spider-Man: Into the Spiderverse",
@@ -248,6 +279,7 @@ intoTheSpiderverse = Video.create!(
   duration: 12
 )
 intoTheSpiderverse.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+intoTheSpiderverse.genres += [action, adventure, animated]
 
 marvelsAvengers = Video.create!(
   title: "Marvel's Avengers",
@@ -258,6 +290,7 @@ marvelsAvengers = Video.create!(
   duration: 12
 )
 marvelsAvengers.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+marvelsAvengers.genres += [action, adventure, scifi]
 
 manOfSteel = Video.create!(
   title: "Man of Steel",
@@ -267,7 +300,8 @@ manOfSteel = Video.create!(
   video_type: "MOVIE",
   duration: 12
 )
-avengersEndgame.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+manOfSteel.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+manOfSteel.genres += [action, adventure, scifi]
 
 marvelsJessicaJones = Video.create!(
   title: "Marvel's Jessica Jones",
@@ -277,4 +311,5 @@ marvelsJessicaJones = Video.create!(
   video_type: "SHOW",
   duration: 12
 )
-avengersEndgame.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+marvelsJessicaJones.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+marvelsJessicaJones.genres += [action]

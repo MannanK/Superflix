@@ -11,3 +11,5 @@ if (video.url.attached?)
 elsif
   json.url "404 NO URL"
 end
+
+json.genreIds video.video_genres.pluck(:id)
