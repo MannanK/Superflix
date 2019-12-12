@@ -14,8 +14,13 @@
  *= require_self
  */
 
-html {
-  
+#main-div {
+  position: relative;
+  min-height: 100vh;
+}
+
+#main-content {
+  padding-bottom: 90px;
 }
 
 .splash-bg {

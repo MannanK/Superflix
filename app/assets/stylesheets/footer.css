@@ -1,0 +1,34 @@
+#footer {
+  background: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 167px;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer-item {
+  color: gray;
+  
+}
+
+.footer-item.top {
+  margin-top: 35px;
+  margin-bottom: 25px;
+}
+
+.footer-item.bottom {
+  margin-top: 15px;
+  display: flex;
+  width: 270px;
+  justify-content: space-between;
+}
+
+.footer-item.bottom p {
+  font-size: 15px;
+}

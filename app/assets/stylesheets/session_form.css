@@ -24,7 +24,7 @@
   margin-bottom: 35px;
 }
 
-.session-form input {
+.session-form .input {
   box-sizing: border-box;
   width: 314px;
   height: 48px;
@@ -35,6 +35,10 @@
   border-radius: 4px;
   color: white;
   font-size: 16px;
+}
+
+.session-form .input.error {
+  border-bottom: 2px solid #E87C03;
 }
 
 .email-placeholder {
@@ -117,7 +121,6 @@
 .error {
   color: #E87C03;
   font-size: 13px;
-  border-top: 2px solid #E87C03;
   padding-top: 8px;
   padding-left: 4px;
 }
