@@ -64,7 +64,7 @@
 .dropdown {
   box-sizing: border-box;
   width: 180px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.95);
   position: absolute;
   top: 73px;
   right: 74px;

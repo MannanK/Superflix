@@ -1,0 +1,17 @@
+.video-main-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+  max-height: 100%;
+}
+
+.main-video {
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+}
