@@ -3,8 +3,6 @@ import React from 'react';
 export default class VideoMain extends React.Component {
   constructor(props) {
     super(props);
-
-    console.log( this.props.video )
   }
 
   render() {

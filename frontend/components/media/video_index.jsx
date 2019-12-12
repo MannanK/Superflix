@@ -3,6 +3,10 @@ import VideoMain from './video_main';
 import { isEmpty } from 'lodash';
 
 export default class VideoIndex extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     this.props.fetchVideos();
   }

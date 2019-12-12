@@ -19,7 +19,7 @@ const App = (props) => (
         <ProtectedRoute exact path="/browse" component={VideoIndexContainer} />
         <AuthRoute exact path="/login" component={LogInFormContainer} />
         <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-        <AuthRoute exact path="/" component={SplashContainer} />
+        <AuthRoute path="/" component={SplashContainer} />
       </Switch>
     </div>
 
