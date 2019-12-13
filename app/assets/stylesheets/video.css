@@ -1,5 +1,5 @@
 .video-main-container {
-  position: absolute;
+  position: relative;
   left: 0;
   right: 0;
   top: 0;
@@ -26,14 +26,11 @@
 
 /* ------- BELOW MAIN VIDEO ------- */
 
-<<<<<<< HEAD
-=======
 .video-row-container {
   position: relative;
   top: 60px;
 }
 
->>>>>>> browse_working_broken
 .video-row-outer {
   overflow: hidden;
   overflow-x: scroll;

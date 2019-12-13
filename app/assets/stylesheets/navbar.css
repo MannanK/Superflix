@@ -1,18 +1,12 @@
-<<<<<<< HEAD
-.nav-bar {
-=======
 header {
   position: relative;
 }
 
 .nav-bar.signed-in {
->>>>>>> browse_working_broken
   display: flex;
   justify-content: space-between;
   padding: 20px;
   padding-bottom: 12px;
-<<<<<<< HEAD
-=======
   position: absolute;
   top: 0;
   left: 0;
@@ -30,7 +24,6 @@ header {
   left: 0;
   width: auto;
   z-index: 2;
->>>>>>> browse_working_broken
 }
 
 .logo {
@@ -59,13 +52,10 @@ header {
   margin-top: 9px;
 }
 
-<<<<<<< HEAD
-=======
 .user-logo-container {
   position: relative;
 }
 
->>>>>>> browse_working_broken
 .user-logo {
   height: 32px;
   width: 40px;
@@ -80,11 +70,7 @@ header {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 5px solid white;
-<<<<<<< HEAD
-  margin-right: 55px;
-=======
   left: 0px;
->>>>>>> browse_working_broken
 }
 
 .dropdown-tooltip {
@@ -94,13 +80,8 @@ header {
   border-right: 8px solid transparent;
   border-bottom: 7px solid white;
   position: absolute;
-<<<<<<< HEAD
-  top: 64px;
-  right: 102px;
-=======
   top: 42px;
   right: 27px;
->>>>>>> browse_working_broken
 }
 
 .dropdown {
