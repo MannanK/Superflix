@@ -1,8 +1,16 @@
+header {
+  position: relative;
+}
+
 .nav-bar {
   display: flex;
   justify-content: space-between;
   padding: 20px;
   padding-bottom: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
 }
 
 .logo {
@@ -31,6 +39,12 @@
   margin-top: 9px;
 }
 
+.user-logo-container {
+  position: absolute;
+  right: 60px;
+  top: 19px;
+}
+
 .user-logo {
   height: 32px;
   width: 40px;
@@ -50,6 +64,12 @@
   margin-right: 55px;
 }
 
+.nav-dropdown-container {
+  position: absolute;
+  top: -22px;
+  right: -21px;
+}
+
 .dropdown-tooltip {
   width: 0;
   height: 0;
@@ -57,7 +77,7 @@
   border-right: 8px solid transparent;
   border-bottom: 7px solid white;
   position: absolute;
-  top: 64px;
+  top: 66px;
   right: 102px;
 }
 

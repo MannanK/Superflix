@@ -1,5 +1,5 @@
 .video-main-container {
-  position: absolute;
+  position: relative;
   left: 0;
   right: 0;
   top: 0;
@@ -15,6 +15,10 @@
 }
 
 /* ------- BELOW MAIN VIDEO ------- */
+
+.video-row-container {
+  position: relative;
+}
 
 .video-row-outer {
   overflow: hidden;
