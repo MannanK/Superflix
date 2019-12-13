@@ -1,3 +1,12 @@
+.video-index-container {
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .video-main-container {
   position: relative;
   left: 0;
@@ -29,12 +38,12 @@
 .video-row-container {
   position: relative;
   top: 60px;
+  width: 100%;
 }
 
 .video-row-outer {
-  overflow: hidden;
-  overflow-x: scroll;
-  padding: 20px;
+  display: flex;
+  padding: 55px 0px;
 }
 
 .video-row-inner {
@@ -42,8 +51,8 @@
 }
 
 .video-item {
-  width: 300px;
-  height: 150px;
+  width: 334px;
+  height: 203px;
   background-color: black;
   box-sizing: border-box;
   border: 1px solid white;
