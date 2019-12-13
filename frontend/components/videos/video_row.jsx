@@ -14,12 +14,16 @@ export default class VideoRow extends React.Component {
     ));
 
     return (
-      <div className="video-row-outer">
-        <div className="video-row-inner">
+      <ul className="video-row-outer">
+        {/* button goes here */}
+
+        <ul className="video-row-inner">
           {/* <h1 style={{ color: 'yellow' }}>VideoRow: {this.props.genre.name}</h1> */}
           {videoItems}
-        </div>
-      </div>
+        </ul>
+
+        {/* button goes here */}
+      </ul>
     )
   }
 }

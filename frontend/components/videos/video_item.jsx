@@ -7,9 +7,9 @@ export default class VideoItem extends React.Component {
 
   render() {
     return (
-      <div className="video-item">
+      <li className="video-item">
         
-      </div>
+      </li>
     );
   }
 }
