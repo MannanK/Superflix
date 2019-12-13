@@ -1,0 +1,41 @@
+.video-main-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 55vw;
+  z-index: -1;
+}
+
+.main-video {
+  width: 100%;
+  height: 56vw;
+}
+
+/* ------- BELOW MAIN VIDEO ------- */
+
+.video-row-outer {
+  overflow: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+}
+
+.video-row-inner {
+  display: flex;
+}
+
+.video-item {
+  width: 300px;
+  height: 150px;
+  background-color: black;
+  box-sizing: border-box;
+  border: 1px solid white;
+  flex-shrink: 0;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}

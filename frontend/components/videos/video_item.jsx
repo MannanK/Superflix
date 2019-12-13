@@ -7,7 +7,9 @@ export default class VideoItem extends React.Component {
 
   render() {
     return (
-      <h1 style={{ color: 'purple' }}>VideoItem: { this.props.video.title }</h1>
+      <div className="video-item">
+        
+      </div>
     );
   }
 }

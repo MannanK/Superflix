@@ -72,16 +72,16 @@ spidermanHomecoming = Video.create!(
 spidermanHomecoming.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 spidermanHomecoming.genres += [action, comedy]
 
-logan = Video.create!(
-  title: "Logan",
-  description: "In the near future, a weary Logan cares for an ailing Professor X in a hide out on the Mexican border. But Logan’s attempts to hide from the world and his legacy are up-ended when a young mutant arrives, being pursued by dark forces.",
-  year: 2017,
-  maturity_rating: "R",
-  video_type: "MOVIE",
-  duration: 12
-)
-logan.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-logan.genres += [action, adventure]
+# logan = Video.create!(
+#   title: "Logan",
+#   description: "In the near future, a weary Logan cares for an ailing Professor X in a hide out on the Mexican border. But Logan’s attempts to hide from the world and his legacy are up-ended when a young mutant arrives, being pursued by dark forces.",
+#   year: 2017,
+#   maturity_rating: "R",
+#   video_type: "MOVIE",
+#   duration: 12
+# )
+# logan.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# logan.genres += [action, adventure]
 
 deadpool = Video.create!(
   title: "Deadpool",
@@ -105,19 +105,19 @@ deadpool2 = Video.create!(
 deadpool2.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 deadpool2.genres += [action, comedy, scifi]
 
-theDarkKnight = Video.create!(
-  title: "The Dark Knight,",
-  description: "With the help of allies Lt. Jim Gordon and DA Harvey Dent, Batman has been able to keep a tight lid on crime in Gotham City. But when a vile young criminal calling himself the Joker suddenly throws the town into chaos, the caped Crusader begins to tread a fine line between heroism and vigilantism.",
-  year: 2019,
-  maturity_rating: "PG-13",
-  video_type: "MOVIE",
-  duration: 12
-)
-theDarkKnight.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-theDarkKnight.genres += [action, adventure]
+# theDarkKnight = Video.create!(
+#   title: "The Dark Knight,",
+#   description: "With the help of allies Lt. Jim Gordon and DA Harvey Dent, Batman has been able to keep a tight lid on crime in Gotham City. But when a vile young criminal calling himself the Joker suddenly throws the town into chaos, the caped Crusader begins to tread a fine line between heroism and vigilantism.",
+#   year: 2019,
+#   maturity_rating: "PG-13",
+#   video_type: "MOVIE",
+#   duration: 12
+# )
+# theDarkKnight.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# theDarkKnight.genres += [action, adventure]
 
 theDarkKnightRises = Video.create!(
-  title: "title",
+  title: "The Dark Knight Rises",
   description: "It has been eight years since Batman, in collusion with Commissioner Gordon, vanished into the night. Assuming responsibility for the death of Harvey Dent, Batman sacrificed everything for what he and Gordon hoped would be the greater good. However, the arrival of a cunning cat burglar and a merciless terrorist named Bane force Batman out of exile and into a battle he may not be able to win.",
   year: 2019,
   maturity_rating: "PG-13",
@@ -138,126 +138,126 @@ thorRagnarok = Video.create!(
 thorRagnarok.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 thorRagnarok.genres += [action, adventure, scifi, comedy]
 
-joker = Video.create!(
-  title: "Joker",
-  description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a futile attempt to feel like he's part of the world around him. Isolated, bullied and disregarded by society, Fleck begins a slow descent into madness as he transforms into the criminal mastermind known as the Joker.",
-  year: 2019,
-  maturity_rating: "R",
-  video_type: "MOVIE",
-  duration: 12
-)
-joker.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-joker.genres += [action]
+# joker = Video.create!(
+#   title: "Joker",
+#   description: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a futile attempt to feel like he's part of the world around him. Isolated, bullied and disregarded by society, Fleck begins a slow descent into madness as he transforms into the criminal mastermind known as the Joker.",
+#   year: 2019,
+#   maturity_rating: "R",
+#   video_type: "MOVIE",
+#   duration: 12
+# )
+# joker.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# joker.genres += [action]
 
-captainAmericaCivilWar = Video.create!(
-  title: "Captain America: Civil War",
-  description: "Political pressure mounts to install a system of accountability when the actions of the Avengers lead to collateral damage. The new status quo deeply divides members of the team. Captain America believes superheroes should remain free to defend humanity without government interference. Iron Man sharply disagrees and supports oversight. As the debate escalates into an all-out feud, Black Widow and Hawkeye must pick a side.",
-  year: 2017,
-  maturity_rating: "PG-13",
-  video_type: "MOVIE",
-  duration: 12
-)
-captainAmericaCivilWar.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-captainAmericaCivilWar.genres += [action, adventure, scifi]
+# captainAmericaCivilWar = Video.create!(
+#   title: "Captain America: Civil War",
+#   description: "Political pressure mounts to install a system of accountability when the actions of the Avengers lead to collateral damage. The new status quo deeply divides members of the team. Captain America believes superheroes should remain free to defend humanity without government interference. Iron Man sharply disagrees and supports oversight. As the debate escalates into an all-out feud, Black Widow and Hawkeye must pick a side.",
+#   year: 2017,
+#   maturity_rating: "PG-13",
+#   video_type: "MOVIE",
+#   duration: 12
+# )
+# captainAmericaCivilWar.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# captainAmericaCivilWar.genres += [action, adventure, scifi]
 
-captainAmericaWinterSoldier = Video.create!(
-  title: "Captain America: The Winter Soldier",
-  description: "After the cataclysmic events in New York with his fellow Avengers, Steve Rogers, aka Captain America, lives in the nation's capital as he tries to adjust to modern times. An attack on a S.H.I.E.L.D. colleague throws Rogers into a web of intrigue that places the whole world at risk. Joining forces with the Black Widow and a new ally, the Falcon, Rogers struggles to expose an ever-widening conspiracy, but he and his team soon come up against an unexpected enemy.",
-  year: 2015,
-  maturity_rating: "PG-13",
-  video_type: "MOVIE",
-  duration: 12
-)
-captainAmericaWinterSoldier.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-captainAmericaWinterSoldier.genres += [action, adventure]
+# captainAmericaWinterSoldier = Video.create!(
+#   title: "Captain America: The Winter Soldier",
+#   description: "After the cataclysmic events in New York with his fellow Avengers, Steve Rogers, aka Captain America, lives in the nation's capital as he tries to adjust to modern times. An attack on a S.H.I.E.L.D. colleague throws Rogers into a web of intrigue that places the whole world at risk. Joining forces with the Black Widow and a new ally, the Falcon, Rogers struggles to expose an ever-widening conspiracy, but he and his team soon come up against an unexpected enemy.",
+#   year: 2015,
+#   maturity_rating: "PG-13",
+#   video_type: "MOVIE",
+#   duration: 12
+# )
+# captainAmericaWinterSoldier.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# captainAmericaWinterSoldier.genres += [action, adventure]
 
-marvelsDaredevil = Video.create!(
-  title: "Marvel's Daredevil",
-  description: "The first season of Daredevil follows the early days of Matt Murdock / Daredevil, a lawyer-by-day who fights crime at night, juxtaposed with the rise of crime lord Wilson Fisk.",
-  year: 2016,
-  maturity_rating: "TV-14",
-  video_type: "SHOW",
-  duration: 12
-)
-marvelsDaredevil.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-marvelsDaredevil.genres += [action]
+# marvelsDaredevil = Video.create!(
+#   title: "Marvel's Daredevil",
+#   description: "The first season of Daredevil follows the early days of Matt Murdock / Daredevil, a lawyer-by-day who fights crime at night, juxtaposed with the rise of crime lord Wilson Fisk.",
+#   year: 2016,
+#   maturity_rating: "TV-14",
+#   video_type: "SHOW",
+#   duration: 12
+# )
+# marvelsDaredevil.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# marvelsDaredevil.genres += [action]
 
-marvelsPunisher = Video.create!(
-  title: "Marvel's Punisher",
-  description: "The first season of the American web television series The Punisher, which is based on the Marvel Comics character of the same name, sees Frank Castle uncover a conspiracy while seeking revenge for the death of his family.",
-  year: 2017,
-  maturity_rating: "TV-14",
-  video_type: "SHOW",
-  duration: 12
-)
-marvelsPunisher.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-marvelsPunisher.genres += [action]
+# marvelsPunisher = Video.create!(
+#   title: "Marvel's Punisher",
+#   description: "The first season of the American web television series The Punisher, which is based on the Marvel Comics character of the same name, sees Frank Castle uncover a conspiracy while seeking revenge for the death of his family.",
+#   year: 2017,
+#   maturity_rating: "TV-14",
+#   video_type: "SHOW",
+#   duration: 12
+# )
+# marvelsPunisher.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# marvelsPunisher.genres += [action]
 
-watchmenMovie = Video.create!(
-  title: "Watchmen",
-  description: "In an alternate 1985 America, costumed superheroes are part of everyday life. When one of his former comrades is murdered, masked vigilante Rorschach uncovers a plot to kill and discredit all past and present superheroes. As he reconnects with his retired associates, only one of which has true powers, Rorschach glimpses a far-reaching conspiracy involving their shared past and catastrophic consequences for the world's future.",
-  year: 2019,
-  maturity_rating: "R",
-  video_type: "MOVIE",
-  duration: 12
-)
-watchmenMovie.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-watchmenMovie.genres += [action, adventure, scifi]
+# watchmenMovie = Video.create!(
+#   title: "Watchmen",
+#   description: "In an alternate 1985 America, costumed superheroes are part of everyday life. When one of his former comrades is murdered, masked vigilante Rorschach uncovers a plot to kill and discredit all past and present superheroes. As he reconnects with his retired associates, only one of which has true powers, Rorschach glimpses a far-reaching conspiracy involving their shared past and catastrophic consequences for the world's future.",
+#   year: 2019,
+#   maturity_rating: "R",
+#   video_type: "MOVIE",
+#   duration: 12
+# )
+# watchmenMovie.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# watchmenMovie.genres += [action, adventure, scifi]
 
-watchmenShow = Video.create!(
-  title: "Watchmen",
-  description: "A ‘remix’ of the original source material that offers a fresh story and new characters, Watchmen, from executive producer Damon Lindelof, embraces the nostalgia of the groundbreaking graphic novel of the same name, while breaking new ground of its own.",
-  year: 2019,
-  maturity_rating: "TV-17",
-  video_type: "SHOW",
-  duration: 12
-)
-watchmenShow.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-watchmenShow.genres += [action, scifi]
+# watchmenShow = Video.create!(
+#   title: "Watchmen",
+#   description: "A ‘remix’ of the original source material that offers a fresh story and new characters, Watchmen, from executive producer Damon Lindelof, embraces the nostalgia of the groundbreaking graphic novel of the same name, while breaking new ground of its own.",
+#   year: 2019,
+#   maturity_rating: "TV-17",
+#   video_type: "SHOW",
+#   duration: 12
+# )
+# watchmenShow.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# watchmenShow.genres += [action, scifi]
 
-theBoys = Video.create!(
-  title: "The Boys",
-  description: "A group of vigilantes set out to take down corrupt superheroes who abuse their superpowers. The Boys is set in a universe where superpowered people are recognized as heroes by the general public and owned by powerful corporation Vought International, which ensures that they are aggressively marketed and monetized.",
-  year: 2019,
-  maturity_rating: "TV-14",
-  video_type: "SHOW",
-  duration: 12
-)
-theBoys.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-theBoys.genres += [action]
+# theBoys = Video.create!(
+#   title: "The Boys",
+#   description: "A group of vigilantes set out to take down corrupt superheroes who abuse their superpowers. The Boys is set in a universe where superpowered people are recognized as heroes by the general public and owned by powerful corporation Vought International, which ensures that they are aggressively marketed and monetized.",
+#   year: 2019,
+#   maturity_rating: "TV-14",
+#   video_type: "SHOW",
+#   duration: 12
+# )
+# theBoys.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# theBoys.genres += [action]
 
-guardiansOfTheGalaxy = Video.create!(
-  title: "Guardians of the Galaxy",
-  description: "Brash space adventurer Peter Quill finds himself the quarry of relentless bounty hunters after he steals an orb coveted by Ronan, a powerful villain. To evade Ronan, Quill is forced into an uneasy truce with four disparate misfits: gun-toting Rocket Raccoon, treelike-humanoid Groot, enigmatic Gamora, and vengeance-driven Drax the Destroyer. But when he discovers the orb's true power and the cosmic threat it poses, Quill must rally his ragtag group to save the universe.",
-  year: 2016,
-  maturity_rating: "PG-13",
-  video_type: "MOVIE",
-  duration: 12
-)
-guardiansOfTheGalaxy.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-guardiansOfTheGalaxy.genres += [action, adventure, scifi]
+# guardiansOfTheGalaxy = Video.create!(
+#   title: "Guardians of the Galaxy",
+#   description: "Brash space adventurer Peter Quill finds himself the quarry of relentless bounty hunters after he steals an orb coveted by Ronan, a powerful villain. To evade Ronan, Quill is forced into an uneasy truce with four disparate misfits: gun-toting Rocket Raccoon, treelike-humanoid Groot, enigmatic Gamora, and vengeance-driven Drax the Destroyer. But when he discovers the orb's true power and the cosmic threat it poses, Quill must rally his ragtag group to save the universe.",
+#   year: 2016,
+#   maturity_rating: "PG-13",
+#   video_type: "MOVIE",
+#   duration: 12
+# )
+# guardiansOfTheGalaxy.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# guardiansOfTheGalaxy.genres += [action, adventure, scifi]
 
-blackWidow = Video.create!(
-  title: "Black Widow",
-  description: "Set before the unfortunate events of Avengers: Endgame, international spy and assassin Natasha Romanoff becomes the superhero Black Widow.",
-  year: 2019,
-  maturity_rating: "PG-13",
-  video_type: "MOVIE",
-  duration: 12
-)
-blackWidow.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-blackWidow.genres += [action]
+# blackWidow = Video.create!(
+#   title: "Black Widow",
+#   description: "Set before the unfortunate events of Avengers: Endgame, international spy and assassin Natasha Romanoff becomes the superhero Black Widow.",
+#   year: 2019,
+#   maturity_rating: "PG-13",
+#   video_type: "MOVIE",
+#   duration: 12
+# )
+# blackWidow.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# blackWidow.genres += [action]
 
-wonderWoman1984 = Video.create!(
-  title: "Wonder Woman: 1984",
-  description: "Wonder Woman squares off against the Cheetah, a villainess who possesses superhuman strength and agility.",
-  year: 2019,
-  maturity_rating: "PG-13",
-  video_type: "MOVIE",
-  duration: 12
-)
-wonderWoman1984.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-wonderWoman1984.genres += [action, adventure, scifi]
+# wonderWoman1984 = Video.create!(
+#   title: "Wonder Woman: 1984",
+#   description: "Wonder Woman squares off against the Cheetah, a villainess who possesses superhuman strength and agility.",
+#   year: 2019,
+#   maturity_rating: "PG-13",
+#   video_type: "MOVIE",
+#   duration: 12
+# )
+# wonderWoman1984.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# wonderWoman1984.genres += [action, adventure, scifi]
 
 flashpointParadox = Video.create!(
   title: "Justice League: The Flashpoint Paradox",
@@ -281,27 +281,27 @@ intoTheSpiderverse = Video.create!(
 intoTheSpiderverse.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 intoTheSpiderverse.genres += [action, adventure, animated]
 
-marvelsAvengers = Video.create!(
-  title: "Marvel's Avengers",
-  description: "When Thor's evil brother, Loki, gains access to the unlimited power of the energy cube called the Tesseract, Nick Fury, director of S.H.I.E.L.D., initiates a superhero recruitment effort to defeat the unprecedented threat to Earth. Joining Fury's 'dream team' are Iron Man, Captain America, the Hulk, Thor, the Black Widow and Hawkeye.",
-  year: 2012,
-  maturity_rating: "PG-13",
-  video_type: "MOVIE",
-  duration: 12
-)
-marvelsAvengers.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-marvelsAvengers.genres += [action, adventure, scifi]
+# marvelsAvengers = Video.create!(
+#   title: "Marvel's Avengers",
+#   description: "When Thor's evil brother, Loki, gains access to the unlimited power of the energy cube called the Tesseract, Nick Fury, director of S.H.I.E.L.D., initiates a superhero recruitment effort to defeat the unprecedented threat to Earth. Joining Fury's 'dream team' are Iron Man, Captain America, the Hulk, Thor, the Black Widow and Hawkeye.",
+#   year: 2012,
+#   maturity_rating: "PG-13",
+#   video_type: "MOVIE",
+#   duration: 12
+# )
+# marvelsAvengers.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# marvelsAvengers.genres += [action, adventure, scifi]
 
-manOfSteel = Video.create!(
-  title: "Man of Steel",
-  description: "With the imminent destruction of Krypton, their home planet, Jor-El and his wife seek to preserve their race by sending their infant son to Earth. The child's spacecraft lands at the farm of Jonathan and Martha Kent, who name him Clark and raise him as their own son. Though his extraordinary abilities have led to the adult Clark living on the fringe of society, he finds he must become a hero to save those he loves from a dire threat.",
-  year: 2015,
-  maturity_rating: "PG-13",
-  video_type: "MOVIE",
-  duration: 12
-)
-manOfSteel.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
-manOfSteel.genres += [action, adventure, scifi]
+# manOfSteel = Video.create!(
+#   title: "Man of Steel",
+#   description: "With the imminent destruction of Krypton, their home planet, Jor-El and his wife seek to preserve their race by sending their infant son to Earth. The child's spacecraft lands at the farm of Jonathan and Martha Kent, who name him Clark and raise him as their own son. Though his extraordinary abilities have led to the adult Clark living on the fringe of society, he finds he must become a hero to save those he loves from a dire threat.",
+#   year: 2015,
+#   maturity_rating: "PG-13",
+#   video_type: "MOVIE",
+#   duration: 12
+# )
+# manOfSteel.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+# manOfSteel.genres += [action, adventure, scifi]
 
 marvelsJessicaJones = Video.create!(
   title: "Marvel's Jessica Jones",
