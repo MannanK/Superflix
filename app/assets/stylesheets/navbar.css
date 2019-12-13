@@ -2,7 +2,7 @@ header {
   position: relative;
 }
 
-.nav-bar {
+.nav-bar.signed-in {
   display: flex;
   justify-content: space-between;
   padding: 20px;
@@ -10,7 +10,19 @@ header {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  z-index: 2;
+  width: 95vw;
+}
+
+.nav-bar.signed-out {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  padding-bottom: 12px;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: auto;
   z-index: 2;
 }
 
@@ -41,9 +53,7 @@ header {
 }
 
 .user-logo-container {
-  position: absolute;
-  right: 60px;
-  top: 19px;
+  position: relative;
 }
 
 .user-logo {
@@ -57,18 +67,10 @@ header {
 }
 
 .user-logo + span {
-  width: 0;
-  height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 5px solid white;
-  margin-right: 55px;
-}
-
-.nav-dropdown-container {
-  position: absolute;
-  top: -22px;
-  right: -21px;
+  left: 0px;
 }
 
 .dropdown-tooltip {
@@ -78,17 +80,17 @@ header {
   border-right: 8px solid transparent;
   border-bottom: 7px solid white;
   position: absolute;
-  top: 66px;
-  right: 102px;
+  top: 42px;
+  right: 27px;
 }
 
 .dropdown {
   box-sizing: border-box;
   width: 180px;
   background: rgba(0, 0, 0, 0.95);
+  top: 49px;
   position: absolute;
-  top: 73px;
-  right: 74px;
+  right: -2px;
   box-shadow: 0px 7px 15px 0px rgba(0,0,0,0.5);
   padding: 23px 12px;
   padding-bottom: 14px;
