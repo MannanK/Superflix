@@ -32,7 +32,9 @@ export default class VideoIndex extends React.Component {
     return (
       <div className="video-index-container">
         <span className="video-index-container-bg"></span>
-        {videoMain}
+        <div id="video-main-empty">
+          {videoMain}
+        </div>
         <section className="video-row-container">
           {videoRows}
         </section>

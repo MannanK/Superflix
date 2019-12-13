@@ -8,6 +8,8 @@ export default class VideoRow extends React.Component {
     this.state = {
       videos: this.props.videos,
       genre: this.props.genre
+      // state to check if either of the buttons have ever been clicked, change this state only ever once on first click
+        // need this for row to no longer be padded on the left?
     }
   }
 
