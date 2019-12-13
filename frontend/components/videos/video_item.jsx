@@ -8,7 +8,7 @@ export default class VideoItem extends React.Component {
   render() {
     return (
       <li className="video-item">
-        
+        <img className="video-demo-thumbnail" src={window.demoThumbnail} />
       </li>
     );
   }

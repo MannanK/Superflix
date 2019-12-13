@@ -4,6 +4,11 @@ import VideoItem from './video_item';
 export default class VideoRow extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      videos: this.props.videos,
+      genre: this.props.genre
+    }
   }
 
   render() {
@@ -16,11 +21,14 @@ export default class VideoRow extends React.Component {
     return (
       <ul className="video-row-outer">
         {/* button goes here */}
+        <button className="left-button" type="button">Go left</button>
 
         <ul className="video-row-inner">
           {/* <h1 style={{ color: 'yellow' }}>VideoRow: {this.props.genre.name}</h1> */}
           {videoItems}
         </ul>
+
+        <button className="right-button" type="button">Go right</button>
 
         {/* button goes here */}
       </ul>
