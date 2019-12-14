@@ -66,10 +66,10 @@ export default class VideoRow extends React.Component {
 
     let translateStyle = oldPageNum > newPageNum ? ({
       transform: `translateX(${91.2*newPageNum}vw)`,
-      transition: "all 100ms ease-out"
+      transition: "all 800ms ease-out"
     }) : ({
       transform: `translateX(-${91.2*newPageNum}vw)`,
-      transition: "all 100ms ease-out"
+      transition: "all 800ms ease-out"
     });
 
     return (

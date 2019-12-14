@@ -47,13 +47,19 @@
   /* top: 60px; */
   /* top: -25vh */
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .video-row-outer {
   display: flex;
   /* padding-bottom: 100px; */
-  padding-bottom: 5%;
-  padding-left: 59px;
+  /* padding-bottom: 5%; */
+  /* padding-left: 59px; */
+  margin-bottom: 5%;
+  position: relative;
+  max-width: 100%;
+  padding: 0 4%;
 }
 
 .video-row-inner {
@@ -64,10 +70,15 @@
   
   /* animation-duration: 1.5s;
   animation-name: slidein; */
+
+  overflow-x: visible;
+  width: 100%;
+  position: relative;
 }
 
 .video-demo-thumbnail {
-  width: 15.2vw;
+  /* width: 15.2vw; */
+  width: 100%;
   height: auto;
   z-index: -1;
 }
@@ -84,11 +95,13 @@
   list-style-type: none;
   /* background-color: white; */
   box-sizing: border-box;
-  /* border: 1px solid black; */
+  border: 1px solid white;
   flex-shrink: 0;
 
-  width: 15.2vw;
-  margin: 0px 2px;
+  /* width: 15.2vw; */
+  width: 16.3333333337%;
+  /* margin: 0px 2px; */
+
   height: auto;
 
   /* what happens when you hover over a thumbnail */
@@ -96,6 +109,7 @@
 
   transition: all 300ms ease-out 200ms;
   position: relative;
+  margin-right: .35%;
 }
 
 .video-text {
@@ -119,13 +133,22 @@
 
 .left-button {
   position: absolute;
+  top: 0;
+  bottom: 0;
   z-index: 5;
+  width: 4%;
+  background-color: rgba(255,255,255,0.4);
+  left: 0;
 }
 
 .right-button {
   position: absolute;
   z-index: 5;
   right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4%;
+  background-color: rgba(255,255,255,0.3);
 }
 
 @keyframes slidein {
