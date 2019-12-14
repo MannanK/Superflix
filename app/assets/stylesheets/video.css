@@ -66,18 +66,18 @@
   animation-name: slidein; */
 }
 
+.video-demo-thumbnail {
+  width: 15.2vw;
+  height: auto;
+  z-index: -1;
+}
+
 .video-row-inner:hover .video-item {
    transform: translateX(-45%);
 }
 
 .video-item:hover ~ .video-item {
    transform: translateX(45%);
-}
-
-.video-demo-thumbnail {
-  width: 15.2vw;
-  height: auto;
-  z-index: -1;
 }
 
 .video-item {
@@ -94,7 +94,7 @@
   /* what happens when you hover over a thumbnail */
   /* transition: all .2s ease-in-out; */
 
-  transition: transform 300ms ease-out 100ms;
+  transition: all 300ms ease-out 200ms;
   position: relative;
 }
 
