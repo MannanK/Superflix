@@ -16,7 +16,7 @@ export default class VideoMain extends React.Component {
         <div className="video">
           <img className="main-video" src={window.demoThumbnail} />
         </div>
-        <div className="test">Click here to play your video!</div>
+
       </div>
     );
   }
