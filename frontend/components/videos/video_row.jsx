@@ -112,7 +112,7 @@ export default class VideoRow extends React.Component {
     return (
       <ul className="video-row-outer">
         {/* if videos.length <= 6, don't show any buttons */}
-        <button className="left-button" type="button" onClick={this.scrollLeft}>Go left</button>
+        {(pageNum !== 0) ? <button className="left-button" type="button" onClick={this.scrollLeft}>Go left</button> : ""}
 
         <ul className="video-row-inner" style={translateStyle}>
           {videoItems}
@@ -131,7 +131,7 @@ export default class VideoRow extends React.Component {
       transform: `none`,
       transition: "all 400ms ease-out"
     }) : ({
-      transform: `translateX(-${100 * pageNum}%)`,
+      transform: `translate3d(-${100 * pageNum}%, 0, 0)`,
       transition: "all 800ms ease-out"
     });
 
