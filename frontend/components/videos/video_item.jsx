@@ -26,14 +26,22 @@ export default class VideoItem extends React.Component {
   }
 
   render() {
-    const { video, className } = this.props;
-    
+    const { video, className, genres } = this.props;
+
+    let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
+
+    let genreNames = video.genreIds.map(id => (
+      genres[id].name
+    )).slice(0,3);
+    genreNames = genreNames.join(" • ");
+
     let videoDetails = (
       <section className="video-details-container">
         <div className="video-details">
           <div className="details-play-icon"><i className="far fa-play-circle"></i></div>
           <h3>{video.title}</h3>
-          <p>{video.maturity_rating}, {video.year}</p>
+          <h2>{video.maturity_rating}, {formattedDuration}</h2>
+          <h2>{genreNames}</h2>
         </div>
         
         <div className="details-down-arrow">

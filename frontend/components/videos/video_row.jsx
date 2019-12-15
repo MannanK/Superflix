@@ -1,5 +1,5 @@
 import React from 'react';
-import VideoItem from './video_item';
+import VideoItemContainer from './video_item_container';
 
 export default class VideoRow extends React.Component {
   constructor(props) {
@@ -61,7 +61,7 @@ export default class VideoRow extends React.Component {
       let className = "video-item";
       if (i === 0) className = "first " + className;
 
-      return <VideoItem key={i} video={video} className={className} />
+      return <VideoItemContainer key={i} video={video} className={className} />
     });
     
     return (
@@ -90,29 +90,27 @@ export default class VideoRow extends React.Component {
       transform: `translate3d(-${100 * pageNum}%, 0, 0)`,
       transition: "all 800ms ease-out"
     });
-    console.log("genre: ", genre.name);
-    console.log("current index: ", currentIndex);
-    console.log("videos remaining: ", videosRemaining);
+
     if (videosRemaining > 0) {
       videoItems = videos.map((video, i) => {
         if (i === currentIndex) {
-          return <VideoItem key={i} video={video} genre={genre} className="first video-item" />
+          return <VideoItemContainer key={i} video={video} className="first video-item" />
         } else if (i === currentIndex + 5) {
-          return <VideoItem key={i} video={video} genre={genre} className="last video-item" />
+          return <VideoItemContainer key={i} video={video} className="last video-item" />
         } else if (i < currentIndex || i > currentIndex + 5) {
-          return <VideoItem key={i} video={video} genre={genre} className="off-screen video-item" />
+          return <VideoItemContainer key={i} video={video} className="off-screen video-item" />
         } else {
-          return <VideoItem key={i} video={video} genre={genre} className="video-item" />
+          return <VideoItemContainer key={i} video={video} className="video-item" />
         }
       });
     } else {
       videoItems = videos.map((video, i) => {
         if (i === currentIndex) {
-          return <VideoItem key={i} video={video} genre={genre} className="first video-item" />
+          return <VideoItemContainer key={i} video={video} className="first video-item" />
         } else if (i < currentIndex) {
-          return <VideoItem key={i} video={video} genre={genre} className="off-screen video-item" />
+          return <VideoItemContainer key={i} video={video} className="off-screen video-item" />
         } else {
-          return <VideoItem key={i} video={video} genre={genre} className="video-item" />
+          return <VideoItemContainer key={i} video={video} className="video-item" />
         }
       });
     }
