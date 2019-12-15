@@ -139,19 +139,54 @@
 
 /* ------- VIDEO DETAILS ------- */
 
-.video-details {
+.video-details-container {
   opacity: 0;
   position: absolute;
   color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 
   transition: opacity 400ms linear;
 }
 
-.video-item:hover .video-details {
+.video-item:hover .video-details-container {
   opacity: 1;
   transition-property: opacity;
   transition-delay: 350ms;
   transition-duration: 400ms;
+}
+
+.video-details {
+  padding-left: 0.5vw;
+  padding-bottom: 0.2vw;
+}
+
+.video-details, .video-details h3, .video-details p {
+  font-size: 0.55vw;
+  text-shadow: 1px 1px 5px black;
+}
+
+.video-details h3 {
+  margin-top: 0.8vh;
+  margin-bottom: 1vh;
+}
+
+.details-play-icon {
+  font-size: 1.6vw;
+}
+
+.details-play-icon:hover, .details-down-arrow:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.details-down-arrow {
+  display: block;
+  text-align: center;
+  margin-bottom: 0.3vh;
 }
 
 /* ------- BUTTONS ------- */

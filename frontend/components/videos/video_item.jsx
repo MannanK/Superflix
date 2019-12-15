@@ -5,7 +5,6 @@ export default class VideoItem extends React.Component {
     super(props);
 
     this.state = {
-      className: this.props.className,
       detailsHidden: true
     };
 
@@ -27,14 +26,19 @@ export default class VideoItem extends React.Component {
   }
 
   render() {
-    const { video } = this.props;
-    const { className, detailsHidden } = this.state;
-
+    const { video, className } = this.props;
+    
     let videoDetails = (
-      <section className="video-details">
-        <h3>{video.title}</h3>
-        <p>{video.maturity_rating}, {video.year}</p>
-        {/* button chevron down */}
+      <section className="video-details-container">
+        <div className="video-details">
+          <div className="details-play-icon"><i className="far fa-play-circle"></i></div>
+          <h3>{video.title}</h3>
+          <p>{video.maturity_rating}, {video.year}</p>
+        </div>
+        
+        <div className="details-down-arrow">
+          <i className="fas fa-chevron-down"></i>
+        </div>
       </section>
     );
 

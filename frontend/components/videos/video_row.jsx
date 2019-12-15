@@ -90,7 +90,9 @@ export default class VideoRow extends React.Component {
       transform: `translate3d(-${100 * pageNum}%, 0, 0)`,
       transition: "all 800ms ease-out"
     });
-
+    console.log("genre: ", genre.name);
+    console.log("current index: ", currentIndex);
+    console.log("videos remaining: ", videosRemaining);
     if (videosRemaining > 0) {
       videoItems = videos.map((video, i) => {
         if (i === currentIndex) {
