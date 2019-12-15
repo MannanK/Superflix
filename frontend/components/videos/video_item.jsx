@@ -13,17 +13,17 @@ export default class VideoItem extends React.Component {
   }
 
   hideDetails(value) {
-    return e => {
-      this.setState({
-        detailsHidden: value
-      });
-    };
-
     // return e => {
-    //   setTimeout(() => this.setState({
+    //   this.setState({
     //     detailsHidden: value
-    //   }), value ? 0 : 600);
+    //   });
     // };
+
+    return e => {
+      setTimeout(() => this.setState({
+        detailsHidden: value
+      }), value ? 0 : 300);
+    };
   }
 
   render() {
@@ -31,20 +31,22 @@ export default class VideoItem extends React.Component {
     const { className, detailsHidden } = this.state;
 
     let videoDetails = (
-      <div className="video-details">
-        test
-      </div>
+      <section className="video-details">
+        <h3>{video.title}</h3>
+        <p>{video.maturity_rating}, {video.year}</p>
+        {/* button chevron down */}
+      </section>
     );
 
     return (
-      <li className={`${className}`} onMouseEnter={this.hideDetails(false)} onMouseLeave={this.hideDetails(true)}>
+      <li className={`${className}`}>
         <img className="video-demo-thumbnail" src={window.demoThumbnail} />
 
         {/* <div className="video-details" hidden={detailsHidden}>
           test
         </div> */}
 
-        {detailsHidden ? "" : videoDetails}
+        {videoDetails}
       </li>
     );
   }
