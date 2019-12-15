@@ -9,18 +9,28 @@ export default class VideoRow extends React.Component {
       genre: this.props.genre,
       pageNum: 0,
       videosRemaining: this.props.videos.length,
+      showButtonArrow: false
     }
+
     this.scrollLeft = this.scrollLeft.bind(this);
     this.scrollRight = this.scrollRight.bind(this);
+    this.toggleArrow = this.toggleArrow.bind(this);
+  }
+
+  toggleArrow(e) {
+    this.setState({
+      showButtonArrow: !this.state.showButtonArrow
+    });
   }
 
   scrollLeft(e) {
     e.preventDefault();
-    const { pageNum, videosRemaining } = this.state;
+    const { pageNum, videosRemaining, showButtonArrow } = this.state;
 
     this.setState({
       pageNum: pageNum-1,
-      videosRemaining: videosRemaining + 6
+      videosRemaining: videosRemaining + 6,
+      showButtonArrow: pageNum === 0 ? false : showButtonArrow
     });
   }
 
@@ -68,7 +78,7 @@ export default class VideoRow extends React.Component {
   }
 
   renderMoreThanSixVideos() {
-    const { videos, videosRemaining, pageNum } = this.state;
+    const { videos, videosRemaining, pageNum, showButtonArrow } = this.state;
     const { genre } = this.props;
     let currentIndex = pageNum*6;
     let videoItems;
@@ -105,18 +115,42 @@ export default class VideoRow extends React.Component {
       });
     }
 
+    let leftButton = (
+      <button
+        className="left row-button"
+        type="button"
+        onClick={this.scrollLeft}
+        onMouseEnter={this.toggleArrow}
+        onMouseLeave={this.toggleArrow}
+      >
+        {showButtonArrow ? <i className="fas fa-chevron-left"></i> : ""}
+      </button>
+    );
+
+    let rightButton = (
+      <button
+        className="right row-button"
+        type="button"
+        onClick={this.scrollRight}
+        onMouseEnter={this.toggleArrow}
+        onMouseLeave={this.toggleArrow}
+      >
+        {showButtonArrow ? <i className="fas fa-chevron-right"></i> : ""}
+      </button>
+    );
+
     return (
       <>
         <h1 className="video-row-genre">{genre.name}</h1>
         <ul className="video-row-outer">
           {/* if videos.length <= 6, don't show any buttons */}
-          {(pageNum !== 0) ? <button className="left-button" type="button" onClick={this.scrollLeft}>Go left</button> : ""}
+          {pageNum !== 0 ? leftButton : ""}
 
           <ul className="video-row-inner" style={translateStyle}>
             {videoItems}
           </ul>
 
-          <button className="right-button" type="button" onClick={this.scrollRight}>Go right</button>
+          {rightButton}
         </ul >
       </>
     );

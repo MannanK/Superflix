@@ -13,8 +13,6 @@ export default class VideoItem extends React.Component {
   }
 
   hideDetails(value) {
-    console.log("got here");
-    
     return e => {
       this.setState({
         detailsHidden: value

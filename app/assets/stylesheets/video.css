@@ -180,22 +180,27 @@
 
 /* ------- BUTTONS ------- */
 
-.left-button {
+.row-button {
   position: absolute;
-  top: 0;
-  bottom: 0;
   z-index: 5;
   width: 3%;
   background-color: rgba(0, 0, 0, 0.35);
+  font-size: 2.7vw;
+  color: rgba(255,255,255,0.9);
+}
+
+.left.row-button {
+  top: 0;
+  bottom: 0;
   left: 0;
 }
 
-.right-button {
-  position: absolute;
-  z-index: 5;
+.right.row-button {
   right: 0;
   top: 0;
   bottom: 0;
-  width: 3%;
-  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.row-button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
