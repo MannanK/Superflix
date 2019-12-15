@@ -17,13 +17,6 @@
   height: 56vw;
 }
 
-#video-main-empty {
-  width: 100%;
-  height: 45.5vw;
-  content: "";
-  z-index: -1;
-}
-
 .main-video {
   width: 100%;
   height: 56vw;
@@ -42,20 +35,35 @@
 
 /* ------- BELOW MAIN VIDEO ------- */
 
+/* need this to allow the video-row-container to have something to position against */
+#video-main-empty {
+  width: 100%;
+  height: 43.5vw;
+  content: "";
+  z-index: -1;
+}
+
 .video-row-container {
   position: relative;
-  /* top: 60px; */
-  /* top: -25vh */
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
+/* ------- VIDEO ROW ------- */
+
+.video-row-genre {
+  padding-left: 3.15%;
+  margin-bottom: 0.8%;
+  font-weight: bold;
+  font-size: 1.4vw;
+  letter-spacing: 0.02em;
+  color: #e5e5e5;
+  font-family: sans-serif;
+}
+
 .video-row-outer {
   display: flex;
-  /* padding-bottom: 100px; */
-  /* padding-bottom: 5%; */
-  /* padding-left: 59px; */
   margin-bottom: 5%;
   position: relative;
   max-width: 100%;
@@ -64,20 +72,12 @@
 
 .video-row-inner {
   display: flex;
-  
-  /* transform: translateX(-400px);
-  transition: all 3s ease-out; */
-  
-  /* animation-duration: 1.5s;
-  animation-name: slidein; */
-
   overflow-x: visible;
   width: 100%;
   position: relative;
 }
 
 .video-demo-thumbnail {
-  /* width: 15.2vw; */
   width: 100%;
   height: auto;
   z-index: -1;
@@ -95,22 +95,14 @@
    transition-delay: 400ms;
 }
 
+/* ------- INDIVIDUAL VIDEO ITEMS ------- */
+
 .video-item {
   list-style-type: none;
-  /* background-color: white; */
   box-sizing: border-box;
-  /* border: 1px solid white; */
   flex-shrink: 0;
-
-  /* width: 15.2vw; */
   width: 16.3333333337%;
-  /* margin: 0px 2px; */
-
   height: auto;
-
-  /* what happens when you hover over a thumbnail */
-  /* transition: all .2s ease-in-out; */
-
   transition: all 300ms ease-out 200ms;
   position: relative;
   margin: 0 0.168%;
@@ -124,32 +116,26 @@
 }
 
 .video-item:hover {
-  /* the scale by which the thumbnail expands */
-  /* transform: scale(1.5); */
-
   transform: scale(1.9) !important;
   transition-delay: 400ms;
 }
 
 .first.video-item {
-  transform-origin: bottom left !important;
+  transform-origin: center left !important;
   z-index: 4;
 }
 
-/* move all the thumbnails to the right */
-.first.video-item:hover ~ .video-item ~ .last.video-item {
-   transform: translate3d(45%, 0, 0);
-   transition-delay: 400ms;
+/* move all the thumbnails to the right */	
+.first.video-item:hover ~ .video-item {	
+   transform: translate3d(90%, 0, 0);	
+   transition-delay: 400ms;	
 }
 
 .last.video-item {
-  transform-origin: bottom right !important;
+  transform-origin: center right !important;
 }
 
-/* ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-} */
+/* ------- BUTTONS ------- */
 
 .left-button {
   position: absolute;
@@ -169,16 +155,4 @@
   bottom: 0;
   width: 3%;
   background-color: rgba(0, 0, 0, 0.35);
-}
-
-@keyframes slidein {
-  from {
-    margin-left: 0%;
-    width: 300%; 
-  }
-
-  to {
-    margin-left: 100%;
-    width: 100%;
-  }
 }

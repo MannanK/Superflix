@@ -6,10 +6,12 @@ export default class VideoItem extends React.Component {
   }
 
   render() {
+    const { video, className } = this.props;
+
     return (
-      <li className={`${this.props.className}`}>
+      <li className={`${className}`}>
         <img className="video-demo-thumbnail" src={window.demoThumbnail} />
-        <div className="video-text">{this.props.video.title}</div>
+        <div className="video-text">{video.title}</div>
       </li>
     );
   }

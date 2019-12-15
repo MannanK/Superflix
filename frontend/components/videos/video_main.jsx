@@ -14,7 +14,7 @@ export default class VideoMain extends React.Component {
 
         {/* TODO replace img src with video["thumbnail"] */}
         <div className="video">
-          <img className="main-video" src={window.demoThumbnail} />
+          <img className="main-video" src={video["thumbnail"]} />
         </div>
 
       </div>
