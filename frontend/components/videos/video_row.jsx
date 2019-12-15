@@ -5,6 +5,8 @@ export default class VideoRow extends React.Component {
   constructor(props) {
     super(props);
 
+    let videosLength = this.props.videos.length;
+
     this.state = {
       // originalVideos: this.props.videos,
       videos: this.props.videos, // all the videos ever in this genre
@@ -16,52 +18,48 @@ export default class VideoRow extends React.Component {
         // and only show a little bit. so always need to have a buffer of 18
       // state to check if either of the buttons have ever been clicked, change this state only ever once on first click
         // need this for row to no longer be padded on the left?
-      currentVideosToRender: this.props.videos.slice(0, 12)
+      videosRemaining: this.props.videos.length,
+      resetList: false
     }
 
     this.scrollLeft = this.scrollLeft.bind(this);
     this.scrollRight = this.scrollRight.bind(this);
-    this.updateVideos = this.updateVideos.bind(this);
   }
 
   scrollLeft(e) {
     e.preventDefault();
-    const { pageNum, videos } = this.state;
-
-    let newVideos = this.updateVideos(videos);
+    const { pageNum, videosRemaining } = this.state;
 
     this.setState({
       pageNum: pageNum-1,
-      videos: newVideos
+      videosRemaining: videosRemaining + 6
     });
   }
 
   scrollRight(e) {
     e.preventDefault();
-    const { pageNum, currentVideosToRender } = this.state;
+    const { pageNum, videosRemaining } = this.state;
+    let newVideosRemaining = videosRemaining-6;
+    let newPageNum;
 
-    let newVideos = this.updateVideos(currentVideosToRender);
+    if (newVideosRemaining < 0) {
+      newPageNum = 0;
+      newVideosRemaining = this.props.videos.length;
+    } else {
+      newPageNum = pageNum+1;
+    }
 
     this.setState({
-      pageNum: pageNum + 1,
-      currentVideosToRender: newVideos
+      pageNum: newPageNum,
+      videosRemaining: newVideosRemaining
     });
   }
 
-  updateVideos(videos) {
-    // let numMovies = this.props.videos.length;
-    // return (numMovies - this.state.numVideosPerScroll < 6) ? videos.concat(videos) : videos;
-
-    let prevVideos = this.state.currentVideosToRender.slice(0, 6);
-    let currentVideos = this.state.currentVideosToRender.slice(6, 12);
-    
-  }
-
   renderLessThanSixVideos() {
-    const { currentVideosToRender } = this.state;
+    const { videos } = this.state;
     const { genre } = this.props;
 
-    let videoItems = currentVideosToRender.map((video, i) => {
+    let videoItems = videos.map((video, i) => {
       if (i === 0) {
         return <VideoItem key={i} video={video} genre={genre} className="first video-item"/>
       // } else if (i === currentVideosToRender.length-1) {
@@ -82,21 +80,34 @@ export default class VideoRow extends React.Component {
   }
 
   renderMoreThanSixVideos(translateStyle) {
-    const { currentVideosToRender } = this.state;
+    const { videos, videosRemaining, pageNum } = this.state;
     const { genre } = this.props;
-    let length = currentVideosToRender.length;
+    let currentIndex = pageNum*6;
+    let videoItems;
 
-    let videoItems = currentVideosToRender.map((video, i) => {
-      if (length <= 12 ? i === 0 : i === 6) {
-        return <VideoItem key={i} video={video} genre={genre} className="first video-item" />
-      } else if (length <= 12 ? i === 5 : i === 11) {
-        return <VideoItem key={i} video={video} genre={genre} className="last video-item" />
-      } else if (length <= 12 ? i > 5 : i > 11) {
-        return <VideoItem key={i} video={video} genre={genre} className="off-screen video-item" />
-      } else {
-        return <VideoItem key={i} video={video} genre={genre} className="video-item" />
-      }
-    });
+    if (videosRemaining > 0) {
+      videoItems = videos.map((video, i) => {
+        if (i === currentIndex) {
+          return <VideoItem key={i} video={video} genre={genre} className="first video-item" />
+        } else if (i === currentIndex + 5) {
+          return <VideoItem key={i} video={video} genre={genre} className="last video-item" />
+        } else if (i < currentIndex || i > currentIndex + 5) {
+          return <VideoItem key={i} video={video} genre={genre} className="off-screen video-item" />
+        } else {
+          return <VideoItem key={i} video={video} genre={genre} className="video-item" />
+        }
+      });
+    } else {
+      videoItems = videos.map((video, i) => {
+        if (i === currentIndex) {
+          return <VideoItem key={i} video={video} genre={genre} className="first video-item" />
+        } else if (i < currentIndex) {
+          return <VideoItem key={i} video={video} genre={genre} className="off-screen video-item" />
+        } else {
+          return <VideoItem key={i} video={video} genre={genre} className="video-item" />
+        }
+      });
+    }
 
     return (
       <ul className="video-row-outer">
@@ -114,24 +125,17 @@ export default class VideoRow extends React.Component {
 
   render() {
     const { genre } = this.props;
-    const { currentVideosToRender, pageNum, numVideosPerScroll } = this.state;
+    const { videos, pageNum } = this.state;
 
-    console.log(pageNum);
-
-    // let translateStyle = pageNum > oldPageNum ? ({
-    //   transform: `translateX(-${100*pageNum}%)`,
-    //   transition: "all 800ms ease-out"
-    // }) : ({
-    //   transform: `translateX(${100*oldPageNum}%)`,
-    //   transition: "all 800ms ease-out"
-    // });
-
-    let translateStyle = {
-      transform: `translateX(-${100*pageNum}%)`,
+    let translateStyle = pageNum === 0 ? ({
+      transform: `none`,
+      transition: "all 400ms ease-out"
+    }) : ({
+      transform: `translateX(-${100 * pageNum}%)`,
       transition: "all 800ms ease-out"
-    };
+    });
 
-    return currentVideosToRender.length <= 6 ? (
+    return videos.length <= 6 ? (
       this.renderLessThanSixVideos()
     ) : (
       this.renderMoreThanSixVideos(translateStyle)
