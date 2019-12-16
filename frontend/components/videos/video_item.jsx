@@ -78,7 +78,7 @@ export default class VideoItem extends React.Component {
     ) : "";
 
     let dropdownArrow = isCurrentItem ? "" : (
-      <Link to={`/browse/${myGenre.name.toLowerCase()}/${video.id}`}>
+      <Link to={`/browse/${myGenre.name.toLowerCase()}/${video.id}`} className="background-link">
         <div className="background-down-arrow">
           <i className="fas fa-chevron-down"></i>
         </div>
