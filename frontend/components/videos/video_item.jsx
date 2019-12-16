@@ -60,28 +60,42 @@ export default class VideoItem extends React.Component {
     };
   }
 
-  renderBackgroundItem(className) {
-    const { video, myGenre } = this.props;
+  renderBackgroundItem() {
+    const { video, myGenre, location } = this.props;
     const { backgroundDetails } = this.state;
+    const isCurrentItem = location.pathname.split("/")[3] == video.id;
 
-    let videoDetails = backgroundDetails ? (
-      <section className="background-details-container">
-        <div className="background-details">
-          <div className="background-play-icon"><i className="far fa-play-circle"></i></div>
+    let className = isCurrentItem ? (
+      "main inbackground-video-item"
+    ) : (
+      "inbackground-video-item"
+    );
+
+    let playIcon = isCurrentItem ? (
+      <div className="background-details">
+        <div className="background-play-icon"><i className="far fa-play-circle"></i></div>
+      </div>
+    ) : "";
+
+    let dropdownArrow = isCurrentItem ? "" : (
+      <Link to={`/browse/${myGenre.name.toLowerCase()}/${video.id}`}>
+        <div className="background-down-arrow">
+          <i className="fas fa-chevron-down"></i>
         </div>
+      </Link>
+    );
 
-        <Link to={`/browse/${myGenre.name.toLowerCase()}/${video.id}`}>
-          <div className="background-down-arrow">
-            <i className="fas fa-chevron-down"></i>
-          </div>
-        </Link>
+    let details = backgroundDetails ? (
+      <section className="background-details-container">
+        { playIcon }
+        { dropdownArrow }
       </section>
     ) : "";
 
     return (
       <li className={`${className}`} onMouseEnter={this.showBackgroundDetails(true)} onMouseLeave={this.showBackgroundDetails(false)}>
         <img className="video-demo-thumbnail visible" src={window.demoThumbnail} />
-        {videoDetails}
+        {details}
       </li>
     );
   }
@@ -132,8 +146,6 @@ export default class VideoItem extends React.Component {
     const { location, myGenre } = this.props;
     let { className } = this.props;
 
-    debugger;
-
     className = (location.pathname === "/browse" || location.pathname === "/browse/") ? (
       className
     ) : (
@@ -145,7 +157,7 @@ export default class VideoItem extends React.Component {
     );
 
     return className === "inbackground-video-item" ? (
-      this.renderBackgroundItem(className)
+      this.renderBackgroundItem()
     ) : (
       this.renderThumbnail(className)
     );

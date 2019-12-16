@@ -10,7 +10,7 @@ header {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 20;
   width: 95vw;
 }
 
@@ -23,7 +23,7 @@ header {
   top: 0;
   left: 0;
   width: auto;
-  z-index: 2;
+  z-index: 20;
 }
 
 .logo {

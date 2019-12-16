@@ -1,4 +1,4 @@
-/* ------- INDIVIDUAL VIDEO ITEMS ------- */
+/* ------- THUMBNAIL VIDEO ITEMS ------- */
 
 .video-item {
   list-style-type: none;
@@ -40,6 +40,8 @@
   transform-origin: center right !important;
 }
 
+/* ------- BACKGROUND VIDEO ITEMS ------- */
+
 .inbackground-video-item {
   /* -webkit-transition: none !important;
   -moz-transition: none !important;
@@ -58,6 +60,24 @@
   display: grid;
 }
 
+.main.inbackground-video-item {
+  border: .5vh solid white;
+}
+
+.main.inbackground-video-item::after {
+  content: "";
+  position: absolute;
+  border-top: 0.8vh solid white;
+  border-left: 1.1vh solid transparent;
+  border-right: 1.1vh solid transparent;
+  border-bottom: 0;
+  z-index: 20;
+  bottom: -1.3vh;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 500ms ease;
+}
+
 .inbackground-video-item:hover {
   -webkit-transition: none !important;
   -moz-transition: none !important;
@@ -65,7 +85,7 @@
   transition: none !important;
 }
 
-/* ------- THUMBNAIL DETAILS ------- */
+/* ------- THUMBNAIL & BACKGROUND DETAILS ------- */
 
 .thumbnail-details-container, .background-details-container {
   opacity: 0;
@@ -87,9 +107,21 @@
   transition-duration: 400ms;
 }
 
-.thumbnail-details, .background-details {
+.background-details-container {
+  align-items: center;
+}
+
+.thumbnail-details {
   padding-left: 0.5vw;
   padding-bottom: 0.2vw;
+}
+
+.background-details {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .thumbnail-details, .thumbnail-details h3, .thumbnail-details p {
@@ -106,9 +138,13 @@
   font-weight: normal;
 }
 
-.details-play-icon, .background-play-icon {
+.details-play-icon {
   font-size: 1.6vw;
   margin-bottom: 0.6vh;
+}
+
+.background-play-icon {
+  font-size: 4vw;
 }
 
 .details-play-icon:hover, .details-down-arrow:hover { 
@@ -121,7 +157,7 @@
   cursor: pointer;
 }
 
-.details-down-arrow, .background-down-arrow {
+.details-down-arrow {
   display: block;
   text-align: center;
   margin-bottom: 0.3vh;
@@ -129,7 +165,13 @@
 }
 
 .background-down-arrow {
+  display: block;
+  text-align: center;
   z-index: 20;
+  color: white;
+  justify-content: flex-end;
+  font-size: 3.5vh;
+  margin-bottom: 0.3vh;
 }
 
 /* ------- VIDEO DETAILS ------- */
@@ -137,6 +179,5 @@
 .video-details-container {
   width: 100%;
   height: 61vh;
-  background-color: lightyellow;
-  margin-top: 0.6vh;
+  background-color: lightblue;
 }

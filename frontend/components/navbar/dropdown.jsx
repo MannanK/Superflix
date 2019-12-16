@@ -1,20 +1,5 @@
 import React from 'react';
 
-// const Dropdown = ({user, hideDropdown, logout}) => (
-//   <div
-//     onMouseLeave={hideDropdown}
-//     onBlur={hideDropdown}
-//     className="nav-dropdown-container"
-//   >
-//     <span className="dropdown-tooltip"></span>
-//     <div className="dropdown">
-//       <p className="dropdown-item">Welcome, {user.email}!</p>
-//       <div className="border"></div>
-//       <button onClick={logout} className="dropdown-item logout">Sign out of Superflix</button>
-//     </div>
-//   </div>
-// )
-
 export default class Dropdown extends React.Component {
   componentWillUnmount() {
     this.props.hideDropdown();
