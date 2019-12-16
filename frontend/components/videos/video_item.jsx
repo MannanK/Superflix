@@ -1,4 +1,5 @@
 import React from 'react';
+import VideoPlayerContainer from '../video_player/video_player_container';
 
 export default class VideoItem extends React.Component {
   constructor(props) {
@@ -9,6 +10,8 @@ export default class VideoItem extends React.Component {
     };
 
     this.hideDetails = this.hideDetails.bind(this);
+    this.playVideo = this.playVideo.bind(this);
+    this.stopVideo = this.stopVideo.bind(this);
   }
 
   hideDetails(value) {
@@ -25,8 +28,21 @@ export default class VideoItem extends React.Component {
     };
   }
 
+  playVideo(e) {
+    setTimeout(this.setState({
+      detailsHidden: false
+    }), 400);
+  }
+
+  stopVideo(e) {
+    this.setState({
+      detailsHidden: true
+    });
+  }
+
   render() {
     const { video, className, genres } = this.props;
+    const { detailsHidden } = this.state;
 
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
 
@@ -46,13 +62,25 @@ export default class VideoItem extends React.Component {
         
         <div className="details-down-arrow">
           <i className="fas fa-chevron-down"></i>
+          {/* This will be a link that renders a new component on the same page with
+          more details about the video, doesn't redirect to a new page */}
         </div>
       </section>
     );
 
     return (
-      <li className={`${className}`}>
-        <img className="video-demo-thumbnail" src={window.demoThumbnail} />
+      <li className={`${className}`} onMouseEnter={this.playVideo} onMouseLeave={this.stopVideo}>
+        {detailsHidden ? (
+          <>
+            <img className="video-demo-thumbnail visible" src={window.demoThumbnail} />
+            <VideoPlayerContainer miniPlayer={true} visibility="invisible"/>
+          </>
+        ) : (
+          <>
+            <img className="video-demo-thumbnail invisible" src={window.demoThumbnail}/>
+            <VideoPlayerContainer miniPlayer={true} visibility="visible" />
+          </>
+        )}
 
         {/* <div className="video-details" hidden={detailsHidden}>
           test
