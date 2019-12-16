@@ -40,6 +40,31 @@
   transform-origin: center right !important;
 }
 
+.inbackground-video-item {
+  /* -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important; */
+
+  list-style-type: none;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 16.3333333337%;
+  height: auto;
+  transition: all 300ms ease-out;
+  position: relative;
+  margin: 0 0.168%;
+  
+  display: grid;
+}
+
+.inbackground-video-item:hover {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
 /* ------- THUMBNAIL DETAILS ------- */
 
 .thumbnail-details-container {

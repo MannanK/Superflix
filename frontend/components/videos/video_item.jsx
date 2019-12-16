@@ -16,12 +16,6 @@ export default class VideoItem extends React.Component {
   }
 
   hideDetails(value) {
-    // return e => {
-    //   this.setState({
-    //     detailsHidden: value
-    //   });
-    // };
-
     return e => {
       setTimeout(() => this.setState({
         detailsHidden: value
@@ -58,8 +52,17 @@ export default class VideoItem extends React.Component {
   }
 
   render() {
-    const { video, className, myGenre } = this.props;
+    const { video, myGenre, location } = this.props;
+    let { className } = this.props;
     const { detailsHidden } = this.state;
+
+    debugger;
+
+    className = (location.pathname === "/browse" || location.pathname === "/browse/") ? (
+      className
+    ) : (
+      "inbackground-video-item"
+    );
 
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
 
