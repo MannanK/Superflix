@@ -10,15 +10,15 @@ export default class VideoPlayer extends React.Component {
   }
 
   playVideo(e) {
-
+    debugger
+    this.refs.videoRef.play();
   }
 
   pauseVideo(e) {
-
+    this.refs.videoRef.pause();
   }
 
   renderMiniPlayer() {
-    console.log("got here");
     const { visibility } = this.props;
 
     return (
@@ -29,8 +29,10 @@ export default class VideoPlayer extends React.Component {
           src="http://techslides.com/demos/sample-videos/small.mp4"
           autoPlay={visibility === "invisible" ? false : true}
           muted={true}
+          loop={true}
           className="mini-video-player-video"
           type="video/mp4"
+          ref="videoRef"
         >
           video player is not working!
         </video>

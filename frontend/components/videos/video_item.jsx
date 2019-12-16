@@ -29,12 +29,18 @@ export default class VideoItem extends React.Component {
   }
 
   playVideo(e) {
+    let video = e.currentTarget.childNodes[1].childNodes[0];
+    video.play();
+
     setTimeout(this.setState({
       detailsHidden: false
     }), 400);
   }
 
   stopVideo(e) {
+    let video = e.currentTarget.childNodes[1].childNodes[0];
+    video.pause();
+
     this.setState({
       detailsHidden: true
     });
