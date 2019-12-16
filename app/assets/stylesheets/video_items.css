@@ -1,0 +1,107 @@
+/* ------- INDIVIDUAL VIDEO ITEMS ------- */
+
+.video-item {
+  list-style-type: none;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 16.3333333337%;
+  height: auto;
+  transition: all 300ms ease-out;
+  position: relative;
+  margin: 0 0.168%;
+  
+  display: grid;
+}
+
+.video-text {
+  position: absolute;
+  right: 50%;
+  bottom: 50%;
+  color: white;
+}
+
+.video-item:hover {
+  transform: scale(1.9) !important;
+  transition-delay: 400ms;
+}
+
+.first.video-item {
+  transform-origin: center left !important;
+  z-index: 4;
+}
+
+/* move all the thumbnails to the right */	
+.first.video-item:hover ~ .video-item {	
+   transform: translate3d(90%, 0, 0);	
+   transition-delay: 400ms;	
+}
+
+.last.video-item {
+  transform-origin: center right !important;
+}
+
+/* ------- THUMBNAIL DETAILS ------- */
+
+.thumbnail-details-container {
+  opacity: 0;
+  position: absolute;
+  color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  transition: opacity 400ms linear;
+}
+
+.video-item:hover .thumbnail-details-container {
+  opacity: 1;
+  transition-property: opacity;
+  transition-delay: 350ms;
+  transition-duration: 400ms;
+}
+
+.thumbnail-details {
+  padding-left: 0.5vw;
+  padding-bottom: 0.2vw;
+}
+
+.thumbnail-details, .thumbnail-details h3, .thumbnail-details p {
+  font-size: 0.55vw;
+  text-shadow: 1px 1px 5px black;
+}
+
+.thumbnail-details h3 {
+  margin-bottom: 0.5vh;
+}
+
+.thumbnail-details h2 {
+  margin-bottom: 0.5vh;
+  font-weight: normal;
+}
+
+.details-play-icon {
+  font-size: 1.6vw;
+  margin-bottom: 0.6vh;
+}
+
+.details-play-icon:hover, .details-down-arrow:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.details-down-arrow {
+  display: block;
+  text-align: center;
+  margin-bottom: 0.3vh;
+}
+
+/* ------- VIDEO DETAILS ------- */
+
+.video-details-container {
+  width: 100%;
+  height: 61vh;
+  background-color: lightyellow;
+  margin-top: 0.6vh;
+}

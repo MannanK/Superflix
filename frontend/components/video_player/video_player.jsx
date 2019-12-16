@@ -26,7 +26,7 @@ export default class VideoPlayer extends React.Component {
         {/* <img className="video-demo-thumbnail" src={window.logo} /> */}
         {/* onMouseOver, play the video, onMouseLeave, stop the video */}
         <video
-          src="http://techslides.com/demos/sample-videos/small.mp4"
+          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
           autoPlay={visibility === "invisible" ? false : true}
           muted={true}
           loop={true}

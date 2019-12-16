@@ -1,5 +1,7 @@
 import React from 'react';
 import VideoItemContainer from './video_item_container';
+import VideoDetailsContainer from './video_details_container';
+import { Route } from 'react-router-dom';
 
 export default class VideoRow extends React.Component {
   constructor(props) {
@@ -61,18 +63,22 @@ export default class VideoRow extends React.Component {
       let className = "video-item";
       if (i === 0) className = "first " + className;
 
-      return <VideoItemContainer key={i} video={video} className={className} />
+      return <VideoItemContainer key={i} video={video} className={className} myGenre={genre} />
     });
     
     return (
       <>
         <h1 className="video-row-genre">{genre.name}</h1>
-        <ul className="video-row-outer">
-          {/* <h1 className="video-row-genre">{genre.name}</h1> */}
-          <ul className="video-row-inner">
-            {videoItems}
+        <div className="individual-row-container">
+          <ul className="video-row-outer">
+            {/* <h1 className="video-row-genre">{genre.name}</h1> */}
+            <ul className="video-row-inner">
+              {videoItems}
+            </ul>
           </ul>
-        </ul>
+
+          <Route path={`/browse/${genre.name.toLowerCase()}/:movieId`} component={VideoDetailsContainer} />
+        </div>
       </>
     );
   }
@@ -94,23 +100,23 @@ export default class VideoRow extends React.Component {
     if (videosRemaining > 0) {
       videoItems = videos.map((video, i) => {
         if (i === currentIndex) {
-          return <VideoItemContainer key={i} video={video} className="first video-item" />
+          return <VideoItemContainer key={i} video={video} className="first video-item" myGenre={genre} />
         } else if (i === currentIndex + 5) {
-          return <VideoItemContainer key={i} video={video} className="last video-item" />
+          return <VideoItemContainer key={i} video={video} className="last video-item" myGenre={genre} />
         } else if (i < currentIndex || i > currentIndex + 5) {
-          return <VideoItemContainer key={i} video={video} className="off-screen video-item" />
+          return <VideoItemContainer key={i} video={video} className="off-screen video-item" myGenre={genre} />
         } else {
-          return <VideoItemContainer key={i} video={video} className="video-item" />
+          return <VideoItemContainer key={i} video={video} className="video-item" myGenre={genre} />
         }
       });
     } else {
       videoItems = videos.map((video, i) => {
         if (i === currentIndex) {
-          return <VideoItemContainer key={i} video={video} className="first video-item" />
+          return <VideoItemContainer key={i} video={video} className="first video-item" myGenre={genre} />
         } else if (i < currentIndex) {
-          return <VideoItemContainer key={i} video={video} className="off-screen video-item" />
+          return <VideoItemContainer key={i} video={video} className="off-screen video-item" myGenre={genre} />
         } else {
-          return <VideoItemContainer key={i} video={video} className="video-item" />
+          return <VideoItemContainer key={i} video={video} className="video-item" myGenre={genre} />
         }
       });
     }
@@ -142,16 +148,20 @@ export default class VideoRow extends React.Component {
     return (
       <>
         <h1 className="video-row-genre">{genre.name}</h1>
-        <ul className="video-row-outer">
-          {/* if videos.length <= 6, don't show any buttons */}
-          {pageNum !== 0 ? leftButton : ""}
+        <div className="individual-row-container">
+          <ul className="video-row-outer">
+            {/* if videos.length <= 6, don't show any buttons */}
+            {pageNum !== 0 ? leftButton : ""}
 
-          <ul className="video-row-inner" style={translateStyle}>
-            {videoItems}
-          </ul>
+            <ul className="video-row-inner" style={translateStyle}>
+              {videoItems}
+            </ul>
 
-          {rightButton}
-        </ul >
+            {rightButton}
+          </ul >
+          
+          <Route path={`/browse/${genre.name.toLowerCase()}/:movieId`} component={VideoDetailsContainer} />
+        </div>
       </>
     );
   }

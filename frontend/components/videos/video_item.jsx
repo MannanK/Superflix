@@ -1,5 +1,6 @@
 import React from 'react';
 import VideoPlayerContainer from '../video_player/video_player_container';
+import { Link } from 'react-router-dom';
 
 export default class VideoItem extends React.Component {
   constructor(props) {
@@ -46,31 +47,38 @@ export default class VideoItem extends React.Component {
     });
   }
 
+  getGenreNames() {
+    const { video, genres } = this.props;
+
+    let genreNames = video.genreIds.map(id => (
+      genres[id].name
+    )).slice(0, 3);
+
+    return genreNames.join(" • ");
+  }
+
   render() {
-    const { video, className, genres } = this.props;
+    const { video, className, myGenre } = this.props;
     const { detailsHidden } = this.state;
 
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
 
-    let genreNames = video.genreIds.map(id => (
-      genres[id].name
-    )).slice(0,3);
-    genreNames = genreNames.join(" • ");
-
     let videoDetails = (
-      <section className="video-details-container">
-        <div className="video-details">
+      <section className="thumbnail-details-container">
+        <div className="thumbnail-details">
           <div className="details-play-icon"><i className="far fa-play-circle"></i></div>
           <h3>{video.title}</h3>
           <h2>{video.maturity_rating}, {formattedDuration}</h2>
-          <h2>{genreNames}</h2>
+          <h2>{this.getGenreNames()}</h2>
         </div>
         
-        <div className="details-down-arrow">
-          <i className="fas fa-chevron-down"></i>
-          {/* This will be a link that renders a new component on the same page with
+        <Link to={`/browse/${myGenre.name.toLowerCase()}/${video.id}`}>
+          <div className="details-down-arrow">
+            <i className="fas fa-chevron-down"></i>
+            {/* This will be a link that renders a new component on the same page with
           more details about the video, doesn't redirect to a new page */}
-        </div>
+          </div>
+        </Link>
       </section>
     );
 
@@ -87,10 +95,6 @@ export default class VideoItem extends React.Component {
             <VideoPlayerContainer miniPlayer={true} visibility="visible" />
           </>
         )}
-
-        {/* <div className="video-details" hidden={detailsHidden}>
-          test
-        </div> */}
 
         {videoDetails}
       </li>
