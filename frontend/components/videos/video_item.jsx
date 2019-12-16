@@ -129,13 +129,19 @@ export default class VideoItem extends React.Component {
   }
 
   render() {
-    const { location } = this.props;
+    const { location, myGenre } = this.props;
     let { className } = this.props;
+
+    debugger;
 
     className = (location.pathname === "/browse" || location.pathname === "/browse/") ? (
       className
     ) : (
-      "inbackground-video-item"
+      location.pathname.split("/")[2] === myGenre.name.toLowerCase() ? (
+        "inbackground-video-item"
+      ) : (
+        className
+      )
     );
 
     return className === "inbackground-video-item" ? (
