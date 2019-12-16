@@ -67,7 +67,7 @@
 
 /* ------- THUMBNAIL DETAILS ------- */
 
-.thumbnail-details-container {
+.thumbnail-details-container, .background-details-container {
   opacity: 0;
   position: absolute;
   color: white;
@@ -80,14 +80,14 @@
   transition: opacity 400ms linear;
 }
 
-.video-item:hover .thumbnail-details-container {
+.video-item:hover .thumbnail-details-container, .background-details-container {
   opacity: 1;
   transition-property: opacity;
   transition-delay: 350ms;
   transition-duration: 400ms;
 }
 
-.thumbnail-details {
+.thumbnail-details, .background-details {
   padding-left: 0.5vw;
   padding-bottom: 0.2vw;
 }
@@ -106,20 +106,30 @@
   font-weight: normal;
 }
 
-.details-play-icon {
+.details-play-icon, .background-play-icon {
   font-size: 1.6vw;
   margin-bottom: 0.6vh;
 }
 
-.details-play-icon:hover, .details-down-arrow:hover {
+.details-play-icon:hover, .details-down-arrow:hover { 
   color: red;
   cursor: pointer;
 }
 
-.details-down-arrow {
+.background-play-icon:hover, .background-down-arrow:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.details-down-arrow, .background-down-arrow {
   display: block;
   text-align: center;
   margin-bottom: 0.3vh;
+  color: white;
+}
+
+.background-down-arrow {
+  z-index: 20;
 }
 
 /* ------- VIDEO DETAILS ------- */

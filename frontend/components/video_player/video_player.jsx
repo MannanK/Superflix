@@ -10,7 +10,6 @@ export default class VideoPlayer extends React.Component {
   }
 
   playVideo(e) {
-    debugger
     this.refs.videoRef.play();
   }
 

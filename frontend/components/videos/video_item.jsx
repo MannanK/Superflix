@@ -7,7 +7,8 @@ export default class VideoItem extends React.Component {
     super(props);
 
     this.state = {
-      detailsHidden: true
+      detailsHidden: true,
+      backgroundDetails: false
     };
 
     this.hideDetails = this.hideDetails.bind(this);
@@ -51,18 +52,43 @@ export default class VideoItem extends React.Component {
     return genreNames.join(" • ");
   }
 
-  render() {
-    const { video, myGenre, location } = this.props;
-    let { className } = this.props;
-    const { detailsHidden } = this.state;
+  showBackgroundDetails(value) {
+    return e => {
+      this.setState({
+        backgroundDetails: value
+      });
+    };
+  }
 
-    debugger;
+  renderBackgroundItem(className) {
+    const { video, myGenre } = this.props;
+    const { backgroundDetails } = this.state;
 
-    className = (location.pathname === "/browse" || location.pathname === "/browse/") ? (
-      className
-    ) : (
-      "inbackground-video-item"
+    let videoDetails = backgroundDetails ? (
+      <section className="background-details-container">
+        <div className="background-details">
+          <div className="background-play-icon"><i className="far fa-play-circle"></i></div>
+        </div>
+
+        <Link to={`/browse/${myGenre.name.toLowerCase()}/${video.id}`}>
+          <div className="background-down-arrow">
+            <i className="fas fa-chevron-down"></i>
+          </div>
+        </Link>
+      </section>
+    ) : "";
+
+    return (
+      <li className={`${className}`} onMouseEnter={this.showBackgroundDetails(true)} onMouseLeave={this.showBackgroundDetails(false)}>
+        <img className="video-demo-thumbnail visible" src={window.demoThumbnail} />
+        {videoDetails}
+      </li>
     );
+  }
+
+  renderThumbnail(className) {
+    const { video, myGenre } = this.props;
+    const { detailsHidden } = this.state;
 
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
 
@@ -74,12 +100,10 @@ export default class VideoItem extends React.Component {
           <h2>{video.maturity_rating}, {formattedDuration}</h2>
           <h2>{this.getGenreNames()}</h2>
         </div>
-        
+
         <Link to={`/browse/${myGenre.name.toLowerCase()}/${video.id}`}>
           <div className="details-down-arrow">
             <i className="fas fa-chevron-down"></i>
-            {/* This will be a link that renders a new component on the same page with
-          more details about the video, doesn't redirect to a new page */}
           </div>
         </Link>
       </section>
@@ -90,17 +114,34 @@ export default class VideoItem extends React.Component {
         {detailsHidden ? (
           <>
             <img className="video-demo-thumbnail visible" src={window.demoThumbnail} />
-            <VideoPlayerContainer miniPlayer={true} visibility="invisible"/>
+            <VideoPlayerContainer miniPlayer={true} visibility="invisible" />
           </>
         ) : (
-          <>
-            <img className="video-demo-thumbnail invisible" src={window.demoThumbnail}/>
-            <VideoPlayerContainer miniPlayer={true} visibility="visible" />
-          </>
-        )}
+            <>
+              <img className="video-demo-thumbnail invisible" src={window.demoThumbnail} />
+              <VideoPlayerContainer miniPlayer={true} visibility="visible" />
+            </>
+          )}
 
         {videoDetails}
       </li>
+    );
+  }
+
+  render() {
+    const { location } = this.props;
+    let { className } = this.props;
+
+    className = (location.pathname === "/browse" || location.pathname === "/browse/") ? (
+      className
+    ) : (
+      "inbackground-video-item"
+    );
+
+    return className === "inbackground-video-item" ? (
+      this.renderBackgroundItem(className)
+    ) : (
+      this.renderThumbnail(className)
     );
   }
 }
