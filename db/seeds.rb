@@ -28,7 +28,7 @@ animated = Genre.create!(name: "Animated")
 avengersEndgame = Video.create!(
    title: "Avengers: Endgame",
    description: "The grave course of events set in motion by Thanos that wiped out half the universe and fractured the Avengers ranks compels the remaining Avengers to take one final stand in Marvel Studios' grand conclusion to twenty-two films, Avengers: Endgame.",
-   video_type: "Movie",
+   video_type: "MOVIE",
    duration: 182,
    maturity_rating: "PG-13",
    year: 2019
