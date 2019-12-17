@@ -38,7 +38,7 @@
 /* need this to allow the video-row-container to have something to position against */
 #video-main-empty {
   width: 100%;
-  height: 43.5vw;
+  height: 45.3vw;
   content: "";
   z-index: -1;
 }

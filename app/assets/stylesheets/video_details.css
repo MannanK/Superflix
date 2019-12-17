@@ -3,7 +3,7 @@
 .video-details-container {
   width: 100%;
   height: 32vw;
-  background-color: lightblue;
+  background: transparent linear-gradient(to left, rgba(0, 0, 0, 0), 60%, rgb(0, 0, 1));
   display: flex;
   flex-direction: column;
   padding: 1%;

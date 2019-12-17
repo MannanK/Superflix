@@ -26,7 +26,7 @@ export default class VideoDetails extends React.Component {
       genres[id].name
     )).slice(0, 4);
 
-    return genreNames.join(" • ");
+    return genreNames.join(", ");
   }
 
   render() {
@@ -49,7 +49,7 @@ export default class VideoDetails extends React.Component {
           <section className="info">
             <h2>{video.title}</h2>
             <h2>{video.year}, {video.maturity_rating}, {formattedDuration}</h2>
-            <h2>{this.getGenreNames()}</h2>
+            <h2>Genres: {this.getGenreNames()}</h2>
           </section>
 
           <section className="description">
