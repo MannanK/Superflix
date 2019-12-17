@@ -11,23 +11,21 @@ import VideoPlayerContainer from './video_player/video_player_container';
 
 const App = (props) => (
   <div id="main-div">
-    <div id="main-content">
-      <header>
-        <NavBarContainer />
-      </header>
+    <header>
+      <NavBarContainer />
+    </header>
 
-      <Switch>
-        <ProtectedRoute path="/browse" component={VideoIndexContainer} />
-        <ProtectedRoute path="/watch/:mediaId" component={VideoPlayerContainer} type="fullPlayer" />
-        <AuthRoute exact path="/login" component={LogInFormContainer} />
-        <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-        <AuthRoute path="/" component={SplashContainer} />
-      </Switch>
-    </div>
+    <Switch>
+      <ProtectedRoute path="/browse" component={VideoIndexContainer} />
+      <ProtectedRoute path="/watch/:mediaId" component={VideoPlayerContainer} type="fullPlayer" />
+      <AuthRoute exact path="/login" component={LogInFormContainer} />
+      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+      <AuthRoute path="/" component={SplashContainer} />
+    </Switch>
 
     <Route exact path="/" component={Footer} />
     <Route exact path="/login" component={Footer} />
-    <Route exact path="/signup" component={Footer} />
+    <Route exact path="/signup" component={Footer} />  
   </div>
 );
 

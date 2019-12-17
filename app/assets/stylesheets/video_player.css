@@ -14,9 +14,17 @@
 
 /* ------- FULL VIDEO PLAYER ------- */
 
+.full-video-player {
+  position: absolute;
+}
+
 .full-video-player-video {
-  width: 100%;
   height: 100%;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  background-color: black;
 }
 
 /* ------- MAIN VIDEO PLAYER ------- */
@@ -60,7 +68,7 @@
 
 .details-video-player {
   position: absolute;
-  width: 75%;
+  width: 77%;
   height: 100%;
   right: 0;
   top: 0;
