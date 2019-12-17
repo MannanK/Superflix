@@ -5,16 +5,6 @@ export default class VideoPlayer extends React.Component {
     super(props);
 
     // props tell us if we're currently a mini player or not
-    this.playVideo = this.playVideo.bind(this);
-    this.pauseVideo = this.pauseVideo.bind(this);
-  }
-
-  playVideo(e) {
-    this.refs.videoRef.play();
-  }
-
-  pauseVideo(e) {
-    this.refs.videoRef.pause();
   }
 
   renderMiniPlayer() {
@@ -31,7 +21,7 @@ export default class VideoPlayer extends React.Component {
           loop={true}
           className="mini-video-player-video"
           type="video/mp4"
-          ref="videoRef"
+          preload="none"
         >
           video player is not working!
         </video>

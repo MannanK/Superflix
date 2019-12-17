@@ -10,4 +10,4 @@ const mdp = dispatch => ({
 
 });
 
-export default withRouter(connect(msp, mdp)(VideoDetails));
+export default connect(msp, mdp)(VideoDetails);

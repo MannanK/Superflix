@@ -11,12 +11,17 @@ export default class VideoRow extends React.Component {
       genre: this.props.genre,
       pageNum: 0,
       videosRemaining: this.props.videos.length,
-      showButtonArrow: false
+      showButtonArrow: false,
+      detailsHidden: {id: null, value: true}, // the thumbnail details for the item being hovered over
+      detailsShowing: true // the big detail pane
     }
 
     this.scrollLeft = this.scrollLeft.bind(this);
     this.scrollRight = this.scrollRight.bind(this);
     this.toggleArrow = this.toggleArrow.bind(this);
+    this.playVideo = this.playVideo.bind(this);
+    this.stopVideo = this.stopVideo.bind(this);
+    this.closeDetails = this.closeDetails.bind(this);
   }
 
   toggleArrow(e) {
@@ -55,15 +60,56 @@ export default class VideoRow extends React.Component {
     });
   }
 
+  playVideo(id) {
+    return e => {
+      let video = e.currentTarget.childNodes[1].childNodes[0];
+      video.play();
+
+      this.setState({ detailsHidden: { id: id, value: false } })
+      // setTimeout(() => this.setState({ detailsHidden: {id: id, value: false} }), 400);
+    };
+  }
+
+  stopVideo(id) {
+    return e => {
+      let video = e.currentTarget.childNodes[1].childNodes[0];
+      video.pause();
+
+      this.setState({ detailsHidden: {id: null, value: false} });
+    };
+  }
+
+  closeDetails(e) {
+    e.preventDefault();
+    console.log("got here");
+
+    this.setState({
+      detailsShowing: false,
+      detailsHidden: {id: null, value: true}
+    });
+
+    setTimeout(() => {
+      this.props.history.push("/browse");
+    }, 400);
+  }
+
   renderLessThanSixVideos() {
-    const { videos } = this.state;
+    const { videos, detailsHidden } = this.state;
     const { genre } = this.props;
     
     let videoItems = videos.map((video, i) => {
       let className = "video-item";
       if (i === 0) className = "first " + className;
 
-      return <VideoItemContainer key={i} video={video} className={className} myGenre={genre} />
+      return <VideoItemContainer
+        key={i}
+        video={video}
+        className={className}
+        myGenre={genre}
+        playVideo={this.playVideo(video.id)}
+        stopVideo={this.stopVideo(video.id)}
+        detailsHidden={detailsHidden}
+      />;
     });
     
     return (
@@ -77,14 +123,18 @@ export default class VideoRow extends React.Component {
             </ul>
           </ul>
 
-          <Route path={`/browse/${genre.name.toLowerCase()}/:movieId`} component={VideoDetailsContainer} />
+          {/* <Route path={`/browse/${genre.name.toLowerCase()}/:movieId`} component={VideoDetailsContainer} closeDetails={this.closeDetails}/> */}
+          <Route
+            path={`/browse/${genre.name.toLowerCase()}/:movieId`}
+            render={(props) => <VideoDetailsContainer closeDetails={this.closeDetails} {...props} />}
+          />
         </div>
       </>
     );
   }
 
   renderMoreThanSixVideos() {
-    const { videos, videosRemaining, pageNum, showButtonArrow } = this.state;
+    const { videos, videosRemaining, pageNum, showButtonArrow, detailsHidden } = this.state;
     const { genre } = this.props;
     let currentIndex = pageNum*6;
     let videoItems;
@@ -99,25 +149,40 @@ export default class VideoRow extends React.Component {
 
     if (videosRemaining > 0) {
       videoItems = videos.map((video, i) => {
+        let className;
+
         if (i === currentIndex) {
-          return <VideoItemContainer key={i} video={video} className="first video-item" myGenre={genre} />
+          className = "first video-item";
         } else if (i === currentIndex + 5) {
-          return <VideoItemContainer key={i} video={video} className="last video-item" myGenre={genre} />
+          className = "last video-item"
         } else if (i < currentIndex || i > currentIndex + 5) {
-          return <VideoItemContainer key={i} video={video} className="off-screen video-item" myGenre={genre} />
+          className = "off-screen video-item"
         } else {
-          return <VideoItemContainer key={i} video={video} className="video-item" myGenre={genre} />
+          className = "video-item"
         }
+
+        return <VideoItemContainer
+          key={i}
+          video={video}
+          className={className}
+          myGenre={genre}
+          playVideo={this.playVideo(video.id)}
+          stopVideo={this.stopVideo(video.id)}
+          detailsHidden={detailsHidden} />;
       });
     } else {
+      let className;
+
       videoItems = videos.map((video, i) => {
         if (i === currentIndex) {
-          return <VideoItemContainer key={i} video={video} className="first video-item" myGenre={genre} />
+          className = "first video-item"
         } else if (i < currentIndex) {
-          return <VideoItemContainer key={i} video={video} className="off-screen video-item" myGenre={genre} />
+          className = "off-screen video-item"
         } else {
-          return <VideoItemContainer key={i} video={video} className="video-item" myGenre={genre} />
+          className = "video-item"
         }
+
+        return <VideoItemContainer key={i} video={video} className={className} myGenre={genre} playVideo={this.playVideo(video.id)} stopVideo={this.stopVideo(video.id)} detailsHidden={detailsHidden} />
       });
     }
 
@@ -160,7 +225,10 @@ export default class VideoRow extends React.Component {
             {rightButton}
           </ul >
           
-          <Route path={`/browse/${genre.name.toLowerCase()}/:movieId`} component={VideoDetailsContainer} />
+          <Route
+            path={`/browse/${genre.name.toLowerCase()}/:movieId`}
+            render={(props) => <VideoDetailsContainer closeDetails={this.closeDetails} {...props} />}
+          />
         </div>
       </>
     );

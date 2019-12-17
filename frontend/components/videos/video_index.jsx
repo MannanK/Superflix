@@ -1,6 +1,6 @@
 import React from 'react';
 import VideoMain from './video_main';
-import VideoRow from './video_row';
+import VideoRowContainer from './video_row_container';
 import { isEmpty } from 'lodash';
 
 export default class VideoIndex extends React.Component {
@@ -25,7 +25,7 @@ export default class VideoIndex extends React.Component {
           genreVideos.push(videos[id]);
         });
 
-        return <VideoRow key={genre.id} videos={genreVideos} genre={genre} />
+        return <VideoRowContainer key={genre.id} videos={genreVideos} genre={genre} />
       })
     );
 
