@@ -9,6 +9,7 @@
   padding: 1%;
   padding-left: 3%;
   box-sizing: border-box;
+  position: relative;
 
   animation-name: slideDown;
   animation-duration: 1s;
@@ -27,6 +28,7 @@
   height: auto;
   width: 15%;
   margin-bottom: 1%;
+  margin-top: 1%;
 }
 
 /* ------- VIDEO DETAILS ------- */
@@ -98,6 +100,7 @@
   width: fit-content;
   color: white;
   font-size: 2vw;
+  z-index: 2;
 }
 
 @keyframes slideDown {
@@ -107,7 +110,7 @@
   }
 
   to {
-    height: 61vh;
+    max-height: 61vh;
     opacity: 1;
   }
 }

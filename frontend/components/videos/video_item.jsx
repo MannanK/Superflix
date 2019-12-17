@@ -96,12 +96,12 @@ export default class VideoItem extends React.Component {
         {(detailsHidden.id !== video.id) ? (
           <>
             <img className="video-demo-thumbnail visible" src={window.demoThumbnail} />
-            <VideoPlayerContainer miniPlayer={true} visibility="invisible" />
+            <VideoPlayerContainer type="miniplayer" visibility="invisible" />
           </>
         ) : (
           <>
             <img className="video-demo-thumbnail invisible" src={window.demoThumbnail} />
-            <VideoPlayerContainer miniPlayer={true} visibility="visible" />
+            <VideoPlayerContainer type="miniplayer" visibility="visible" />
           </>
         )}
 

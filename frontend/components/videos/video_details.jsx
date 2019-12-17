@@ -1,14 +1,20 @@
 import React from 'react';
+import VideoPlayerContainer from '../video_player/video_player_container';
 
 export default class VideoDetails extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      detailsShowing: true
+      detailsShowing: true,
+      videoShowing: true
     };
 
     this.closeDetails = this.closeDetails.bind(this);
+  }
+
+  componentWillUnmount() {
+    if (this.state.detailsShowing) this.closeDetails();
   }
 
   closeDetails(e) {
@@ -30,11 +36,17 @@ export default class VideoDetails extends React.Component {
   }
 
   render() {
-    const { detailsShowing } = this.state;
+    const { detailsShowing, videoShowing } = this.state;
     const { video } = this.props;
 
     let closingClass = detailsShowing ? "" : " not-showing";
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
+
+    let videoPlayer = videoShowing ? (
+      <VideoPlayerContainer type="detailsPlayer" visibility="visible" />
+    ) : (
+      <VideoPlayerContainer type="detailsPlayer" visibility="closing" />
+    );
 
     return (
       <section className={`video-details-container${closingClass}`}>
@@ -67,6 +79,7 @@ export default class VideoDetails extends React.Component {
           </section>
         </section>
 
+        { videoPlayer }
       </section>
     );
   }

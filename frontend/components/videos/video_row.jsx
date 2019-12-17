@@ -79,9 +79,7 @@ export default class VideoRow extends React.Component {
     };
   }
 
-  closeDetails(e) {
-    e.preventDefault();
-
+  closeDetails() {
     this.setState({
       detailsShowing: false,
       detailsHidden: {id: null, value: true}

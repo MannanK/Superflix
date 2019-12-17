@@ -4,7 +4,28 @@ export default class VideoPlayer extends React.Component {
   constructor(props) {
     super(props);
 
-    // props tell us if we're currently a mini player or not
+    // props tell us what type of player we are
+  }
+
+  renderDetailsPlayer() {
+    const { visibility } = this.props;
+
+    return (
+      <div className={`details-video-player ${visibility}`}>
+        {/* <img className="video-demo-thumbnail" src={window.logo} /> */}
+        {/* onMouseOver, play the video, onMouseLeave, stop the video */}
+        <video
+          src="http://techslides.com/demos/sample-videos/small.mp4"
+          autoPlay={visibility === "visible" ? true : false} // first autoplay is true, just testing with false right now
+          muted={true}
+          loop={true}
+          className="details-video-player-video"
+          type="video/mp4"
+        >
+          video player is not working!
+        </video>
+      </div>
+    );
   }
 
   renderMiniPlayer() {
@@ -30,8 +51,15 @@ export default class VideoPlayer extends React.Component {
   }
 
   render() {
-    const { miniPlayer } = this.props;
+    const { type } = this.props;
 
-    return miniPlayer ? this.renderMiniPlayer() : <div>test</div>;
+    switch (type) {
+      case "miniplayer":
+        return this.renderMiniPlayer()
+      case "detailsPlayer":
+        return this.renderDetailsPlayer();
+      default:
+        return <div>Oh no, this is an error..</div>
+    }
   }
 }

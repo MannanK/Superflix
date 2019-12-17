@@ -12,6 +12,8 @@
   transition: visibility 2s 2s, opacity 400ms linear;
 }
 
+/* ------- MINI VIDEO PLAYER ------- */
+
 .mini-video-player {
   width: 100%;
   height: auto;
@@ -27,4 +29,34 @@
 .empty-video-div {
   height: 100%;
   width: 100%;
+}
+
+/* ------- DETAILS VIDEO PLAYER ------- */
+
+.details-video-player {
+  position: absolute;
+  width: 75%;
+  height: 100%;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.details-video-player-video {
+  width: 100%;
+  position: absolute;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+}
+
+.details-video-player::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent linear-gradient(to left, rgba(0, 0, 0, 0), #060606);
 }
