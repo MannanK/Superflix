@@ -7,6 +7,27 @@ export default class VideoPlayer extends React.Component {
     // props tell us what type of player we are
   }
 
+  renderMainPlayer() {
+    const { visibility } = this.props;
+
+    return (
+      <div className={`main-video-player ${visibility}`}>
+        {/* <img className="video-demo-thumbnail" src={window.logo} /> */}
+        {/* onMouseOver, play the video, onMouseLeave, stop the video */}
+        <video
+          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          autoPlay={visibility === "visible" ? true : false} // first autoplay is true, just testing with false right now
+          muted={true}
+          loop={true}
+          className="main-video-player-video"
+          type="video/mp4"
+        >
+          video player is not working!
+        </video>
+      </div>
+    );
+  }
+
   renderDetailsPlayer() {
     const { visibility } = this.props;
 
@@ -15,7 +36,7 @@ export default class VideoPlayer extends React.Component {
         {/* <img className="video-demo-thumbnail" src={window.logo} /> */}
         {/* onMouseOver, play the video, onMouseLeave, stop the video */}
         <video
-          src="http://techslides.com/demos/sample-videos/small.mp4"
+          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
           autoPlay={visibility === "visible" ? true : false} // first autoplay is true, just testing with false right now
           muted={true}
           loop={true}
@@ -58,6 +79,8 @@ export default class VideoPlayer extends React.Component {
         return this.renderMiniPlayer()
       case "detailsPlayer":
         return this.renderDetailsPlayer();
+      case "mainPlayer":
+        return this.renderMainPlayer();
       default:
         return <div>Oh no, this is an error..</div>
     }

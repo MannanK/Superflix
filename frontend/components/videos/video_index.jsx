@@ -15,7 +15,7 @@ export default class VideoIndex extends React.Component {
   render() {
     const { videos, genres } = this.props;
 
-    let videoMain = isEmpty(videos) ? "" : <VideoMain video={Object.values(videos)[0]} />;
+    let videoMain = isEmpty(videos) ? "" : <VideoMain video={Object.values(videos)[0]} genres={genres} />;
     let videoRows = isEmpty(videos) ? "" : (
       Object.values(genres).map(genre => {
         let videoIds = genre["videoIds"];

@@ -7,38 +7,12 @@
   left: 0;
 }
 
-.video-main-container {
-  position: relative;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 56vw;
-}
-
-.main-video {
-  width: 100%;
-  height: 56vw;
-}
-
-.video {
-  position: relative;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 56vw;
-  z-index: -1;
-}
-
 /* ------- BELOW MAIN VIDEO ------- */
 
 /* need this to allow the video-row-container to have something to position against */
 #video-main-empty {
   width: 100%;
-  height: 45.3vw;
+  height: 48vw;
   content: "";
   z-index: -1;
 }
