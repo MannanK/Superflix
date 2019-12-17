@@ -1,5 +1,6 @@
 import React from 'react';
 import VideoPlayerContainer from '../video_player/video_player_container';
+import { Link } from 'react-router-dom';
 
 export default class VideoMain extends React.Component {
   constructor(props) {
@@ -51,13 +52,17 @@ export default class VideoMain extends React.Component {
           </section>
 
           <section className="buttons">
-            <button className="play">
-              <i className="fas fa-play"></i> Play
-            </button>
+            <Link to="/login">
+              <button className="play">
+                <i className="fas fa-play"></i> Play
+              </button>
+            </Link>
 
-            <button className="my-list">
-              <i className="fas fa-check"></i> My List
-            </button>
+            <Link to="/login">
+              <button className="my-list">
+                <i className="fas fa-check"></i> My List
+              </button>
+            </Link>
           </section>
         </section>
       </section>

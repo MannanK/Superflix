@@ -12,6 +12,13 @@
   transition: visibility 2s 2s, opacity 400ms linear;
 }
 
+/* ------- FULL VIDEO PLAYER ------- */
+
+.full-video-player-video {
+  width: 100%;
+  height: 100%;
+}
+
 /* ------- MAIN VIDEO PLAYER ------- */
 
 .main-video-player {

@@ -7,6 +7,7 @@ import SplashContainer from './splash/splash_container';
 import VideoIndexContainer from './videos/video_index_container';
 import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import VideoPlayerContainer from './video_player/video_player_container';
 
 const App = (props) => (
   <div id="main-div">
@@ -17,6 +18,7 @@ const App = (props) => (
 
       <Switch>
         <ProtectedRoute path="/browse" component={VideoIndexContainer} />
+        <ProtectedRoute path="/watch/:mediaId" component={VideoPlayerContainer} type="fullPlayer" />
         <AuthRoute exact path="/login" component={LogInFormContainer} />
         <AuthRoute exact path="/signup" component={SignUpFormContainer} />
         <AuthRoute path="/" component={SplashContainer} />

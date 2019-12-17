@@ -7,13 +7,29 @@ export default class VideoPlayer extends React.Component {
     // props tell us what type of player we are
   }
 
+  renderFullPlayer() {
+    const { previousPage } = this.props;
+
+    return (
+      <div className={`full-video-player`}>
+        <video
+          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          autoPlay={true}
+          controls
+          className="full-video-player-video"
+          type="video/mp4"
+        >
+          video player is not working!
+        </video>
+      </div>
+    );
+  }
+
   renderMainPlayer() {
     const { visibility } = this.props;
 
     return (
       <div className={`main-video-player ${visibility}`}>
-        {/* <img className="video-demo-thumbnail" src={window.logo} /> */}
-        {/* onMouseOver, play the video, onMouseLeave, stop the video */}
         <video
           src="https://media.w3.org/2010/05/sintel/trailer.mp4"
           autoPlay={visibility === "visible" ? true : false} // first autoplay is true, just testing with false right now
@@ -33,8 +49,6 @@ export default class VideoPlayer extends React.Component {
 
     return (
       <div className={`details-video-player ${visibility}`}>
-        {/* <img className="video-demo-thumbnail" src={window.logo} /> */}
-        {/* onMouseOver, play the video, onMouseLeave, stop the video */}
         <video
           src="https://media.w3.org/2010/05/sintel/trailer.mp4"
           autoPlay={visibility === "visible" ? true : false} // first autoplay is true, just testing with false right now
@@ -54,8 +68,6 @@ export default class VideoPlayer extends React.Component {
 
     return (
       <div className={`mini-video-player ${visibility}`}>
-        {/* <img className="video-demo-thumbnail" src={window.logo} /> */}
-        {/* onMouseOver, play the video, onMouseLeave, stop the video */}
         <video
           src="https://media.w3.org/2010/05/sintel/trailer.mp4"
           autoPlay={visibility === "invisible" ? false : true}
@@ -81,6 +93,8 @@ export default class VideoPlayer extends React.Component {
         return this.renderDetailsPlayer();
       case "mainPlayer":
         return this.renderMainPlayer();
+      case "fullPlayer":
+        return this.renderFullPlayer();
       default:
         return <div>Oh no, this is an error..</div>
     }

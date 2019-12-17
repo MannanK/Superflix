@@ -46,7 +46,10 @@ export default class NavBar extends React.Component {
   }
 
   userLoggedIn() {
-    const { currentUser, logout } = this.props;
+    const { currentUser, logout, location } = this.props;
+    
+    if (location.pathname.startsWith("/watch")) return "";
+
     const { showDropdown } = this.state;
 
     let dropdown = showDropdown ? (

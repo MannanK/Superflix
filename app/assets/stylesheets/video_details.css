@@ -176,7 +176,7 @@
   transition: all 600ms ease-in;
 }
 
-.main-video-details .buttons > * {
+.main-video-details .buttons a > * {
   width: 12vw;
   font-size: 1.125vw;
   box-sizing: border-box;
