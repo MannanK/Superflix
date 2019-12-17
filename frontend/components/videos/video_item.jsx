@@ -9,16 +9,6 @@ export default class VideoItem extends React.Component {
     this.state = {
       backgroundDetails: false
     };
-
-    this.hideDetails = this.hideDetails.bind(this);
-  }
-
-  hideDetails(value) {
-    return e => {
-      setTimeout(() => this.setState({
-        detailsHidden: value
-      }), value ? 0 : 300);
-    };
   }
 
   getGenreNames() {

@@ -168,6 +168,7 @@
   text-align: center;
   margin-bottom: 0.3vh;
   color: white;
+  font-size: 1.5vw;
 }
 
 .background-down-arrow {
@@ -200,11 +201,19 @@
   animation-duration: 1s;
 }
 
+.video-details-container.not-showing {
+  height: 0;
+  opacity: 0;
+  z-index: -20;
+  transition: all 700ms ease-out;
+}
+
 .close-button {
   outline: none;
   background: transparent;
   align-self: flex-end;
   width: fit-content;
+  color: white;
   padding: 1%;
   font-size: 2vw;
 }

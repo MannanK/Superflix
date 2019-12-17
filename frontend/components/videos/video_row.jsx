@@ -81,7 +81,6 @@ export default class VideoRow extends React.Component {
 
   closeDetails(e) {
     e.preventDefault();
-    console.log("got here");
 
     this.setState({
       detailsShowing: false,
@@ -90,7 +89,7 @@ export default class VideoRow extends React.Component {
 
     setTimeout(() => {
       this.props.history.push("/browse");
-    }, 400);
+    }, 600);
   }
 
   renderLessThanSixVideos() {
