@@ -20,3 +20,7 @@ export const fetchVideos = () => dispatch => (
 export const fetchVideo = (id) => dispatch => (
   VideoAPIUtil.fetchVideo(id).then(payload => dispatch(receiveVideo(payload)))
 );
+
+export const searchVideos = (query) => dispatch => (
+  VideoAPIUtil.searchVideos(query).then(payload => dispatch(receiveVideos(payload)))
+);
