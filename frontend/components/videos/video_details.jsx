@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import VideoPlayerContainer from '../video_player/video_player_container';
 
 export default class VideoDetails extends React.Component {
@@ -69,9 +70,11 @@ export default class VideoDetails extends React.Component {
           </section>
 
           <section className="buttons">
-            <button className="play">
-              <i className="fas fa-play"></i> PLAY
-            </button>
+            <Link to={`/watch/${video.id}`}>
+              <button className="play">
+                <i className="fas fa-play"></i> PLAY
+              </button>
+            </Link>
 
             <button className="my-list">
               <i className="fas fa-check"></i> MY LIST

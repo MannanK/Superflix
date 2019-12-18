@@ -85,7 +85,9 @@ export default class VideoItem extends React.Component {
     let videoDetails = (
       <section className="thumbnail-details-container">
         <div className="thumbnail-details">
-          <div className="details-play-icon"><i className="far fa-play-circle"></i></div>
+          <Link to={`/watch/${video.id}`}>
+            <div className="details-play-icon"><i className="far fa-play-circle"></i></div>
+          </Link>
           <h3>{video.title}</h3>
           <h2>{video.maturity_rating}, {formattedDuration}</h2>
           <h2>{this.getGenreNames()}</h2>
