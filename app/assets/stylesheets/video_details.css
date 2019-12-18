@@ -62,8 +62,8 @@
   transition: all 600ms ease-in;
 }
 
-.video-details .buttons > * {
-  width: 12vw;
+.video-details .buttons a > * {
+  width: 9vw;
   font-size: 1.125vw;
   box-sizing: border-box;
   padding: 0.7%;
@@ -81,7 +81,6 @@
 }
 
 .video-details .buttons .my-list {
-  width: 9vw;
   background-color: black;
   border: 1px solid lightgray;
 }

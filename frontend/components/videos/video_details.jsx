@@ -11,11 +11,29 @@ export default class VideoDetails extends React.Component {
       videoShowing: true
     };
 
+    this.userPressedPlay = false;
     this.closeDetails = this.closeDetails.bind(this);
   }
 
   componentWillUnmount() {
-    if (this.state.detailsShowing) this.closeDetails();
+    let historyPath = this.props.history.location.pathname.split("/");
+    let currentPath = this.props.location.pathname.split("/");
+    
+    // debugger;
+
+    if (this.state.detailsShowing &&
+        !this.userPressedPlay &&
+        historyPath[1] !== "watch" &&
+        currentPath[2] === historyPath[2]) this.closeDetails();
+    // maybe check if closing the current video details?
+  }
+
+  componentDidMount() {
+    this.userPressedPlay = false;
+  }
+
+  componentDidUpdate() {
+    // check if props paramsId is same as last one, if it is then dont change userPressedPlay?
   }
 
   closeDetails(e) {
@@ -70,15 +88,17 @@ export default class VideoDetails extends React.Component {
           </section>
 
           <section className="buttons">
-            <Link to={`/watch/${video.id}`}>
+            <Link to={`/watch/${video.id}`} onClick={() => this.userPressedPlay = true}>
               <button className="play">
                 <i className="fas fa-play"></i> PLAY
               </button>
             </Link>
 
-            <button className="my-list">
-              <i className="fas fa-check"></i> MY LIST
+            <Link to={`/login`}>
+              <button className="my-list">
+                <i className="fas fa-check"></i> MY LIST
             </button>
+            </Link>
           </section>
         </section>
 

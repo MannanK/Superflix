@@ -128,14 +128,14 @@ header {
   top: 27px;
   left: 196px;
   display: flex;
-  width: 310px;
+  width: 13.5vw;
   justify-content: space-evenly;
 }
 
 .nav-bar-link {
   color: lightgray;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 0.8vw;
 }
 
 .nav-bar-link.active {

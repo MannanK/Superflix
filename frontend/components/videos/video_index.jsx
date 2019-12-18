@@ -22,14 +22,16 @@ export default class VideoIndex extends React.Component {
     let videoMain = isEmpty(videos) ? "" : <VideoMain video={Object.values(videos)[0]} genres={genres} />;
     let videoRows = isEmpty(videos) ? "" : (
       Object.values(genres).map(genre => {
-        let videoIds = genre["videoIds"];
-        let genreVideos = [];
+        if (genre.name !== "Marvel" && genre.name !== "DC") {
+          let videoIds = genre["videoIds"];
+          let genreVideos = [];
 
-        videoIds.forEach(id => {
-          genreVideos.push(videos[id]);
-        });
+          videoIds.forEach(id => {
+            genreVideos.push(videos[id]);
+          });
 
-        return <VideoRowContainer key={genre.id} videos={genreVideos} genre={genre} />
+          return <VideoRowContainer key={genre.id} videos={genreVideos} genre={genre} />
+        }
       })
     );
 

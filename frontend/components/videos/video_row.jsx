@@ -85,6 +85,8 @@ export default class VideoRow extends React.Component {
       detailsHidden: {id: null, value: true}
     });
 
+    // debugger;
+
     setTimeout(() => {
       this.props.history.push("/browse");
     }, 600);
@@ -232,7 +234,6 @@ export default class VideoRow extends React.Component {
   }
 
   render() {
-    const { genre } = this.props;
     const { videos } = this.state;
 
     return videos.length <= 6 ? (

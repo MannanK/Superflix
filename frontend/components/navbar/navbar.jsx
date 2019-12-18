@@ -66,8 +66,8 @@ export default class NavBar extends React.Component {
 
         <div className="nav-bar-links-container">
           {this.getLinkTag("/browse")}
-          <Link to='#' className="nav-bar-link">TV Shows</Link>
-          <Link to='#' className="nav-bar-link">Movies</Link>
+          <Link to='#' className="nav-bar-link">Marvel</Link>
+          <Link to='#' className="nav-bar-link">DC</Link>
           <Link to='#' className="nav-bar-link">My List</Link>
         </div>
 
