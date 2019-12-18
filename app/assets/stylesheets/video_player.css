@@ -17,6 +17,41 @@
 .full-video-player {
   position: absolute;
   display: flex;
+
+  -webkit-animation: fadein 800ms; /* Safari, Chrome */	
+  -moz-animation: fadein 800ms; /* Firefox*/	
+  -ms-animation: fadein 800ms; /* Internet Explorer */	
+  -o-animation: fadein 800ms; /* Opera */	
+  animation: fadein 800ms;
+}
+
+@keyframes fadein {	
+  from { opacity: 0.8; }
+  to   { opacity: 1; }
+}
+
+/* Firefox */	
+@-moz-keyframes fadein {	
+  from { opacity: 0.8; }
+  to   { opacity: 1; }
+}	
+
+/* Safari, Chrome */	
+@-webkit-keyframes fadein {	
+  from { opacity: 0.8; }
+  to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from { opacity: 0.8; }
+  to   { opacity: 1; }
+}
+
+/* Opera */
+@-o-keyframes fadein {
+  from { opacity: 0.8; }
+  to   { opacity: 1; }
 }
 
 .full-video-player-video {

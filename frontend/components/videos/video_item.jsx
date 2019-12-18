@@ -40,11 +40,19 @@ export default class VideoItem extends React.Component {
       "inbackground-video-item"
     );
 
+    // let playIcon = isCurrentItem ? (
+    //   <div className="background-details">
+    //     <div className="background-play-icon"><i className="far fa-play-circle"></i></div>
+    //   </div>
+    // ) : "";
+
     let playIcon = isCurrentItem ? (
-      <div className="background-details">
+      <Link to={`/watch/${video.id}`} className="background-details">
         <div className="background-play-icon"><i className="far fa-play-circle"></i></div>
-      </div>
+      </Link>
     ) : "";
+
+    // `/watch/${video.id}`
 
     let dropdownArrow = isCurrentItem ? "" : (
       <Link to={`/browse/${myGenre.name.toLowerCase()}/${video.id}`} className="background-link">

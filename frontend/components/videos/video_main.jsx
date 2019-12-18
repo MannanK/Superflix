@@ -42,7 +42,7 @@ export default class VideoMain extends React.Component {
           </section>
 
           <section className="buttons">
-            <Link to="/login">
+            <Link to={`/watch/${video.id}`}>
               <button className="play">
                 <i className="fas fa-play"></i> Play
               </button>
