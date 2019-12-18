@@ -52,8 +52,6 @@ export default class VideoItem extends React.Component {
       </Link>
     ) : "";
 
-    // `/watch/${video.id}`
-
     let dropdownArrow = isCurrentItem ? "" : (
       <Link to={`/browse/${myGenre.name.toLowerCase()}/${video.id}`} className="background-link">
         <div className="background-down-arrow">
@@ -104,8 +102,9 @@ export default class VideoItem extends React.Component {
     return (
       <li className={`${className}`} onMouseEnter={this.props.playVideo} onMouseLeave={this.props.stopVideo}>
         {(detailsHidden.id !== video.id) ? (
+          // WE WANT TO ENTER THIS CONDITION TO FIX THE ISSUE OF THUMBNAILS STILL PLAYING AFTER ROWS BEING SWITCHED
           <>
-            <img className="video-demo-thumbnail visible" src={window.demoThumbnail} />
+            <img className="video-demo-thumbnail visible" src={window.demoThumbnail} /> 
             <VideoPlayerContainer type="miniplayer" visibility="invisible" />
           </>
         ) : (

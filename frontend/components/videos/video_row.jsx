@@ -13,7 +13,6 @@ export default class VideoRow extends React.Component {
       videosRemaining: this.props.videos.length,
       showButtonArrow: false,
       detailsHidden: {id: null, value: true}, // the thumbnail details for the item being hovered over
-      detailsShowing: true // the big detail pane
     }
 
     this.scrollLeft = this.scrollLeft.bind(this);
@@ -79,17 +78,19 @@ export default class VideoRow extends React.Component {
     };
   }
 
-  closeDetails() {
+  closeDetails(testprop) {
     this.setState({
-      detailsShowing: false,
       detailsHidden: {id: null, value: true}
     });
 
-    // debugger;
+    debugger;
 
-    setTimeout(() => {
-      this.props.history.push("/browse");
-    }, 600);
+    // DO THIS ONLY IF CLOSE BUTTON IS PRESSED?
+    if (testprop === undefined || testprop === "closing") {
+      setTimeout(() => {
+        this.props.history.push("/browse");
+      }, 600);
+    }
   }
 
   renderLessThanSixVideos() {

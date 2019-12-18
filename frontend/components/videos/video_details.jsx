@@ -7,7 +7,7 @@ export default class VideoDetails extends React.Component {
     super(props);
 
     this.state = {
-      detailsShowing: true,
+      detailsShowing: true, // for the CSS slide up transition to show
       videoShowing: true
     };
 
@@ -19,13 +19,19 @@ export default class VideoDetails extends React.Component {
     let historyPath = this.props.history.location.pathname.split("/");
     let currentPath = this.props.location.pathname.split("/");
     
-    // debugger;
+    debugger;
 
-    if (this.state.detailsShowing &&
-        !this.userPressedPlay &&
-        historyPath[1] !== "watch" &&
-        currentPath[2] === historyPath[2]) this.closeDetails();
+    if (this.state.detailsShowing && // detail pane was showing
+        !this.userPressedPlay && // user isn't trying to go to the watch page
+        historyPath[1] !== "watch" && //  user isn't trying to go to the watch page
+        currentPath[2] === historyPath[2]) // user is trying to close the current details pane
+      this.closeDetails();
+
     // maybe check if closing the current video details?
+
+    if (historyPath[1] === currentPath[1]) {
+      this.closeDetails("inRow");
+    }
   }
 
   componentDidMount() {
@@ -36,8 +42,8 @@ export default class VideoDetails extends React.Component {
     // check if props paramsId is same as last one, if it is then dont change userPressedPlay?
   }
 
-  closeDetails(e) {
-    this.props.closeDetails(e);
+  closeDetails(inRow) {
+    this.props.closeDetails(inRow);
 
     this.setState({
       detailsShowing: false
@@ -69,7 +75,7 @@ export default class VideoDetails extends React.Component {
 
     return (
       <section className={`video-details-container${closingClass}`}>
-        <button className="close-button" onClick={this.closeDetails}>
+        <button className="close-button" onClick={() => this.closeDetails("closing")}>
           <i className="fas fa-times"></i>
         </button>
 
