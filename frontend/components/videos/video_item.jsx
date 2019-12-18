@@ -102,7 +102,6 @@ export default class VideoItem extends React.Component {
     return (
       <li className={`${className}`} onMouseEnter={this.props.playVideo} onMouseLeave={this.props.stopVideo}>
         {(detailsHidden.id !== video.id) ? (
-          // WE WANT TO ENTER THIS CONDITION TO FIX THE ISSUE OF THUMBNAILS STILL PLAYING AFTER ROWS BEING SWITCHED
           <>
             <img className="video-demo-thumbnail visible" src={window.demoThumbnail} /> 
             <VideoPlayerContainer type="miniplayer" visibility="invisible" />

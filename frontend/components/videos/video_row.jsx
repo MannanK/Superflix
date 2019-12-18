@@ -83,7 +83,7 @@ export default class VideoRow extends React.Component {
       detailsHidden: {id: null, value: true}
     });
 
-    debugger;
+    // debugger;
 
     // DO THIS ONLY IF CLOSE BUTTON IS PRESSED?
     if (testprop === undefined || testprop === "closing") {

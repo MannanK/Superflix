@@ -19,7 +19,7 @@ export default class VideoDetails extends React.Component {
     let historyPath = this.props.history.location.pathname.split("/");
     let currentPath = this.props.location.pathname.split("/");
     
-    debugger;
+    // debugger;
 
     if (this.state.detailsShowing && // detail pane was showing
         !this.userPressedPlay && // user isn't trying to go to the watch page

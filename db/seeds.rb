@@ -198,10 +198,10 @@ marvelsPunisher.genres += [marvel, action]
 watchmenMovie = Video.create!(
   title: "Watchmen",
   description: "In an alternate 1985 America, costumed superheroes are part of everyday life. When one of his former comrades is murdered, masked vigilante Rorschach uncovers a plot to kill and discredit all past and present superheroes. As he reconnects with his retired associates, only one of which has true powers, Rorschach glimpses a far-reaching conspiracy involving their shared past and catastrophic consequences for the world's future.",
-  year: 2019,
+  year: 2009,
   maturity_rating: "R",
   video_type: "MOVIE",
-  duration: 12
+  duration: 163
 )
 watchmenMovie.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 watchmenMovie.genres += [dc, adventure, scifi]
@@ -242,7 +242,7 @@ guardiansOfTheGalaxy.genres += [marvel, comedy, adventure, scifi]
 blackWidow = Video.create!(
   title: "Black Widow",
   description: "Set before the unfortunate events of Avengers: Endgame, international spy and assassin Natasha Romanoff becomes the superhero Black Widow.",
-  year: 2019,
+  year: 2020,
   maturity_rating: "PG-13",
   video_type: "MOVIE",
   duration: -1
@@ -253,7 +253,7 @@ blackWidow.genres += [marvel, action]
 wonderWoman1984 = Video.create!(
   title: "Wonder Woman: 1984",
   description: "Wonder Woman squares off against the Cheetah, a villainess who possesses superhuman strength and agility.",
-  year: 2019,
+  year: 2020,
   maturity_rating: "PG-13",
   video_type: "MOVIE",
   duration: 12
