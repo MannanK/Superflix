@@ -1,20 +1,74 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class VideoPlayer extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); // props tell us what type of player we are
 
-    // props tell us what type of player we are
+    this.state = {
+      showLinkText: false,
+      mouseMoving: false
+    }
+
+    this.clearArrow;
+
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleMouse = this.handleMouse.bind(this);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.clearArrow);
+  }
+
+  handleMouse(e) {
+    e.preventDefault();
+
+    this.setState({
+      mouseMoving: true
+    });
+
+    let showArrow = () => {
+      clearTimeout(this.clearArrow);
+      this.clearArrow = setTimeout(() => this.setState({ mouseMoving: false }), 3500);
+    };
+
+    showArrow();
+  }
+
+  handleFocus(value) {
+    return e => {
+      this.setState({
+        showLinkText: value
+      });
+    };
   }
 
   renderFullPlayer() {
-    const { previousPage } = this.props;
+    const { showLinkText, mouseMoving } = this.state;
+
+    let arrow = mouseMoving ? (
+      <div className="links" onMouseEnter={this.handleFocus(true)} onMouseLeave={this.handleFocus(false)}>
+        <Link
+          to={"/browse"}
+          className="button-link"
+        >
+          <button className="back">
+            <i className="fas fa-arrow-left"></i>
+          </button>
+        </Link>
+
+        {showLinkText ? <Link to="/browse" className="a-link">Back to Browse</Link> : ""}
+      </div>
+    ) : (
+      ""
+    );
 
     return (
-      <div className={`full-video-player`}>
+      <div className={`full-video-player`} onMouseMove={this.handleMouse}>
+        { arrow }
+
         <video
           src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-          autoPlay={true}
           controls
           className="full-video-player-video"
           type="video/mp4"

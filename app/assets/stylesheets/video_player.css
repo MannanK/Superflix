@@ -16,6 +16,7 @@
 
 .full-video-player {
   position: absolute;
+  display: flex;
 }
 
 .full-video-player-video {
@@ -25,6 +26,37 @@
   display: flex;
   justify-content: center;
   background-color: black;
+}
+
+.full-video-player a {
+  z-index: 1;
+  text-decoration: none;
+}
+
+.full-video-player .links .button-link {
+  margin-right: 10%;
+}
+
+.full-video-player .links {
+  z-index: 1;
+  display: flex;
+  margin: 2.5vw;
+  align-items: center;
+}
+
+.full-video-player .links .back {
+  font-size: 4vh;
+  color: white;
+  background-color: transparent;
+  width: fit-content;
+}
+
+.full-video-player .links .a-link {
+  font-size: 2vh;
+  color: white;
+  text-decoration: none;
+  min-width: fit-content;
+  font-weight: bold;
 }
 
 /* ------- MAIN VIDEO PLAYER ------- */

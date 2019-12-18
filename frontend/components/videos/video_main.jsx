@@ -20,16 +20,6 @@ export default class VideoMain extends React.Component {
   render() {
     const { video } = this.props;
 
-    // return (
-    //   <div className="main-video-details-container">
-    //     {/* TODO replace img src with video["thumbnail"] */}
-    //     <div className="video">
-    //       <img className="main-video" src={window.demoThumbnail} />
-    //     </div>
-
-    //   </div>
-    // );
-
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
     let videoPlayer = <VideoPlayerContainer type="mainPlayer" visibility="visible" />;
 
