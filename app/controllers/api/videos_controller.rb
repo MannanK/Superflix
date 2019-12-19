@@ -44,6 +44,10 @@ class Api::VideosController < ApplicationController
 
     @genres = Genre.all.includes(:videos)
 
-    render :index
+    if !@videos.empty?
+      render :index
+    else
+      render json: ['No videos found'], status: 404
+    end
   end
 end

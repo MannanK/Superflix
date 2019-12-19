@@ -6,11 +6,11 @@
   left: 0;
   color: white;
 
-  -webkit-animation: fadein 1s; /* Safari, Chrome */	
-  -moz-animation: fadein 1s; /* Firefox*/	
-  -ms-animation: fadein 1s; /* Internet Explorer */	
-  -o-animation: fadein 1s; /* Opera */	
-  animation: fadein 1s;
+  -webkit-animation: fadein 500ms; /* Safari, Chrome */	
+  -moz-animation: fadein 500ms; /* Firefox*/	
+  -ms-animation: fadein 500ms; /* Internet Explorer */	
+  -o-animation: fadein 500ms; /* Opera */	
+  animation: fadein 500ms;
 }
 
 #search-index-empty {
