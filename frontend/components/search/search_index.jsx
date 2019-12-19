@@ -11,14 +11,11 @@ export default class SearchIndex extends React.Component {
   }
 
   componentDidMount() {
-    debugger;
-    
     let queryParams = queryString.parse(this.props.location.search);
     this.props.searchVideos(queryParams.q);
   }
 
   componentDidUpdate(prevProps) {
-    debugger;
     let currentQuery = queryString.parse(this.props.location.search);
     let prevQuery = queryString.parse(prevProps.location.search);
 
@@ -28,8 +25,6 @@ export default class SearchIndex extends React.Component {
   }
 
   render() {
-    debugger;
-
     return (
       <div className="search-index-container">
         <span className="search-index-container-bg"></span>

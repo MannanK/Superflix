@@ -15,6 +15,7 @@ export default class NavBar extends React.Component {
 
     this.handleDemoLogin = this.handleDemoLogin.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.debouncedMakeRequest = debounce(this.debouncedMakeRequest, 350);
   }
 
   handleDemoLogin(e) {
@@ -58,12 +59,15 @@ export default class NavBar extends React.Component {
       this.setState({ query: "" });
       this.props.history.push("/");
     } else {
-      debugger;
-      this.props.history.push({
-        pathname: '/search',
-        search: `?q=${query}`
-      });
+      this.debouncedMakeRequest(query);
     }
+  }
+
+  debouncedMakeRequest(query) {
+    this.props.history.push({
+      pathname: '/search',
+      search: `?q=${query}`
+    });
   }
 
   userLoggedIn() {
