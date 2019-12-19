@@ -16,7 +16,8 @@ const App = (props) => (
     </header>
 
     <Switch>
-      <ProtectedRoute path="/browse" component={VideoIndexContainer} />
+      <ProtectedRoute path="/browse" component={VideoIndexContainer} type="browse" />
+      <ProtectedRoute path="/search" component={VideoIndexContainer} type="search" />
       <ProtectedRoute path="/watch/:mediaId" component={VideoPlayerContainer} type="fullPlayer" />
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />

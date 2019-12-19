@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { debounce } from 'lodash';
 import Dropdown from './dropdown';
 
 export default class NavBar extends React.Component {
@@ -53,9 +54,11 @@ export default class NavBar extends React.Component {
       query
     });
 
-    // if (query === "") {
-
-    // }
+    if (query === "") {
+      this.props.history.push("/browse");
+    } else {
+      this.props.history.push(`/search?query=${query}`);
+    }
   }
 
   userLoggedIn() {

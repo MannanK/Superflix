@@ -72,6 +72,7 @@ export default class VideoPlayer extends React.Component {
           controls
           className="full-video-player-video"
           type="video/mp4"
+          autoPlay={true}
         >
           video player is not working!
         </video>
