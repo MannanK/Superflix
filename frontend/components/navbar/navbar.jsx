@@ -7,13 +7,13 @@ export default class NavBar extends React.Component {
     super(props);
 
     this.state = {
-      showDropdown: false
+      showDropdown: false,
+      showSearchBar: false
     };
 
     this.handleDemoLogin = this.handleDemoLogin.bind(this);
+    this.displaySearchBar = this.displaySearchBar.bind(this);
   }
-
-  // use props.location.pathname here to decide if you want to show sign in on the page we're currently on
 
   handleDemoLogin(e) {
     e.preventDefault();
@@ -45,12 +45,16 @@ export default class NavBar extends React.Component {
     }
   }
 
+  displaySearchBar() {
+
+  }
+
   userLoggedIn() {
     const { currentUser, logout, location } = this.props;
     
     if (location.pathname.startsWith("/watch")) return "";
 
-    const { showDropdown } = this.state;
+    const { showDropdown, showSearchBar } = this.state;
 
     let dropdown = showDropdown ? (
       <Dropdown
@@ -60,15 +64,41 @@ export default class NavBar extends React.Component {
       />
     ) : "";
 
+    let searchBar = showSearchBar ? (
+      // displaySearchBar()
+      <>
+      <button className="search">
+        <i className="fas fa-search"></i>
+      </button>
+      <input type="text" className="search-input showing" />
+      </>
+    ) : (
+      <>
+      <button className="search">
+        <i className="fas fa-search"></i>
+      </button>
+      <input type="text" className="search-input not-showing"/>
+      </>
+    );
+
     return (
       <div className="nav-bar signed-in">
-        <Link to="/browse"><img src={window.logo} className="logo-small"></img></Link>
+        <Link to="/browse" className="logo-link">
+          <img src={window.logo} className="logo-small"></img>
+        </Link>
 
         <div className="nav-bar-links-container">
           {this.getLinkTag("/browse")}
           <Link to='#' className="nav-bar-link">Marvel</Link>
           <Link to='#' className="nav-bar-link">DC</Link>
           <Link to='#' className="nav-bar-link">My List</Link>
+        </div>
+
+        <div className="search-bar-container"
+          onClick={() => this.setState({ showSearchBar: true })}
+          onBlur={() => this.setState({ showSearchBar: false })}
+        >
+          { searchBar }
         </div>
 
         <div className="user-logo-container"

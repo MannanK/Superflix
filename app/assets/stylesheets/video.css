@@ -5,6 +5,12 @@
   right: 0;
   bottom: 0;
   left: 0;
+
+  -webkit-animation: fadein 1s; /* Safari, Chrome */	
+  -moz-animation: fadein 1s; /* Firefox*/	
+  -ms-animation: fadein 1s; /* Internet Explorer */	
+  -o-animation: fadein 1s; /* Opera */	
+  animation: fadein 1s;
 }
 
 /* ------- BELOW MAIN VIDEO ------- */
