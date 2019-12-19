@@ -8,11 +8,12 @@ export default class NavBar extends React.Component {
 
     this.state = {
       showDropdown: false,
-      showSearchBar: false
+      showSearchBar: false,
+      query: ""
     };
 
     this.handleDemoLogin = this.handleDemoLogin.bind(this);
-    this.displaySearchBar = this.displaySearchBar.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
   handleDemoLogin(e) {
@@ -45,8 +46,16 @@ export default class NavBar extends React.Component {
     }
   }
 
-  displaySearchBar() {
+  handleInput(e) {
+    let query = e.currentTarget.value;
 
+    this.setState({
+      query
+    });
+
+    // if (query === "") {
+
+    // }
   }
 
   userLoggedIn() {
@@ -64,22 +73,21 @@ export default class NavBar extends React.Component {
       />
     ) : "";
 
-    let searchBar = showSearchBar ? (
-      // displaySearchBar()
+    let searchBarClass = showSearchBar ? "showing" : "not-showing";
+
+    let searchBar = 
       <>
-      <button className="search">
-        <i className="fas fa-search"></i>
-      </button>
-      <input type="text" className="search-input showing" />
-      </>
-    ) : (
-      <>
-      <button className="search">
-        <i className="fas fa-search"></i>
-      </button>
-      <input type="text" className="search-input not-showing"/>
-      </>
-    );
+        <button className="search">
+          <i className="fas fa-search"></i>
+        </button>
+        <input
+          type="text"
+          className={`search-input ${searchBarClass}`}
+          placeholder="Titles, year"
+          value={this.state.query}
+          onChange={this.handleInput}
+        />
+      </>;
 
     return (
       <div className="nav-bar signed-in">
@@ -95,7 +103,7 @@ export default class NavBar extends React.Component {
         </div>
 
         <div className="search-bar-container"
-          onClick={() => this.setState({ showSearchBar: true })}
+          onFocus={() => this.setState({ showSearchBar: true })}
           onBlur={() => this.setState({ showSearchBar: false })}
         >
           { searchBar }

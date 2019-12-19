@@ -71,11 +71,12 @@ header {
   background: transparent;
   color: white;
   font-size: 1vw;
-  margin-right: 0.5vw;
 }
 
 .search-input {
-  transition: width 1s cubic-bezier(0.00, 0.8, 0.000, 1.0);
+  transition: width 700ms cubic-bezier(0, 0.8, 0, 1);
+  margin-left: 0.5vw;
+  color: white;
 }
 
 .search-input.showing {
@@ -84,6 +85,7 @@ header {
   pointer-events: all;
   background: transparent;
   border: 1px double white;
+  padding-left: 0.4vw;
 }
 
 .search-input.not-showing {
