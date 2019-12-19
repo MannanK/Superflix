@@ -55,9 +55,13 @@ export default class NavBar extends React.Component {
     });
 
     if (query === "") {
-      this.props.history.push("/browse");
+      this.setState({ query: "" });
+      this.props.history.push("/");
     } else {
-      this.props.history.push(`/search?query=${query}`);
+      this.props.history.push({
+        pathname: '/search',
+        search: `?q=${query}`
+      });
     }
   }
 
@@ -94,7 +98,7 @@ export default class NavBar extends React.Component {
 
     return (
       <div className="nav-bar signed-in">
-        <Link to="/browse" className="logo-link">
+        <Link to="/" className="logo-link">
           <img src={window.logo} className="logo-small"></img>
         </Link>
 

@@ -9,14 +9,16 @@ export default class VideoIndex extends React.Component {
   }
 
   componentDidMount() {
+    debugger;
     this.props.fetchVideos();
   }
 
-  // componentDidUpdate() {
-  //   if (isEmpty(this.props.videos)) this.props.fetchVideos();
-  // }
+  componentDidUpdate() {
+    if (isEmpty(this.props.videos)) this.props.fetchVideos();
+  }
 
   render() {
+    // debugger;
     const { videos, genres } = this.props;
 
     let videoMain = isEmpty(videos) ? "" : <VideoMain video={Object.values(videos)[0]} genres={genres} />;

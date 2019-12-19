@@ -14,6 +14,7 @@ export default class VideoPlayer extends React.Component {
 
     this.handleFocus = this.handleFocus.bind(this);
     this.handleMouse = this.handleMouse.bind(this);
+    this.handleGoBack = this.handleGoBack.bind(this);
   }
 
   componentWillUnmount() {
@@ -43,21 +44,28 @@ export default class VideoPlayer extends React.Component {
     };
   }
 
+  handleGoBack(e) {
+    e.preventDefault();
+
+    this.props.history.goBack();
+  }
+
   renderFullPlayer() {
     const { showLinkText, mouseMoving } = this.state;
 
     let arrow = mouseMoving ? (
       <div className="links" onMouseEnter={this.handleFocus(true)} onMouseLeave={this.handleFocus(false)}>
-        <Link
+        <div
           to={"/browse"}
           className="button-link"
+          onClick={this.handleGoBack}
         >
           <button className="back">
             <i className="fas fa-arrow-left"></i>
           </button>
-        </Link>
+        </div>
 
-        {showLinkText ? <Link to="/browse" className="a-link">Back to Browse</Link> : ""}
+        {showLinkText ? <div to="/browse" className="a-link" onClick={this.handleGoBack}>Go Back</div> : ""}
       </div>
     ) : (
       ""
@@ -87,9 +95,8 @@ export default class VideoPlayer extends React.Component {
       <div className={`main-video-player ${visibility}`}>
         <video
           src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-          autoPlay={visibility === "visible" ? true : false} // first autoplay is true, just testing with false right now
+          autoPlay={visibility === "visible" ? true : false}
           muted={true}
-          loop={true}
           className="main-video-player-video"
           type="video/mp4"
         >

@@ -195,6 +195,10 @@
   transform: scale(1.05);
 }
 
+.fas.fa-play, .fas.fa-check {
+  margin-right: 4%;
+}
+
 @keyframes slideDown {
   from {
     height: 0;

@@ -94,6 +94,10 @@
   font-weight: bold;
 }
 
+.full-video-player .links:hover {
+  cursor: pointer;
+}
+
 /* ------- MAIN VIDEO PLAYER ------- */
 
 .main-video-player {

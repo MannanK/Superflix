@@ -125,7 +125,7 @@ export default class VideoRow extends React.Component {
 
           {/* <Route path={`/browse/${genre.name.toLowerCase()}/:movieId`} component={VideoDetailsContainer} closeDetails={this.closeDetails}/> */}
           <Route
-            path={`/browse/${genre.name.toLowerCase()}/:movieId`}
+            exact path={`/browse/${genre.name.toLowerCase()}/:movieId`}
             render={(props) => <VideoDetailsContainer closeDetails={this.closeDetails} {...props} />}
           />
         </div>
@@ -226,7 +226,7 @@ export default class VideoRow extends React.Component {
           </ul >
           
           <Route
-            path={`/browse/${genre.name.toLowerCase()}/:movieId`}
+            exact path={`/browse/${genre.name.toLowerCase()}/:movieId`}
             render={(props) => <VideoDetailsContainer closeDetails={this.closeDetails} {...props} />}
           />
         </div>
@@ -236,6 +236,7 @@ export default class VideoRow extends React.Component {
 
   render() {
     const { videos } = this.state;
+    // debugger;
 
     return videos.length <= 6 ? (
       this.renderLessThanSixVideos()

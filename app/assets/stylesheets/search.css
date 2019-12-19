@@ -1,0 +1,28 @@
+.search-index-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: white;
+
+  -webkit-animation: fadein 1s; /* Safari, Chrome */	
+  -moz-animation: fadein 1s; /* Firefox*/	
+  -ms-animation: fadein 1s; /* Internet Explorer */	
+  -o-animation: fadein 1s; /* Opera */	
+  animation: fadein 1s;
+}
+
+#search-index-empty {
+  width: 100%;
+  height: 8vw;
+  content: "";
+  z-index: -1;
+}
+
+.search-video-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}

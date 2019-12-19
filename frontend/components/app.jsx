@@ -8,6 +8,7 @@ import VideoIndexContainer from './videos/video_index_container';
 import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import VideoPlayerContainer from './video_player/video_player_container';
+import SearchIndexContainer from './search/search_index_container';
 
 const App = (props) => (
   <div id="main-div">
@@ -16,9 +17,9 @@ const App = (props) => (
     </header>
 
     <Switch>
-      <ProtectedRoute path="/browse" component={VideoIndexContainer} type="browse" />
-      <ProtectedRoute path="/search" component={VideoIndexContainer} type="search" />
-      <ProtectedRoute path="/watch/:mediaId" component={VideoPlayerContainer} type="fullPlayer" />
+      <ProtectedRoute path="/browse" component={VideoIndexContainer} />
+      <ProtectedRoute path="/search" component={SearchIndexContainer} />
+      <ProtectedRoute exact path="/watch/:mediaId" component={VideoPlayerContainer} type="fullPlayer" />
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
       <AuthRoute path="/" component={SplashContainer} />
