@@ -7,7 +7,7 @@ export default class VideoRow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videos: this.props.videos, // all the videos ever in this genre
+      videos: this.props.videos, // all the videos
       genre: this.props.genre,
       pageNum: 0,
       videosRemaining: this.props.videos.length,
@@ -89,6 +89,10 @@ export default class VideoRow extends React.Component {
         this.props.history.push("/browse");
       }, 600);
     }
+  }
+
+  renderSearchVideos() {
+
   }
 
   renderLessThanSixVideos() {
@@ -235,6 +239,10 @@ export default class VideoRow extends React.Component {
   render() {
     const { videos } = this.state;
     
+    if (this.props.type === "search") {
+      return this.renderSearchVideos();
+    }
+
     return videos.length <= 6 ? (
       this.renderLessThanSixVideos()
     ) : (
