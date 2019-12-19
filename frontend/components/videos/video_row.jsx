@@ -92,16 +92,53 @@ export default class VideoRow extends React.Component {
   }
 
   renderSearchVideos() {
+    const { videos, detailsHidden } = this.state;
+    const { type } = this.props;
+    debugger;
 
+    let videoItems = videos.map((video, i) => {
+      let className = "video-item";
+      if (i === 0) className = "first " + className;
+      if (i === 5) className = "last " + className;
+
+      return <VideoItemContainer
+        key={i}
+        video={video}
+        className={className}
+        type="search"
+        playVideo={this.playVideo(video.id)}
+        stopVideo={this.stopVideo(video.id)}
+        detailsHidden={detailsHidden}
+      />;
+    });
+
+    return (
+      <>
+        <div className="individual-search-row-container">
+          <ul className="video-row-outer">
+            <ul className="video-row-inner">
+              {videoItems}
+            </ul>
+          </ul>
+
+          <Route
+            exact path={`/search/details/:movieId`}
+            render={(props) => <VideoDetailsContainer closeDetails={this.closeDetails} {...props} />}
+          />
+        </div>
+      </>
+    );
   }
 
   renderLessThanSixVideos() {
+    // debugger;
     const { videos, detailsHidden } = this.state;
     const { genre } = this.props;
     
     let videoItems = videos.map((video, i) => {
       let className = "video-item";
       if (i === 0) className = "first " + className;
+      if (i === 5) className = "last " + className;
 
       return <VideoItemContainer
         key={i}
@@ -136,6 +173,7 @@ export default class VideoRow extends React.Component {
   }
 
   renderMoreThanSixVideos() {
+    debugger;
     const { videos, videosRemaining, pageNum, showButtonArrow, detailsHidden } = this.state;
     const { genre } = this.props;
     let currentIndex = pageNum*6;
@@ -239,9 +277,7 @@ export default class VideoRow extends React.Component {
   render() {
     const { videos } = this.state;
     
-    if (this.props.type === "search") {
-      return this.renderSearchVideos();
-    }
+    if (this.props.type === "search") return this.renderSearchVideos();
 
     return videos.length <= 6 ? (
       this.renderLessThanSixVideos()

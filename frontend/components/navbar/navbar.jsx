@@ -15,7 +15,7 @@ export default class NavBar extends React.Component {
 
     this.handleDemoLogin = this.handleDemoLogin.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    this.debouncedMakeRequest = debounce(this.debouncedMakeRequest, 350);
+    this.debouncedMakeRequest = debounce(this.debouncedMakeRequest, 450);
   }
 
   handleDemoLogin(e) {
@@ -29,7 +29,7 @@ export default class NavBar extends React.Component {
     let linkText;
 
     switch (route) {
-      case "/browse":
+      case "/":
         linkText = "Home";
         break;
       default:
@@ -55,6 +55,7 @@ export default class NavBar extends React.Component {
       query
     });
 
+    // debugger;
     if (query === "") {
       this.setState({ query: "" });
       this.props.history.push("/");
@@ -108,7 +109,7 @@ export default class NavBar extends React.Component {
         </Link>
 
         <div className="nav-bar-links-container">
-          {this.getLinkTag("/browse")}
+          {this.getLinkTag("/")}
           <Link to='#' className="nav-bar-link">Marvel</Link>
           <Link to='#' className="nav-bar-link">DC</Link>
           <Link to='#' className="nav-bar-link">My List</Link>

@@ -5,6 +5,7 @@
   bottom: 0;
   left: 0;
   color: white;
+  overflow: hidden;
 
   -webkit-animation: fadein 500ms; /* Safari, Chrome */	
   -moz-animation: fadein 500ms; /* Firefox*/	
@@ -15,7 +16,7 @@
 
 #search-index-empty {
   width: 100%;
-  height: 8vw;
+  height: 7vw;
   content: "";
   z-index: -1;
 }
