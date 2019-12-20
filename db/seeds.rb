@@ -10,6 +10,7 @@ require 'open-uri'
 
 User.destroy_all
 Video.destroy_all
+Genre.destroy_all
 
 demoUser = User.create!(email: "peter@parker.com", password: "uncleben")
 
