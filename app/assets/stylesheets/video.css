@@ -34,6 +34,7 @@
 
 .individual-row-container {
   margin-bottom: 3.5%;
+  max-height: 9vw;
 }
 
 .individual-row-container:last-child {
@@ -59,6 +60,7 @@
   position: relative;
   max-width: 100%;
   padding: 0 3%;
+  max-height: 9vw;
 }
 
 .video-row-inner {
@@ -69,9 +71,11 @@
 }
 
 .video-demo-thumbnail {
-  max-width: 100%;
-  min-height: 100%;
   z-index: -1;
+  width: 100%;
+  min-height: 9vw;
+  object-fit: cover;
+  max-height: 9vw;
 }
 
 /* move all the thumbnails to the left */

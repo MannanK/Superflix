@@ -4,13 +4,13 @@
   list-style-type: none;
   box-sizing: border-box;
   flex-shrink: 0;
-  width: 16.3333333337%;
-  height: auto;
+  max-width: 16.3333333337%;
   transition: all 300ms ease-out;
   position: relative;
   margin: 0 0.168%;
-  
   display: grid;
+  max-height: 9vw;
+  min-width: 16.3333333337%;
 }
 
 .video-text {
@@ -97,13 +97,13 @@
   opacity: 0;
   position: absolute;
   color: white;
-  height: 100%;
+  max-height: 9vw;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-
   transition: opacity 400ms linear;
+  min-height: 9vw;
 }
 
 .video-item:hover .thumbnail-details-container, .background-details-container {
@@ -125,7 +125,7 @@
 .background-details {
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 9vw;
   justify-content: center;
   align-items: center;
   color: white;
