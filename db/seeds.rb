@@ -146,9 +146,10 @@ joker = Video.create!(
   year: 2019,
   maturity_rating: "R",
   video_type: "MOVIE",
-  duration: 12
+  duration: 122
 )
-joker.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
+joker.thumbnail.attach(io: open("https://superflix-seeds.s3.amazonaws.com/joker_ws.jfif"), filename: "joker_ws.jfif")
+joker.url.attach(io: open("https://superflix-seeds.s3.amazonaws.com/JOKER+-+Final+Trailer+-+Now+Playing+In+Theaters.mp4"), filename: "JOKER - Final Trailer - Now Playing In Theaters.mp4")
 joker.genres += [dc, adventure]
 
 captainAmericaCivilWar = Video.create!(
@@ -176,10 +177,10 @@ captainAmericaWinterSoldier.genres += [marvel, action]
 marvelsDaredevil = Video.create!(
   title: "Marvel's Daredevil",
   description: "The first season of Daredevil follows the early days of Matt Murdock / Daredevil, a lawyer-by-day who fights crime at night, juxtaposed with the rise of crime lord Wilson Fisk.",
-  year: 2016,
+  year: 2015,
   maturity_rating: "TV-14",
   video_type: "SHOW",
-  duration: 60
+  duration: 50
 )
 marvelsDaredevil.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 marvelsDaredevil.genres += [marvel, action]
@@ -190,7 +191,7 @@ marvelsPunisher = Video.create!(
   year: 2017,
   maturity_rating: "TV-14",
   video_type: "SHOW",
-  duration: 60
+  duration: 50
 )
 marvelsPunisher.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 marvelsPunisher.genres += [marvel, action]
@@ -212,7 +213,7 @@ watchmenShow = Video.create!(
   year: 2019,
   maturity_rating: "TV-17",
   video_type: "SHOW",
-  duration: 12
+  duration: 60
 )
 watchmenShow.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 watchmenShow.genres += [dc, adventure, scifi]
@@ -223,7 +224,7 @@ theBoys = Video.create!(
   year: 2019,
   maturity_rating: "TV-14",
   video_type: "SHOW",
-  duration: 12
+  duration: 60
 )
 theBoys.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 theBoys.genres += [action]
@@ -256,7 +257,7 @@ wonderWoman1984 = Video.create!(
   year: 2020,
   maturity_rating: "PG-13",
   video_type: "MOVIE",
-  duration: 12
+  duration: -1
 )
 wonderWoman1984.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 wonderWoman1984.genres += [dc, action, adventure, scifi]
@@ -264,10 +265,10 @@ wonderWoman1984.genres += [dc, action, adventure, scifi]
 flashpointParadox = Video.create!(
   title: "Justice League: The Flashpoint Paradox",
   description: "The Flash causes a temporal ripple that creates a fractured reality where the Justice league has never formed, Superman does not exist and a war rages between Wonder Woman and Aquaman. Flash teams with Batman and Cyborg to restore the timeline.",
-  year: 2019,
+  year: 2013,
   maturity_rating: "PG-13",
   video_type: "MOVIE",
-  duration: 12
+  duration: 81
 )
 flashpointParadox.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 flashpointParadox.genres += [dc, adventure, animated]
@@ -278,7 +279,7 @@ intoTheSpiderverse = Video.create!(
   year: 2018,
   maturity_rating: "PG",
   video_type: "MOVIE",
-  duration: 12
+  duration: 116
 )
 intoTheSpiderverse.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 intoTheSpiderverse.genres += [marvel, adventure, animated]
@@ -297,7 +298,7 @@ marvelsAvengers.genres += [marvel, action, adventure, scifi]
 manOfSteel = Video.create!(
   title: "Man of Steel",
   description: "With the imminent destruction of Krypton, their home planet, Jor-El and his wife seek to preserve their race by sending their infant son to Earth. The child's spacecraft lands at the farm of Jonathan and Martha Kent, who name him Clark and raise him as their own son. Though his extraordinary abilities have led to the adult Clark living on the fringe of society, he finds he must become a hero to save those he loves from a dire threat.",
-  year: 2015,
+  year: 2013,
   maturity_rating: "PG-13",
   video_type: "MOVIE",
   duration: 143
@@ -308,10 +309,10 @@ manOfSteel.genres += [dc, action, adventure, scifi]
 marvelsJessicaJones = Video.create!(
   title: "Marvel's Jessica Jones",
   description: "In Season 1, former superhero Jessica Jones opens her own detective agency after her superhero career comes to an end. Initially hired to investigate the disappearance of an NYU student, Jones' investigation takes a dramatic turn when a mysterious figure named Kilgrave resurfaces, bringing Jones' past into light and putting her directly in harm's way.",
-  year: 2017,
+  year: 2015,
   maturity_rating: "TV-14",
   video_type: "SHOW",
-  duration: 60
+  duration: 50
 )
 marvelsJessicaJones.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 marvelsJessicaJones.genres += [marvel, action]
@@ -322,7 +323,7 @@ arrow = Video.create!(
   year: 2012,
   maturity_rating: "TV-14",
   video_type: "SHOW",
-  duration: 60
+  duration: 45
 )
 arrow.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 arrow.genres += [dc, action]
@@ -333,7 +334,7 @@ theFlash = Video.create!(
   year: 2015,
   maturity_rating: "TV-14",
   video_type: "SHOW",
-  duration: 60
+  duration: 45
 )
 theFlash.thumbnail.attach(io: File.open('app/assets/images/demo_thumbnail.jpg'), filename: "demo_thumbnail.jpg")
 theFlash.genres += [dc, action, comedy]
@@ -374,7 +375,7 @@ shazam.genres += [dc, action, comedy]
 theLegoBatmanMovie = Video.create!(
   title: "The Lego Batman Movie",
   description: "a",
-  year: 2017 ,
+  year: 2017,
   maturity_rating: "PG",
   video_type: "MOVIE",
   duration: 104

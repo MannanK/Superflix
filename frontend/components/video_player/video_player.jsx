@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { isEmpty } from 'lodash';
 
 export default class VideoPlayer extends React.Component {
   constructor(props) {
@@ -15,6 +16,23 @@ export default class VideoPlayer extends React.Component {
     this.handleFocus = this.handleFocus.bind(this);
     this.handleMouse = this.handleMouse.bind(this);
     this.handleGoBack = this.handleGoBack.bind(this);
+  }
+
+  componentDidMount() {
+    debugger;
+    // if ((isEmpty(this.props.video) || this.props.video === undefined) && this.props.type === "fullPlayer") {
+    if (this.props.type === "fullPlayer") {
+      this.props.fetchVideo(this.props.match.params.mediaId);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    debugger;
+
+    // if ((isEmpty(this.props.video) || this.props.video === undefined || prevProps.type !== this.props.type) && this.props.type === "fullPlayer") {
+    if (this.props.type === "fullPlayer" && prevProps.match.params.mediaId !== this.props.match.params.mediaId) {
+      this.props.fetchVideo(this.props.match.params.mediaId);
+    }
   }
 
   componentWillUnmount() {
@@ -47,11 +65,14 @@ export default class VideoPlayer extends React.Component {
   handleGoBack(e) {
     e.preventDefault();
 
-    this.props.history.goBack();
+    // this.props.history.goBack();
+    this.props.history.push("/");
   }
 
   renderFullPlayer() {
     const { showLinkText, mouseMoving } = this.state;
+    const { video } = this.props;
+    debugger;
 
     let arrow = mouseMoving ? (
       <div className="links" onMouseEnter={this.handleFocus(true)} onMouseLeave={this.handleFocus(false)}>
@@ -65,18 +86,19 @@ export default class VideoPlayer extends React.Component {
           </button>
         </div>
 
-        {showLinkText ? <div to="/browse" className="a-link" onClick={this.handleGoBack}>Go Back</div> : ""}
+        {showLinkText ? <div to="/" className="a-link" onClick={this.handleGoBack}>Go Back</div> : ""}
       </div>
     ) : (
       ""
     );
 
-    return (
+    return video ? (
       <div className={`full-video-player`} onMouseMove={this.handleMouse}>
-        { arrow }
+        {arrow}
 
         <video
-          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          // src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          src={video.url}
           controls
           className="full-video-player-video"
           type="video/mp4"
@@ -85,7 +107,7 @@ export default class VideoPlayer extends React.Component {
           video player is not working!
         </video>
       </div>
-    );
+    ) : ( "" );
   }
 
   renderMainPlayer() {

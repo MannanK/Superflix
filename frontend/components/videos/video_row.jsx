@@ -65,7 +65,6 @@ export default class VideoRow extends React.Component {
       video.play();
 
       this.setState({ detailsHidden: { id: id, value: false } })
-      // setTimeout(() => this.setState({ detailsHidden: {id: id, value: false} }), 400);
     };
   }
 
@@ -94,7 +93,7 @@ export default class VideoRow extends React.Component {
   renderSearchVideos() {
     const { videos, detailsHidden } = this.state;
     const { type } = this.props;
-    debugger;
+    // debugger;
 
     let videoItems = videos.map((video, i) => {
       let className = "video-item";

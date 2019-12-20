@@ -12,13 +12,13 @@ export default class VideoIndex extends React.Component {
     this.props.fetchVideos();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (isEmpty(this.props.videos)) this.props.fetchVideos();
   }
 
-  componentWillUnmount() {
-    this.props.clearVideos();
-  }
+  // componentWillUnmount() {
+  //   this.props.clearVideos();
+  // }
 
   render() {
     const { videos, genres } = this.props;

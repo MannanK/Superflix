@@ -66,9 +66,9 @@ export default class VideoDetails extends React.Component {
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
 
     let videoPlayer = videoShowing ? (
-      <VideoPlayerContainer type="detailsPlayer" visibility="visible" />
+      <VideoPlayerContainer video={video} type="detailsPlayer" visibility="visible" />
     ) : (
-      <VideoPlayerContainer type="detailsPlayer" visibility="closing" />
+      <VideoPlayerContainer video={video} type="detailsPlayer" visibility="closing" />
     );
 
     return (

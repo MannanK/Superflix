@@ -21,7 +21,7 @@ export default class VideoMain extends React.Component {
     const { video } = this.props;
 
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
-    let videoPlayer = <VideoPlayerContainer type="mainPlayer" visibility="visible" />;
+    let videoPlayer = <VideoPlayerContainer video={video} type="mainPlayer" visibility="visible" />;
 
     return (
       <section className={`main-video-details-container`}>

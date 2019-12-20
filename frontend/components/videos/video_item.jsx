@@ -100,6 +100,7 @@ export default class VideoItem extends React.Component {
       </Link >
     );
 
+    debugger;
     let videoDetails = (
       <section className="thumbnail-details-container">
         <div className="thumbnail-details">
@@ -119,13 +120,15 @@ export default class VideoItem extends React.Component {
       <li className={`${className}`} onMouseEnter={this.props.playVideo} onMouseLeave={this.props.stopVideo}>
         {(detailsHidden.id !== video.id) ? (
           <>
-            <img className="video-demo-thumbnail visible" src={window.demoThumbnail} /> 
-            <VideoPlayerContainer type="miniplayer" visibility="invisible" />
+            <img className="video-demo-thumbnail visible" src={video.thumbnail}/>
+            {/* <img className="video-demo-thumbnail visible" src={window.demoThumbnail} />  */}
+            <VideoPlayerContainer video={video} type="miniplayer" visibility="invisible" />
           </>
         ) : (
           <>
-            <img className="video-demo-thumbnail invisible" src={window.demoThumbnail} />
-            <VideoPlayerContainer type="miniplayer" visibility="visible" />
+            <img className="video-demo-thumbnail visible" src={video.thumbnail} />
+            {/* <img className="video-demo-thumbnail invisible" src={window.demoThumbnail} /> */}
+            <VideoPlayerContainer video={video} type="miniplayer" visibility="visible" />
           </>
         )}
 

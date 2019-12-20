@@ -11,11 +11,11 @@ class Api::VideosController < ApplicationController
   end
 
   def show
-    @video = Video.find(params[:id])
-      .with_attached_thumbnail
+    @video = Video.with_attached_thumbnail
       .with_attached_url
+      .find(params[:id])
 
-    @genres = @video.genres
+    @genres = Genre.all.includes(:videos)
   end
 
   def search
