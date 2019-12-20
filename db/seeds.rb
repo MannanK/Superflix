@@ -195,7 +195,7 @@ captainAmericaWinterSoldier = Video.create!(
 )
 captainAmericaWinterSoldier.url.attach(io: open("https://superflix-seeds.s3.amazonaws.com/tws_trailer.mp4"), filename: "tws_trailer.mp4")
 captainAmericaWinterSoldier.thumbnail.attach(io: open("https://superflix-seeds.s3.amazonaws.com/capTWS_ws.jfif"), filename: "capTWS_ws.jfif")
-captainAmericaWinterSoldier.logo.attach(io: open("capTWS_logo.png"), filename: "https://superflix-seeds.s3.amazonaws.com/capTWS_logo.png")
+captainAmericaWinterSoldier.logo.attach(io: open("https://superflix-seeds.s3.amazonaws.com/capTWS_logo.png"), filename: "capTWS_logo.png")
 captainAmericaWinterSoldier.genres += [marvel, action]
 
 marvelsDaredevil = Video.create!(
