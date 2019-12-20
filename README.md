@@ -9,6 +9,10 @@
 
 Superflix is a Netflix clone made specifically for comic-book movie/show lovers and superhero lovers. Like Netflix, Superflix allows you to stream videos (in this case, trailers for shows and movies) at any time you please, as long as you have registered for an account on the site. The app was made using **Ruby on Rails** for the backend, **PostgreSQL** for the backend database, **React/Redux** for the frontend, and **Amazon AWS S3** for cloud storage of image and video files.
 
+![alt text][mainpage]
+
+[mainpage]: https://raw.githubusercontent.com/MannanK/Superflix/master/app/assets/images/mainpage_1.png "Main page"
+
 ### Features
 
 * User authentication on the frontend and backend (implemented using **session tokens** in the backend and **bootstrapping** + **protected/auth routes** in the frontend
@@ -18,6 +22,10 @@ Superflix is a Netflix clone made specifically for comic-book movie/show lovers 
 * A search feature which searches the database based on title and/or year matches; like Netflix, the search bar activates only after the user has stopped typing for a certain amount of time (implemented using **debounce**)
 
 ### Netflix Carousel and Hovering over Videos
+
+![alt text][mainpage_2]
+
+[mainpage_2]: https://github.com/MannanK/Superflix/blob/master/app/assets/images/mainpage_2.png?raw=true "Main page 2"
 
 * A video starts playing once the user has hovered over a thumbnail (using event handlers **onMouseEnter** and **onMouseLeave**)
 * Using CSS3 transitions, thumbnails scale by a factor of 1.9 when hovered over, while also pushing the thumbnails on both sides in the same row so they aren't scaled over and blocked (with the use of **translate3d** on the X axis)
@@ -75,6 +83,10 @@ let rightButton = (
 ```
 
 ### Details Pane
+
+![alt text][detailspage_1]
+
+[detailspage_1]: https://github.com/MannanK/Superflix/blob/master/app/assets/images/detailspage_1.png?raw=true "Details pane"
 
 * A user can click on the down arrow in any thumbnail to see extended details about each video (a new component is rendered at a new route; each details pane can be accessed directly via the route **/browse/{genre-name}/{video-id}**)
 * Upon the pane opening, the rest of the items in the current row get grayed out (using **rgba** values), but are still accessible
