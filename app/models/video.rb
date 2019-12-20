@@ -18,6 +18,7 @@ class Video < ApplicationRecord
 
   has_one_attached :url
   has_one_attached :thumbnail
+  has_one_attached :logo
 
   has_many :video_genres
   has_many :genres,

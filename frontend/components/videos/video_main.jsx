@@ -18,6 +18,7 @@ export default class VideoMain extends React.Component {
   }
 
   render() {
+    debugger;
     const { video } = this.props;
 
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
@@ -28,7 +29,7 @@ export default class VideoMain extends React.Component {
         {videoPlayer}
 
         {/* replace this with the logo for the show, video["logo"]? */}
-        <img className="main-video-logo" src={window.logo} />
+        <img className="main-video-logo" src={video.logo} />
 
         <section className="main-video-details">
           <section className="info">

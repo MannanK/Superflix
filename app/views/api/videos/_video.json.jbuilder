@@ -12,4 +12,10 @@ elsif
   json.url "404 NO URL"
 end
 
+if (video.logo.attached?)
+  json.logo url_for(video.logo)
+elsif
+  json.logo "404 NO URL"
+end
+
 json.genreIds video.genres.pluck(:id)

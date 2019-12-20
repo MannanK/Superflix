@@ -3,6 +3,7 @@ class Api::VideosController < ApplicationController
     @videos = Video.all
       .with_attached_thumbnail
       .with_attached_url
+      .with_attached_logo
       .includes(:genres)
 
     @genres = Genre.all.includes(:videos)
@@ -13,6 +14,7 @@ class Api::VideosController < ApplicationController
   def show
     @video = Video.with_attached_thumbnail
       .with_attached_url
+      .with_attached_logo
       .find(params[:id])
 
     @genres = Genre.all.includes(:videos)
@@ -24,12 +26,14 @@ class Api::VideosController < ApplicationController
     @videos = Video.where("translate(title, ':-', '') ILIKE ?", "#{queryParams}%")
       .with_attached_thumbnail
       .with_attached_url
+      .with_attached_logo
       .includes(:genres)
 
     if @videos.length < 15
       @videos += Video.where("translate(title, ':-', '') ILIKE ?", "%#{queryParams}%")
         .with_attached_thumbnail
         .with_attached_url
+        .with_attached_logo
         .includes(:genres)
         .uniq
 
@@ -37,6 +41,7 @@ class Api::VideosController < ApplicationController
         @videos += Video.where("year = ?", "#{queryParams}")
           .with_attached_thumbnail
           .with_attached_url
+          .with_attached_logo
           .includes(:genres)
           .uniq
       end

@@ -69,8 +69,8 @@
 }
 
 .video-demo-thumbnail {
-  width: 100%;
-  height: auto;
+  max-width: 100%;
+  min-height: 100%;
   z-index: -1;
 }
 

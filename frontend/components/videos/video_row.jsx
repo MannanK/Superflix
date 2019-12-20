@@ -172,7 +172,7 @@ export default class VideoRow extends React.Component {
   }
 
   renderMoreThanSixVideos() {
-    debugger;
+    // debugger;
     const { videos, videosRemaining, pageNum, showButtonArrow, detailsHidden } = this.state;
     const { genre } = this.props;
     let currentIndex = pageNum*6;

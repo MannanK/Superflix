@@ -74,7 +74,7 @@ export default class VideoItem extends React.Component {
 
     return (
       <li className={`${className}`} onMouseEnter={this.showBackgroundDetails(true)} onMouseLeave={this.showBackgroundDetails(false)}>
-        <img className="video-demo-thumbnail visible" src={window.demoThumbnail} />
+        <img className="video-demo-thumbnail visible" src={video.thumbnail} />
         {details}
       </li>
     );
@@ -100,7 +100,7 @@ export default class VideoItem extends React.Component {
       </Link >
     );
 
-    debugger;
+    // debugger;
     let videoDetails = (
       <section className="thumbnail-details-container">
         <div className="thumbnail-details">

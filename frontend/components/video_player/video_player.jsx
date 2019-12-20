@@ -19,7 +19,7 @@ export default class VideoPlayer extends React.Component {
   }
 
   componentDidMount() {
-    debugger;
+    // debugger;
     // if ((isEmpty(this.props.video) || this.props.video === undefined) && this.props.type === "fullPlayer") {
     if (this.props.type === "fullPlayer") {
       this.props.fetchVideo(this.props.match.params.mediaId);
@@ -27,7 +27,7 @@ export default class VideoPlayer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    debugger;
+    // debugger;
 
     // if ((isEmpty(this.props.video) || this.props.video === undefined || prevProps.type !== this.props.type) && this.props.type === "fullPlayer") {
     if (this.props.type === "fullPlayer" && prevProps.match.params.mediaId !== this.props.match.params.mediaId) {
@@ -65,14 +65,14 @@ export default class VideoPlayer extends React.Component {
   handleGoBack(e) {
     e.preventDefault();
 
-    // this.props.history.goBack();
-    this.props.history.push("/");
+    this.props.history.goBack();
+    // this.props.history.push("/");
   }
 
   renderFullPlayer() {
     const { showLinkText, mouseMoving } = this.state;
     const { video } = this.props;
-    debugger;
+    // debugger;
 
     let arrow = mouseMoving ? (
       <div className="links" onMouseEnter={this.handleFocus(true)} onMouseLeave={this.handleFocus(false)}>
@@ -107,17 +107,19 @@ export default class VideoPlayer extends React.Component {
           video player is not working!
         </video>
       </div>
-    ) : ( "" );
+    ) : "";
   }
 
   renderMainPlayer() {
-    const { visibility } = this.props;
+    debugger;
+    const { visibility, video } = this.props;
 
-    return (
+    return video ? (
       <div className={`main-video-player ${visibility}`}>
         <video
-          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-          autoPlay={visibility === "visible" ? true : false}
+          // src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          src={video.url}
+          autoPlay={visibility === "visible" ? false : false} // TODO: CHANGE FIRST ONE BACK TO TRUE
           muted={true}
           className="main-video-player-video"
           type="video/mp4"
@@ -125,16 +127,17 @@ export default class VideoPlayer extends React.Component {
           video player is not working!
         </video>
       </div>
-    );
+    ) : "";
   }
 
   renderDetailsPlayer() {
-    const { visibility } = this.props;
+    const { visibility, video } = this.props;
 
-    return (
+    return video ? (
       <div className={`details-video-player ${visibility}`}>
         <video
-          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          // src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          src={video.url}
           autoPlay={visibility === "visible" ? true : false} // first autoplay is true, just testing with false right now
           muted={true}
           loop={true}
@@ -144,16 +147,17 @@ export default class VideoPlayer extends React.Component {
           video player is not working!
         </video>
       </div>
-    );
+    ) : "";
   }
 
   renderMiniPlayer() {
-    const { visibility } = this.props;
+    const { visibility, video } = this.props;
 
-    return (
+    return video ? (
       <div className={`mini-video-player ${visibility}`}>
         <video
-          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          // src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          src={video.url}
           autoPlay={visibility === "invisible" ? false : true}
           muted={true}
           loop={true}
@@ -164,10 +168,11 @@ export default class VideoPlayer extends React.Component {
           video player is not working!
         </video>
       </div>
-    );
+    ) : "";
   }
 
   render() {
+    // debugger;
     const { type } = this.props;
 
     switch (type) {
