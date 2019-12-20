@@ -13,7 +13,7 @@ export default class VideoIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    debugger;
+    // debugger;
     if (isEmpty(this.props.videos) || prevProps.location.pathname.startsWith("watch")) this.props.fetchVideos();
   }
 
@@ -22,7 +22,7 @@ export default class VideoIndex extends React.Component {
   // }
 
   render() {
-    debugger;
+    // debugger;
     const { videos, genres } = this.props;
 
     let videoMain = isEmpty(videos) ? "" : <VideoMain video={Object.values(videos)[0]} genres={genres} />;
@@ -41,7 +41,7 @@ export default class VideoIndex extends React.Component {
       })
     );
 
-    debugger;
+    // debugger;
     return (
       <div className="video-index-container">
         <span className="video-index-container-bg"></span>

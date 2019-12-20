@@ -10,7 +10,7 @@
   box-sizing: border-box;
   position: relative;
   background: black;
-  z-index: 1;
+  z-index: 5;
 
   animation-name: slideDown;
   animation-duration: 1s;

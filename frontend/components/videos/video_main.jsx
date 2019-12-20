@@ -18,7 +18,7 @@ export default class VideoMain extends React.Component {
   }
 
   render() {
-    debugger;
+    // debugger;
     const { video } = this.props;
 
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
