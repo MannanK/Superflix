@@ -172,7 +172,6 @@
 
 .main-video-details .buttons {
   margin-top: 1.6%;
-  transition: all 600ms ease-in;
 }
 
 .main-video-details .buttons a > * {
@@ -189,10 +188,14 @@
   margin-right: 1%;
 }
 
+.main-video-details .buttons .play, .main-video-details .buttons .my-list {
+  transition: all 100ms linear 100ms;
+}
+
 .main-video-details .buttons .play:hover, .main-video-details .buttons .my-list:hover {
   background-color: #E6E6E6;
   color: black;
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .main-video-details aside {
@@ -211,10 +214,12 @@
   border: 2px solid gray;
   color: white;
   border-radius: 50%;
+  transition: all 100ms linear;
 }
 
 .main-video-details aside button:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
+  border-color: white;
   cursor: pointer;
 }
 

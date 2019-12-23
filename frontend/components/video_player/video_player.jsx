@@ -73,7 +73,6 @@ export default class VideoPlayer extends React.Component {
     let arrow = mouseMoving ? (
       <div className="links" onMouseEnter={this.handleFocus(true)} onMouseLeave={this.handleFocus(false)}>
         <div
-          to={"/browse"}
           className="button-link"
           onClick={this.handleGoBack}
         >

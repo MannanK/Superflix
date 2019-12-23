@@ -13,18 +13,22 @@ export default class VideoIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (isEmpty(this.props.videos) || prevProps.location.pathname.startsWith("watch")) this.props.fetchVideos();
+    if (isEmpty(this.props.videos) || 
+      Object.keys(this.props.videos).length === 1 || 
+      prevProps.location.pathname.startsWith("watch")
+    ) this.props.fetchVideos();
   }
 
-  // componentWillUnmount() {
-  //   this.props.clearVideos();
-  // }
+  componentWillUnmount() {
+    this.props.clearVideos();
+  }
 
   render() {
     const { videos, genres } = this.props;
+    const videosLength = Object.keys(videos).length;
 
-    let videoMain = isEmpty(videos) ? "" : <VideoMain video={Object.values(videos)[0]} genres={genres} />;
-    let videoRows = isEmpty(videos) ? "" : (
+    let videoMain = isEmpty(videos) || videosLength === 1 ? "" : <VideoMain video={Object.values(videos)[0]} genres={genres} />;
+    let videoRows = isEmpty(videos) || videosLength === 1 ? "" : (
       Object.values(genres).map(genre => {
         if (genre.name !== "Marvel" && genre.name !== "DC") {
           let videoIds = genre["videoIds"];
