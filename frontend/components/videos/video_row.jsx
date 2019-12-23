@@ -93,7 +93,6 @@ export default class VideoRow extends React.Component {
   renderSearchVideos() {
     const { videos, detailsHidden } = this.state;
     const { type } = this.props;
-    // debugger;
 
     let videoItems = videos.map((video, i) => {
       let className = "video-item";
@@ -130,7 +129,6 @@ export default class VideoRow extends React.Component {
   }
 
   renderLessThanSixVideos() {
-    // debugger;
     const { videos, detailsHidden } = this.state;
     const { genre } = this.props;
     
@@ -172,7 +170,6 @@ export default class VideoRow extends React.Component {
   }
 
   renderMoreThanSixVideos() {
-    // debugger;
     const { videos, videosRemaining, pageNum, showButtonArrow, detailsHidden } = this.state;
     const { genre } = this.props;
     let currentIndex = pageNum*6;

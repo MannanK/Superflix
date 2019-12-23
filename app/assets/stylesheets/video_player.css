@@ -101,6 +101,7 @@
 /* ------- MAIN VIDEO PLAYER ------- */
 
 .main-video-player {
+  display: flex;
   position: absolute;
   left: 0;
   right: 0;

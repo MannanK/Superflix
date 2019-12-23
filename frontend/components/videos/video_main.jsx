@@ -5,6 +5,12 @@ import { Link } from 'react-router-dom';
 export default class VideoMain extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      muted: true
+    };
+
+    this.toggleMute = this.toggleMute.bind(this);
   }
 
   getGenreNames() {
@@ -17,19 +23,41 @@ export default class VideoMain extends React.Component {
     return genreNames.join(", ");
   }
 
+  toggleMute(e) {
+    e.preventDefault();
+
+    let videoEl = document.getElementsByClassName("main-video-player-video")[0];
+    
+    this.setState({
+      muted: !this.state.muted
+    });
+    videoEl.muted = !videoEl.muted;
+  }
+
   render() {
-    // debugger;
     const { video } = this.props;
+    const { muted } = this.state;
 
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
     let videoPlayer = <VideoPlayerContainer video={video} type="mainPlayer" visibility="visible" />;
+    //let videoEl = document.getElementsByClassName("main-video-player-video")[0];
+
+    let volumeButton = muted ? (
+      <button onClick={this.toggleMute}>
+        <i className="material-icons">volume_off</i>
+      </button>
+    ) : (
+      <button onClick={this.toggleMute}>
+        <i className="material-icons">volume_up</i>
+      </button>
+    );
 
     return (
       <section className={`main-video-details-container`}>
         {videoPlayer}
 
-        {/* replace this with the logo for the show, video["logo"]? */}
-        <img className="main-video-logo" src={video.logo} />
+        {/* <img className="main-video-logo" src={video.logo} /> */}
+        <img className="main-video-logo" src={window.logo} />
 
         <section className="main-video-details">
           <section className="info">
@@ -55,6 +83,11 @@ export default class VideoMain extends React.Component {
               </button>
             </Link>
           </section>
+
+          <aside>
+            {volumeButton}
+            <div className="rating"><span>{video.maturity_rating}</span></div>
+          </aside>
         </section>
       </section>
     );

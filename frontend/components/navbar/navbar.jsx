@@ -55,7 +55,6 @@ export default class NavBar extends React.Component {
       query
     });
 
-    // debugger;
     if (query === "") {
       this.setState({ query: "" });
       this.props.history.push("/");

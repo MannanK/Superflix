@@ -5,7 +5,7 @@
   bottom: 0;
   left: 0;
   color: white;
-  overflow: hidden;
+  overflow-x: hidden;
 
   -webkit-animation: fadein 500ms; /* Safari, Chrome */	
   -moz-animation: fadein 500ms; /* Firefox*/	

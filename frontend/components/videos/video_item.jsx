@@ -34,8 +34,6 @@ export default class VideoItem extends React.Component {
     const { backgroundDetails } = this.state;
     const isCurrentItem = location.pathname.split("/")[3] == video.id;
 
-    // debugger;
-
     let className = isCurrentItem ? (
       "main inbackground-video-item"
     ) : (
@@ -74,7 +72,8 @@ export default class VideoItem extends React.Component {
 
     return (
       <li className={`${className}`} onMouseEnter={this.showBackgroundDetails(true)} onMouseLeave={this.showBackgroundDetails(false)}>
-        <img className="video-demo-thumbnail visible" src={video.thumbnail} />
+        {/* <img className="video-demo-thumbnail visible" src={video.thumbnail} /> */}
+        <img className="video-demo-thumbnail visible" src={window.demoThumbnail} />
         {details}
       </li>
     );
@@ -100,7 +99,6 @@ export default class VideoItem extends React.Component {
       </Link >
     );
 
-    // debugger;
     let videoDetails = (
       <section className="thumbnail-details-container">
         <div className="thumbnail-details">
@@ -120,14 +118,14 @@ export default class VideoItem extends React.Component {
       <li className={`${className}`} onMouseEnter={this.props.playVideo} onMouseLeave={this.props.stopVideo}>
         {(detailsHidden.id !== video.id) ? (
           <>
-            <img className="video-demo-thumbnail visible" src={video.thumbnail}/>
-            {/* <img className="video-demo-thumbnail visible" src={window.demoThumbnail} />  */}
+            {/* <img className="video-demo-thumbnail visible" src={video.thumbnail}/> */}
+            <img className="video-demo-thumbnail visible" src={window.demoThumbnail} /> 
             <VideoPlayerContainer video={video} type="miniplayer" visibility="invisible" />
           </>
         ) : (
           <>
-            <img className="video-demo-thumbnail visible" src={video.thumbnail} />
-            {/* <img className="video-demo-thumbnail invisible" src={window.demoThumbnail} /> */}
+            {/* <img className="video-demo-thumbnail visible" src={video.thumbnail} /> */}
+            <img className="video-demo-thumbnail invisible" src={window.demoThumbnail} />
             <VideoPlayerContainer video={video} type="miniplayer" visibility="visible" />
           </>
         )}
@@ -140,8 +138,6 @@ export default class VideoItem extends React.Component {
   render() {
     const { location, myGenre } = this.props;
     let { className } = this.props;
-
-    // debugger;
 
     className = (location.pathname === "/browse" || 
       location.pathname === "/browse/" ||
