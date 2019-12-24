@@ -29,22 +29,33 @@ class Api::VideosController < ApplicationController
       .with_attached_logo
       .includes(:genres)
 
-    if @videos.length < 15
-      @videos += Video.where("translate(title, ':-', '') ILIKE ?", "%#{queryParams}%")
+    @videos += Video.where("translate(title, ':-', '') ILIKE ?", "%#{queryParams}%")
+      .with_attached_thumbnail
+      .with_attached_url
+      .with_attached_logo
+      .includes(:genres)
+      .uniq
+
+    genre = queryParams[0].upcase + queryParams[1..-1].downcase
+    if genre == "Dc" then genre = "DC" end
+    if genre == "Sci-fi" then genre = "Sci-Fi" end
+    if Genre.find_by_name(genre)
+      @videos += Genre.find_by_name(genre)
+      .videos
+      .with_attached_thumbnail
+      .with_attached_url
+      .with_attached_logo
+      .includes(:genres)
+      .uniq
+    end
+
+    if queryParams.to_i.to_s == queryParams
+      @videos += Video.where("year = ?", "#{queryParams}")
         .with_attached_thumbnail
         .with_attached_url
         .with_attached_logo
         .includes(:genres)
         .uniq
-
-      if @videos.length < 30 && queryParams.to_i.to_s == queryParams
-        @videos += Video.where("year = ?", "#{queryParams}")
-          .with_attached_thumbnail
-          .with_attached_url
-          .with_attached_logo
-          .includes(:genres)
-          .uniq
-      end
     end
 
     @genres = Genre.all.includes(:videos)

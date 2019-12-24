@@ -92,7 +92,7 @@ export default class NavBar extends React.Component {
         <input
           type="text"
           className={`search-input ${searchBarClass}`}
-          placeholder="Titles, year"
+          placeholder="Titles, genres, year"
           value={this.state.query}
           onChange={this.handleInput}
         />

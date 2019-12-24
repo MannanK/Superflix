@@ -73,6 +73,7 @@ export default class SearchIndex extends React.Component {
             <li>Try different keywords</li>
             <li>Looking for a movie or TV show?</li>
             <li>Try using a movie, TV show title, or year</li>
+            <li>Try a genre, like comedy, action, Marvel, or DC</li>
           </ul>
         </div>
       </div>
