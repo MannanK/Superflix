@@ -22,8 +22,13 @@ export default class VideoDetails extends React.Component {
     if (this.state.detailsShowing && // detail pane was showing
         !this.userPressedPlay && // user isn't trying to go to the watch page
         historyPath[1] !== "watch" && //  user isn't trying to go to the watch page
-        currentPath[2] === historyPath[2]) // user is trying to close the current details pane
-      this.closeDetails();
+        currentPath[2] === historyPath[2]) { // user is trying to close the current details pane
+      if (currentPath[1] === 'search') {
+        this.closeDetails(null);
+      } else {
+        this.closeDetails();
+      }
+    }
 
     if (historyPath[1] === currentPath[1]) {
       this.closeDetails("inRow");

@@ -16,7 +16,7 @@
 
 #search-index-empty {
   width: 100%;
-  height: 7vw;
+  height: 7.5vw;
   content: "";
   z-index: -1;
 }
@@ -41,12 +41,12 @@
 }
 
 #did-not-match {
-  margin-bottom: 3%;
+  margin-bottom: 4%;
 }
 
 #suggestions {
   align-self: flex-start;
-  margin-bottom: 3%;
+  margin-bottom: 4%;
 }
 
 .error-suggestions-list {
