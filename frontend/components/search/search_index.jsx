@@ -28,7 +28,7 @@ export default class SearchIndex extends React.Component {
   render() {
     const { videos } = this.props;
 
-    let videoRows = [];
+    let searchResults = [];
 
     if (!isEmpty(videos)) {
       let vidsArray = Object.values(videos);
@@ -38,30 +38,44 @@ export default class SearchIndex extends React.Component {
         videoRow.push(vidsArray[i]);
 
         if ((i + 1) % 6 === 0) {
-          videoRows.push(
+          searchResults.push(
             <VideoRowContainer key={i} index={i} videos={videoRow} type="search" />
           );
           videoRow = [];
         } else if (i === vidsArray.length-1) {
-          videoRows.push(
+          searchResults.push(
             <VideoRowContainer key={i} index={i} videos={videoRow} type="search" />
           );
         }
       }
     }
 
-    if (videoRows.length === 0) videoRows = "";
-
-    return (
+    return searchResults.length > 0 ? (
       <div className="search-index-container">
         <span className="search-index-container-bg"></span>
         <div id="search-index-empty"></div>
         <div className="search-video-container">
           <section className="search-row-container">
-            {videoRows}
+            {searchResults}
           </section>
         </div>
       </div>
-    );
+    ) : (
+      <div className="search-index-container">
+        <span className="search-index-container-bg"></span>
+        <div id="search-index-empty"></div>
+        <div className="search-no-results-container">
+          <p id="did-not-match">
+            Your search for "{this.props.match.params.query}" did not have any matches.
+          </p>
+          <p id="suggestions">Suggestions:</p>
+          <ul className="error-suggestions-list">
+            <li>Try different keywords</li>
+            <li>Looking for a movie or TV show?</li>
+            <li>Try using a movie, TV show title, or year</li>
+          </ul>
+        </div>
+      </div>
+    )
   }
 }

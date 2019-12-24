@@ -27,3 +27,29 @@
   display: flex;
   flex-direction: column;
 }
+
+.search-no-results-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12vw;
+  flex-direction: column;
+  width: fit-content;
+  margin: auto;
+  font-size: 0.8vw;
+}
+
+#did-not-match {
+  margin-bottom: 3%;
+}
+
+#suggestions {
+  align-self: flex-start;
+  margin-bottom: 3%;
+}
+
+.error-suggestions-list {
+  align-self: flex-start;
+  padding-left: 10%;
+}
