@@ -30,10 +30,15 @@ export default class VideoItem extends React.Component {
   }
 
   renderBackgroundItem() {
-    const { video, myGenre, location, type } = this.props;
+    const { video, myGenre, location, type, myRow } = this.props;
     const { backgroundDetails } = this.state;
-    const isCurrentItem = location.pathname.split("/")[3] == video.id;
+    const isCurrentItem = type === 'search' ? (
+      location.pathname.split("/")[4] == video.id
+    ) : (
+      location.pathname.split("/")[3] == video.id
+    );
 
+    let params = this.props.match.params;
     let className = isCurrentItem ? (
       "main inbackground-video-item"
     ) : (
@@ -48,12 +53,12 @@ export default class VideoItem extends React.Component {
 
     let dropdownArrow = isCurrentItem ? "" : (
       type === "search" ? (
-        // <Link to={`/search/details/${video.id}`} className="background-link" >
-        //   <div className="background-down-arrow">
-        //     <i className="fas fa-chevron-down"></i>
-        //   </div>
-        // </Link>
-        ""
+        <Link to={`/search/${params.query}/${myRow}/${video.id}`} className="background-link" >
+          <div className="background-down-arrow">
+            <i className="fas fa-chevron-down"></i>
+          </div>
+        </Link>
+        // ""
       ) : (
         <Link to = {`/browse/${myGenre.name.toLowerCase()}/${video.id}`} className = "background-link" >
           <div className="background-down-arrow">
@@ -80,17 +85,18 @@ export default class VideoItem extends React.Component {
   }
 
   renderThumbnail(className) {
-    const { video, myGenre, detailsHidden, type } = this.props;
+    const { video, myGenre, detailsHidden, type, myRow } = this.props;
 
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
+    let params = this.props.match.params;
 
     let downArrowLink = type === "search" ? (
-      // <Link to={`/search/details/${video.id}`}>
-      //   <div className="details-down-arrow">
-      //     <i className="fas fa-chevron-down"></i>
-      //   </div>
-      // </Link >
-      ""
+      <Link to={`/search/${params.query}/${myRow}/${video.id}`}>
+        <div className="details-down-arrow">
+          <i className="fas fa-chevron-down"></i>
+        </div>
+      </Link >
+      // ""
     ) : (
       <Link to = {`/browse/${myGenre.name.toLowerCase()}/${video.id}`}>
         <div className="details-down-arrow">
@@ -137,7 +143,7 @@ export default class VideoItem extends React.Component {
 
   render() {
     const { location, myGenre } = this.props;
-    let { className } = this.props;
+    let { className, myRow } = this.props;
 
     className = (location.pathname === "/browse" || 
       location.pathname === "/browse/" ||
@@ -146,8 +152,8 @@ export default class VideoItem extends React.Component {
     ) ? (
         className
     ) : (
-      (location.pathname.split("/")[2] === "details") ||
-      (location.pathname.split("/")[2] === myGenre.name.toLowerCase()) ? (
+      (location.pathname.split("/")[3] == myRow) ||
+      (myGenre && location.pathname.split("/")[2] === myGenre.name.toLowerCase()) ? (
         "inbackground-video-item"
       ) : (
         className

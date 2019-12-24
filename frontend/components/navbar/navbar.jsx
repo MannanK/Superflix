@@ -64,10 +64,7 @@ export default class NavBar extends React.Component {
   }
 
   debouncedMakeRequest(query) {
-    this.props.history.push({
-      pathname: '/search',
-      search: `?q=${query}`
-    });
+    this.props.history.push(`/search/${query}`);
   }
 
   userLoggedIn() {

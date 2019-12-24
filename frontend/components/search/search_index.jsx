@@ -1,6 +1,5 @@
 import React from 'react';
 import VideoRowContainer from '../videos/video_row_container';
-import queryString from 'query-string';
 import { isEmpty } from 'lodash';
 
 export default class SearchIndex extends React.Component {
@@ -13,16 +12,16 @@ export default class SearchIndex extends React.Component {
   }
 
   componentDidMount() {
-    let queryParams = queryString.parse(this.props.location.search);
-    this.props.searchVideos(queryParams.q);
+    let queryParams = this.props.match.params.query;
+    this.props.searchVideos(queryParams);
   }
 
   componentDidUpdate(prevProps) {
-    let currentQuery = queryString.parse(this.props.location.search);
-    let prevQuery = queryString.parse(prevProps.location.search);
+    let currentQuery = this.props.match.params.query;
+    let prevQuery = prevProps.match.params.query;
 
-    if (currentQuery.q !== prevQuery.q) {
-      this.props.searchVideos(currentQuery.q);
+    if (currentQuery !== prevQuery) {
+      this.props.searchVideos(currentQuery);
     }
   }
 
@@ -40,12 +39,12 @@ export default class SearchIndex extends React.Component {
 
         if ((i + 1) % 6 === 0) {
           videoRows.push(
-            <VideoRowContainer key={i} videos={videoRow} type="search" />
+            <VideoRowContainer key={i} index={i} videos={videoRow} type="search" />
           );
           videoRow = [];
         } else if (i === vidsArray.length-1) {
           videoRows.push(
-            <VideoRowContainer key={i} videos={videoRow} type="search" />
+            <VideoRowContainer key={i} index={i} videos={videoRow} type="search" />
           );
         }
       }

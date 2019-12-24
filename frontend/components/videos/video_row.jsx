@@ -87,12 +87,16 @@ export default class VideoRow extends React.Component {
       setTimeout(() => {
         this.props.history.push("/browse");
       }, 600);
+    } else if (testprop === "closing-search") {
+      setTimeout(() => {
+        this.props.history.push(`/search/${this.props.match.params.query}`);
+      }, 600);
     }
   }
 
   renderSearchVideos() {
     const { videos, detailsHidden } = this.state;
-    const { type } = this.props;
+    const { index } = this.props;
 
     let videoItems = videos.map((video, i) => {
       let className = "video-item";
@@ -101,6 +105,7 @@ export default class VideoRow extends React.Component {
 
       return <VideoItemContainer
         key={i}
+        myRow={index}
         video={video}
         className={className}
         type="search"
@@ -120,7 +125,7 @@ export default class VideoRow extends React.Component {
           </ul>
 
           <Route
-            exact path={`/search/details/:movieId`}
+            path={`/search/${this.props.match.params.query}/${index}/:movieId`}
             render={(props) => <VideoDetailsContainer closeDetails={this.closeDetails} {...props} />}
           />
         </div>
@@ -153,13 +158,11 @@ export default class VideoRow extends React.Component {
         <h1 className="video-row-genre">{genre.name}</h1>
         <div className="individual-row-container">
           <ul className="video-row-outer">
-            {/* <h1 className="video-row-genre">{genre.name}</h1> */}
             <ul className="video-row-inner">
               {videoItems}
             </ul>
           </ul>
 
-          {/* <Route path={`/browse/${genre.name.toLowerCase()}/:movieId`} component={VideoDetailsContainer} closeDetails={this.closeDetails}/> */}
           <Route
             exact path={`/browse/${genre.name.toLowerCase()}/:movieId`}
             render={(props) => <VideoDetailsContainer closeDetails={this.closeDetails} {...props} />}

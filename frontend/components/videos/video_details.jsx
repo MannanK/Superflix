@@ -25,8 +25,6 @@ export default class VideoDetails extends React.Component {
         currentPath[2] === historyPath[2]) // user is trying to close the current details pane
       this.closeDetails();
 
-    // maybe check if closing the current video details?
-
     if (historyPath[1] === currentPath[1]) {
       this.closeDetails("inRow");
     }
@@ -34,10 +32,6 @@ export default class VideoDetails extends React.Component {
 
   componentDidMount() {
     this.userPressedPlay = false;
-  }
-
-  componentDidUpdate() {
-    // check if props paramsId is same as last one, if it is then dont change userPressedPlay?
   }
 
   closeDetails(inRow) {
@@ -71,9 +65,15 @@ export default class VideoDetails extends React.Component {
       <VideoPlayerContainer video={video} type="detailsPlayer" visibility="closing" />
     );
 
+    let closeDetailsProp = this.props.location.pathname.startsWith("/search") ? (
+      "closing-search"
+    ) : (
+      "closing"
+    );
+
     return (
       <section className={`video-details-container${closingClass}`}>
-        <button className="close-button" onClick={() => this.closeDetails("closing")}>
+        <button className="close-button" onClick={() => this.closeDetails(closeDetailsProp)}>
           <i className="fas fa-times"></i>
         </button>
 
