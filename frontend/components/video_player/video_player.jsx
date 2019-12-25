@@ -134,6 +134,7 @@ export default class VideoPlayer extends React.Component {
           src="https://media.w3.org/2010/05/sintel/trailer.mp4"
           // src={video.url}
           autoPlay={visibility === "visible" ? true : false} // first autoplay is true, just testing with false right now
+          muted={true}
           className="details-video-player-video"
           type="video/mp4"
         >

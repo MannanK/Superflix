@@ -62,7 +62,7 @@ export default class VideoMain extends React.Component {
         <section className="main-video-details">
           <section className="info">
             <h2>{video.title}</h2>
-            <h2>{video.year}, {video.maturity_rating}, {formattedDuration}</h2>
+            <h2>{video.year}, {formattedDuration}</h2>
             <h2>Genres: {this.getGenreNames()}</h2>
           </section>
 

@@ -90,6 +90,34 @@
   transform: scale(1.05);
 }
 
+/* ------- VIDEO DETAILS VOLUME BUTTON ------- */
+
+.video-details-container aside {
+  align-self: flex-end;
+  position: absolute;
+  bottom: 3vw;
+  right: 1.5vw;
+}
+
+.video-details-container aside button {
+  background: rgba(0,0,0,0.5);
+  border: 2px solid gray;
+  color: white;
+  border-radius: 50%;
+  transition: all 100ms linear;
+}
+
+.video-details-container aside button:hover {
+  transform: scale(1.15);
+  border-color: white;
+  cursor: pointer;
+}
+
+.video-details-container .material-icons {
+  font-size: 0.8vw;
+  padding: 0.2vw;
+}
+
 /* ------- VIDEO DETAILS CLOSE BUTTON ------- */
 
 .close-button {

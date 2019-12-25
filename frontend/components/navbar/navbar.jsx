@@ -32,12 +32,19 @@ export default class NavBar extends React.Component {
       case "/":
         linkText = "Home";
         break;
+      case "/browse":
+        linkText = "Home";
+        break;
       default:
         linkText = "This isn't supposed to be here!";
         break;
     }
 
     if (this.props.location.pathname === route) {
+      return (
+        <Link to={route} className="nav-bar-link active">{linkText}</Link>
+      );
+    } else if (route === "/" && this.props.location.pathname === "/browse") {
       return (
         <Link to={route} className="nav-bar-link active">{linkText}</Link>
       );

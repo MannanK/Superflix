@@ -8,11 +8,13 @@ export default class VideoDetails extends React.Component {
 
     this.state = {
       detailsShowing: true, // for the CSS slide up transition to show
-      videoShowing: true
+      videoShowing: true,
+      muted: true
     };
 
     this.userPressedPlay = false;
     this.closeDetails = this.closeDetails.bind(this);
+    this.toggleMute = this.toggleMute.bind(this);
   }
 
   componentWillUnmount() {
@@ -57,12 +59,33 @@ export default class VideoDetails extends React.Component {
     return genreNames.join(", ");
   }
 
+  toggleMute(e) {
+    e.preventDefault();
+
+    let videoEl = document.getElementsByClassName("details-video-player-video")[0];
+
+    this.setState({
+      muted: !this.state.muted
+    });
+    videoEl.muted = !videoEl.muted;
+  }
+
   render() {
-    const { detailsShowing, videoShowing } = this.state;
+    const { detailsShowing, videoShowing, muted } = this.state;
     const { video } = this.props;
 
     let closingClass = detailsShowing ? "" : " not-showing";
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
+
+    let volumeButton = muted ? (
+      <button onClick={this.toggleMute}>
+        <i className="material-icons">volume_off</i>
+      </button>
+    ) : (
+        <button onClick={this.toggleMute}>
+          <i className="material-icons">volume_up</i>
+        </button>
+      );
 
     let videoPlayer = videoShowing ? (
       <VideoPlayerContainer video={video} type="detailsPlayer" visibility="visible" />
@@ -110,6 +133,10 @@ export default class VideoDetails extends React.Component {
             </Link>
           </section>
         </section>
+
+        <aside>
+          {volumeButton}
+        </aside>
 
         { videoPlayer }
       </section>

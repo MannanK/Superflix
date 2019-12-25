@@ -36,6 +36,8 @@
   width: fit-content;
   margin: auto;
   font-size: 0.8vw;
+  pointer-events: none;
+  user-select: none;
 }
 
 #did-not-match {
