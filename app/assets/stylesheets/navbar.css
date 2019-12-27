@@ -174,10 +174,10 @@ header {
 .nav-bar-links-container {
   position: relative;
   display: flex;
-  width: 13.5vw;
+  width: 15.5vw;
   justify-content: space-evenly;
   align-self: center;
-  right: 35vw;
+  right: 34vw;
   bottom: 0.5vh;
 }
 

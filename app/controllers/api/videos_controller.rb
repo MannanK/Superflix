@@ -20,6 +20,38 @@ class Api::VideosController < ApplicationController
     @genres = Genre.all.includes(:videos)
   end
 
+  def shows
+    @videos = Video.where(video_type: "SHOW")
+      .with_attached_url
+      .with_attached_logo
+      .with_attached_thumbnail
+      .includes(:genres)
+
+    # @genres = Genre.all.includes(:videos)
+    @genres = [];
+    @videos.each do |video|
+      @genres += video.genres
+    end
+    @genres = @genres.uniq
+  end
+
+  def movies
+    @videos = Video.where(video_type: "MOVIE")
+      .with_attached_url
+      .with_attached_logo
+      .with_attached_thumbnail
+      .includes(:genres)
+
+    # @genres = Genre.all.includes(:videos)
+    @genres = [];
+    @videos.each do |video|
+      @genres += video.genres
+    end
+    @genres = @genres.uniq
+    
+    render :index
+  end
+
   def search
     queryParams = params[:query_params]
 
