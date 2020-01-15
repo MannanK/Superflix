@@ -179,12 +179,30 @@ header {
   align-self: center;
   right: 34vw;
   bottom: 0.5vh;
+
+  @media only screen and (max-width: 1680px) {
+    width: 17.5vw;
+    right: 33.2vw;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    width: 18.5vw;
+    right: 32.8vw;
+  }
 }
 
 .nav-bar-link {
   color: lightgray;
   text-decoration: none;
   font-size: 0.8vw;
+
+  @media only screen and (max-width: 1680px) {
+    font-size: 0.9vw;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    font-size: 1vw;
+  }
 }
 
 .nav-bar-link.active {
