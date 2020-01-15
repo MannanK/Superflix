@@ -9,6 +9,7 @@ import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import VideoPlayerContainer from './video_player/video_player_container';
 import SearchIndexContainer from './search/search_index_container';
+import GenreIndexContainer from './genres/genre_index_container';
 
 const App = (props) => (
   <div id="main-div">
@@ -17,6 +18,9 @@ const App = (props) => (
     </header>
 
     <Switch>
+      {/* optional :genreId at the end? f.e if someone wants to see shows -> action shows */}
+      <ProtectedRoute path="/browse/genre/shows/:genreId?" component={GenreIndexContainer} type="SHOWS" />
+      <ProtectedRoute path="/browse/genre/movies/:genreId?" component={GenreIndexContainer} type="MOVIES" />
       <ProtectedRoute path="/browse" component={VideoIndexContainer} />
       <ProtectedRoute path="/search/:query" component={SearchIndexContainer} />
       <ProtectedRoute exact path="/watch/:mediaId" component={VideoPlayerContainer} type="fullPlayer" />

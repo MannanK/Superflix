@@ -221,7 +221,13 @@ export default class VideoRow extends React.Component {
           className = "video-item"
         }
 
-        return <VideoItemContainer key={i} video={video} className={className} myGenre={genre} playVideo={this.playVideo(video.id)} stopVideo={this.stopVideo(video.id)} detailsHidden={detailsHidden} />
+        return <VideoItemContainer
+          key={i} video={video}
+          className={className}
+          myGenre={genre}
+          playVideo={this.playVideo(video.id)}
+          stopVideo={this.stopVideo(video.id)}
+          detailsHidden={detailsHidden} />;
       });
     }
 
