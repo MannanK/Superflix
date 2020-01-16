@@ -62,18 +62,26 @@ export default class VideoRow extends React.Component {
   playVideo(id) {
     return e => {
       let video = e.currentTarget.childNodes[1].childNodes[0];
-      video.play();
+      let isPlaying = video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2;
+      
+      if (!isPlaying) {
+        video.play();
 
-      this.setState({ detailsHidden: { id: id, value: false } })
+        this.setState({ detailsHidden: { id: id, value: false } });
+      }
     };
   }
 
   stopVideo(id) {
     return e => {
       let video = e.currentTarget.childNodes[1].childNodes[0];
-      video.pause();
+      let isPlaying = video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2;
 
-      this.setState({ detailsHidden: {id: null, value: false} });
+      if (isPlaying) {
+        video.pause();
+
+        this.setState({ detailsHidden: { id: null, value: false } });
+      }
     };
   }
 
