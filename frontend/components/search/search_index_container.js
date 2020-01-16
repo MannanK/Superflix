@@ -5,7 +5,8 @@ import SearchIndex from './search_index';
 
 const msp = state => ({
   videos: state.entities.videos,
-  genres: state.entities.genres
+  genres: state.entities.genres,
+  errors: state.errors.search
 });
 
 const mdp = dispatch => ({

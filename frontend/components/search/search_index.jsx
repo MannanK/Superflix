@@ -21,12 +21,13 @@ export default class SearchIndex extends React.Component {
     let prevQuery = prevProps.match.params.query;
 
     if (currentQuery !== prevQuery) {
+      this.props.clearVideos();
       this.props.searchVideos(currentQuery);
     }
   }
 
   render() {
-    const { videos } = this.props;
+    const { videos, errors } = this.props;
 
     let searchResults = [];
 
@@ -50,7 +51,7 @@ export default class SearchIndex extends React.Component {
       }
     }
 
-    return searchResults.length > 0 ? (
+    return errors.length === 0 ? (
       <div className="search-index-container">
         <span className="search-index-container-bg"></span>
         <div id="search-index-empty"></div>
