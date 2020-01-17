@@ -18,6 +18,9 @@ export default class Dropdown extends React.Component {
         <div className="dropdown">
           <p className="dropdown-item">Welcome, {user.email}!</p>
           <div className="border"></div>
+          <a className="dropdown-item link" target="_blank" href="http://mannank.github.io/">Portfolio</a>
+          <a className="dropdown-item link" target="_blank" href="http://github.com/mannank">GitHub</a>
+          <a className="dropdown-item link" target="_blank" href="https://www.linkedin.com/in/mannank">LinkedIn</a>
           <button onClick={logout} className="dropdown-item logout">Sign out of Superflix</button>
         </div>
       </div>
