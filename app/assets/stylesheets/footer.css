@@ -26,6 +26,12 @@
   justify-content: space-between;
 }
 
-.footer-item.bottom p {
+.footer-item.bottom a {
   font-size: 15px;
+  color: gray;
+  text-decoration: none;
+}
+
+.footer-item.bottom a:hover {
+  text-decoration: underline;
 }

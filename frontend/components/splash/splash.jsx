@@ -10,9 +10,7 @@ export default class Splash extends React.Component {
 
   handleDemoLogin(e) {
     e.preventDefault();
-
-    // TODO: change demo user info later
-
+    
     const demoUser = { email: "peter@parker.com", password: "uncleben" };
     this.props.login(demoUser);
   }

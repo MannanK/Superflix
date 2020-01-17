@@ -5,9 +5,9 @@ const Footer = (props) => (
     <div className="footer-content">
       <p className="footer-item top">Questions? We don't know who you should call!</p>
       <div className="footer-item bottom">
-        <p>GitHub</p>
-        <p>LinkedIn</p>
-        <p>Netflix</p>
+        <a target="_blank" href="http://mannank.github.io/">Portfolio</a>
+        <a target="_blank" href="http://github.com/mannank">GitHub</a>
+        <a target="_blank" href="https://www.linkedin.com/in/mannank">LinkedIn</a>
       </div>
     </div>
   </footer>
