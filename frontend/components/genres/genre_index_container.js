@@ -8,8 +8,8 @@ const msp = state => ({
 });
 
 const mdp = dispatch => ({
-  fetchOnlyShows: () => dispatch(fetchOnlyShows()),
-  fetchOnlyMovies: () => dispatch(fetchOnlyMovies()),
+  fetchOnlyShows: (genreQuery) => dispatch(fetchOnlyShows(genreQuery)),
+  fetchOnlyMovies: (genreQuery) => dispatch(fetchOnlyMovies(genreQuery)),
   clearVideos: () => dispatch(clearVideos())
 });
 

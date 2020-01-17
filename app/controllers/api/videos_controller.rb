@@ -21,54 +21,82 @@ class Api::VideosController < ApplicationController
   end
 
   def shows
-    @videos = Video.where(video_type: "SHOW")
-      .with_attached_url
-      .with_attached_logo
-      .with_attached_thumbnail
-      .includes(:genres)
+    genre_param = params[:query_params]
 
-    # @genres = Genre.all.includes(:videos)
-    @genres = [];
+    if genre_param == "Marvel" || genre_param == "DC"
+      @videos = Genre.find_by_name(genre_param)
+        .videos
+        .where(video_type: "SHOW")
+        .with_attached_thumbnail
+        .with_attached_url
+        .with_attached_logo
+        .includes(:genres)
+    else
+      @videos = Video.where(video_type: "SHOW")
+        .with_attached_url
+        .with_attached_logo
+        .with_attached_thumbnail
+        .includes(:genres)
+    end
+
+    @genres = []
+    @video_ids = Hash.new
+
     @videos.each do |video|
       @genres += video.genres
+      @video_ids[video.id] = true
     end
+
     @genres = @genres.uniq
   end
 
   def movies
-    @videos = Video.where(video_type: "MOVIE")
-      .with_attached_url
-      .with_attached_logo
-      .with_attached_thumbnail
-      .includes(:genres)
+    genre_param = params[:query_params]
 
-    # @genres = Genre.all.includes(:videos)
-    @genres = [];
+    if genre_param == "Marvel" || genre_param == "DC"
+      @videos = Genre.find_by_name(genre_param)
+        .videos
+        .where(video_type: "MOVIE")
+        .with_attached_thumbnail
+        .with_attached_url
+        .with_attached_logo
+        .includes(:genres)
+    else
+      @videos = Video.where(video_type: "MOVIE")
+        .with_attached_url
+        .with_attached_logo
+        .with_attached_thumbnail
+        .includes(:genres)
+    end
+
+    @genres = []
+    @video_ids = Hash.new
+
     @videos.each do |video|
       @genres += video.genres
+      @video_ids[video.id] = true
     end
-    @genres = @genres.uniq
     
-    render :index
+    @genres = @genres.uniq
   end
 
   def search
-    queryParams = params[:query_params]
+    query_params = params[:query_params]
 
-    @videos = Video.where("translate(title, ':-', '') ILIKE ?", "#{queryParams}%")
+    @videos = Video.where("translate(title, ':-', '') ILIKE ?", "#{query_params}%")
       .with_attached_thumbnail
       .with_attached_url
       .with_attached_logo
       .includes(:genres)
 
-    @videos += Video.where("translate(title, ':-', '') ILIKE ?", "%#{queryParams}%")
+    @videos += Video.where("translate(title, ':-', '') ILIKE ?", "%#{query_params}%")
       .with_attached_thumbnail
       .with_attached_url
       .with_attached_logo
       .includes(:genres)
       .uniq
 
-    genre = queryParams[0].upcase + queryParams[1..-1].downcase
+    genre = query_params[0].upcase + query_params[1..-1].downcase
     if genre == "Dc" then genre = "DC" end
     if genre == "Sci-fi" then genre = "Sci-Fi" end
     if Genre.find_by_name(genre)
@@ -81,8 +109,8 @@ class Api::VideosController < ApplicationController
       .uniq
     end
 
-    if queryParams.to_i.to_s == queryParams
-      @videos += Video.where("year = ?", "#{queryParams}")
+    if query_params.to_i.to_s == query_params
+      @videos += Video.where("year = ?", "#{query_params}")
         .with_attached_thumbnail
         .with_attached_url
         .with_attached_logo

@@ -28,12 +28,12 @@ export const fetchVideos = () => dispatch => (
   VideoAPIUtil.fetchVideos().then(payload => dispatch(receiveVideos(payload)))
 );
 
-export const fetchOnlyShows = () => dispatch => (
-  VideoAPIUtil.fetchOnlyShows().then(payload => dispatch(receiveVideos(payload)))
+export const fetchOnlyShows = (genre) => dispatch => (
+  VideoAPIUtil.fetchOnlyShows(genre).then(payload => dispatch(receiveVideos(payload)))
 );
 
-export const fetchOnlyMovies = () => dispatch => (
-  VideoAPIUtil.fetchOnlyMovies().then(payload => dispatch(receiveVideos(payload)))
+export const fetchOnlyMovies = (genre) => dispatch => (
+  VideoAPIUtil.fetchOnlyMovies(genre).then(payload => dispatch(receiveVideos(payload)))
 );
 
 export const fetchVideo = (id) => dispatch => (

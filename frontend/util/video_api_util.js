@@ -4,15 +4,17 @@ export const fetchVideos = () => (
   })
 );
 
-export const fetchOnlyShows = () => (
+export const fetchOnlyShows = (genreQuery) => (
   $.ajax({
-    url: "/api/videos/shows"
+    url: "/api/videos/shows",
+    data: { query_params: genreQuery }
   })
 );
 
-export const fetchOnlyMovies = () => (
+export const fetchOnlyMovies = (genreQuery) => (
   $.ajax({
-    url: "/api/videos/movies"
+    url: "/api/videos/movies",
+    data: { query_params: genreQuery }
   })
 );
 

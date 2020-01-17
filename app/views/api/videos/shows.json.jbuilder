@@ -10,7 +10,7 @@ json.genres do
   @genres.each do |genre|
     json.set! genre.id do
       json.extract! genre, :id, :name
-      json.videoIds genre.videos.where(video_type: "SHOW").pluck(:id)
+      json.videoIds genre.videos.where(id: @video_ids.keys).pluck(:id)
     end
   end
 end

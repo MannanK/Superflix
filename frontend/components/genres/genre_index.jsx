@@ -12,10 +12,21 @@ export default class GenreIndex extends React.Component {
     // fetch based on type prop or location.pathname?
     // need to account for only shows URL or specific shows/<genre> url?
 
+    //superflix-aa.herokuapp.com/browse/genre/shows/marvel/action/24
+    let genreQuery = this.props.match.params.genreId;
+
     if (this.props.type === "SHOWS") {
-      this.props.fetchOnlyShows();
+      if (genreQuery) {
+        this.props.fetchOnlyShows(genreQuery);
+      } else {
+        this.props.fetchOnlyShows();
+      }
     } else if (this.props.type === "MOVIES") {
-      this.props.fetchOnlyMovies();
+      if (genreQuery) {
+        this.props.fetchOnlyMovies(genreQuery);
+      } else {
+        this.props.fetchOnlyMovies();
+      }
     }
   }
 
@@ -23,7 +34,13 @@ export default class GenreIndex extends React.Component {
     if (isEmpty(this.props.videos) ||
       Object.keys(this.props.videos).length === 1 ||
       prevProps.location.pathname.startsWith("watch")
-    ) this.props.fetchVideos();
+    ) {
+      if (this.props.type === "SHOWS") {
+        this.props.fetchOnlyShows();
+      } else if (this.props.type === "MOVIES") {
+        this.props.fetchOnlyMovies();
+      }
+    }
   }
 
   componentWillUnmount() {
