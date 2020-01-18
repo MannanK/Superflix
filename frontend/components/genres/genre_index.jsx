@@ -31,14 +31,28 @@ export default class GenreIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (isEmpty(this.props.videos) ||
+    // maybe also check if changed types?
+    if ((prevProps.type !== this.props.type ||
       Object.keys(this.props.videos).length === 1 ||
-      prevProps.location.pathname.startsWith("watch")
+      prevProps.location.pathname.startsWith("watch")) &&
+      (isEmpty(this.props.videos) ||
+      Object.keys(this.props.videos).length === 1 ||
+      prevProps.location.pathname.startsWith("watch"))
     ) {
+      let genreQuery = this.props.match.params.genreId;
+
       if (this.props.type === "SHOWS") {
-        this.props.fetchOnlyShows();
+        if (genreQuery) {
+          this.props.fetchOnlyShows(genreQuery);
+        } else {
+          this.props.fetchOnlyShows();
+        }
       } else if (this.props.type === "MOVIES") {
-        this.props.fetchOnlyMovies();
+        if (genreQuery) {
+          this.props.fetchOnlyMovies(genreQuery);
+        } else {
+          this.props.fetchOnlyMovies();
+        }
       }
     }
   }
@@ -51,6 +65,8 @@ export default class GenreIndex extends React.Component {
     const { videos, genres } = this.props;
     const videosLength = Object.keys(videos).length;
 
+    // maybe make new slice of state to show that the back button was hit or something
+    // will prevent having to hardcode checking how many videos are in the store to prevent back-button error
     let videoMain = isEmpty(videos) || videosLength === 1 ? "" : <VideoMain video={Object.values(videos)[0]} genres={genres} />;
     let videoRows = isEmpty(videos) || videosLength === 1 ? "" : (
       Object.values(genres).map(genre => {

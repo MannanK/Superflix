@@ -35,6 +35,12 @@ export default class NavBar extends React.Component {
       case "/browse":
         linkText = "Home";
         break;
+      case "/browse/genre/shows":
+        linkText = "TV Shows";
+        break;
+      case "/browse/genre/movies":
+        linkText = "Movies";
+        break;
       default:
         linkText = "This isn't supposed to be here!";
         break;
@@ -113,8 +119,8 @@ export default class NavBar extends React.Component {
 
         <div className="nav-bar-links-container">
           {this.getLinkTag("/")}
-          <Link to='#' className="nav-bar-link">TV Shows</Link>
-          <Link to='#' className="nav-bar-link">Movies</Link>
+          {this.getLinkTag("/browse/genre/shows")}
+          {this.getLinkTag("/browse/genre/movies")}
           <Link to='#' className="nav-bar-link">My List</Link>
         </div>
 

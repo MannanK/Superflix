@@ -22,6 +22,8 @@ class Api::VideosController < ApplicationController
 
   def shows
     genre_param = params[:query_params]
+    if genre_param == "marvel" then genre_param = "Marvel" end
+    if genre_param == "dc" then genre_param = "DC" end
 
     if genre_param == "Marvel" || genre_param == "DC"
       @videos = Genre.find_by_name(genre_param)
@@ -39,6 +41,14 @@ class Api::VideosController < ApplicationController
         .includes(:genres)
     end
 
+    # elsif genre_param == "Other"
+    #   @videos = Video.where(video_type: "SHOW")
+    #     .with_attached_url
+    #     .with_attached_logo
+    #     .with_attached_thumbnail
+    #     .includes(:genres)
+    #     .where.not(genres: { name: ["DC"] })
+
     @genres = []
     @video_ids = Hash.new
 
@@ -52,6 +62,9 @@ class Api::VideosController < ApplicationController
 
   def movies
     genre_param = params[:query_params]
+
+    if genre_param == "marvel" then genre_param = "Marvel" end
+    if genre_param == "dc" then genre_param = "DC" end
 
     if genre_param == "Marvel" || genre_param == "DC"
       @videos = Genre.find_by_name(genre_param)
