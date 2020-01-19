@@ -19,8 +19,10 @@ const App = (props) => (
 
     <Switch>
       {/* optional :genreId at the end? f.e if someone wants to see shows -> action shows */}
-      <ProtectedRoute path="/browse/genre/shows/:genreId?" component={GenreIndexContainer} type="SHOWS" />
-      <ProtectedRoute path="/browse/genre/movies/:genreId?" component={GenreIndexContainer} type="MOVIES" />
+      {/* <ProtectedRoute path="/browse/genre/shows/:genreId?" component={GenreIndexContainer} type="SHOWS" />
+      <ProtectedRoute path="/browse/genre/movies/:genreId?" component={GenreIndexContainer} type="MOVIES" /> */}
+      <ProtectedRoute path="/browse/genre/shows" component={GenreIndexContainer} type="SHOWS" />
+      <ProtectedRoute path="/browse/genre/movies" component={GenreIndexContainer} type="MOVIES" />
       <ProtectedRoute path="/browse" component={VideoIndexContainer} />
       <ProtectedRoute path="/search/:query" component={SearchIndexContainer} />
       <ProtectedRoute exact path="/watch/:mediaId" component={VideoPlayerContainer} type="fullPlayer" />

@@ -32,12 +32,18 @@ export default class GenreIndex extends React.Component {
 
   componentDidUpdate(prevProps) {
     // maybe also check if changed types?
-    if ((prevProps.type !== this.props.type ||
+    // if ((prevProps.type !== this.props.type ||
+    //   Object.keys(this.props.videos).length === 1 ||
+    //   prevProps.location.pathname.startsWith("watch")) &&
+    //   (isEmpty(this.props.videos) ||
+    //   Object.keys(this.props.videos).length === 1 ||
+    //   prevProps.location.pathname.startsWith("watch"))
+    // ) {
+    if (prevProps.type !== this.props.type ||
+      prevProps.match.params.genreId !== this.props.match.params.genreId ||
       Object.keys(this.props.videos).length === 1 ||
-      prevProps.location.pathname.startsWith("watch")) &&
-      (isEmpty(this.props.videos) ||
-      Object.keys(this.props.videos).length === 1 ||
-      prevProps.location.pathname.startsWith("watch"))
+      prevProps.location.pathname.startsWith("watch") ||
+      isEmpty(this.props.videos)
     ) {
       let genreQuery = this.props.match.params.genreId;
 
@@ -62,15 +68,22 @@ export default class GenreIndex extends React.Component {
   }
 
   render() {
-    const { videos, genres } = this.props;
+    const { videos, genres, type } = this.props;
     const videosLength = Object.keys(videos).length;
+    let typeLength;
+
+    if (type === "MOVIES") {
+      typeLength = 24;
+    } else {
+      typeLength = 7;
+    }
 
     // maybe make new slice of state to show that the back button was hit or something
     // will prevent having to hardcode checking how many videos are in the store to prevent back-button error
-    let videoMain = isEmpty(videos) || videosLength === 1 ? "" : <VideoMain video={Object.values(videos)[0]} genres={genres} />;
-    let videoRows = isEmpty(videos) || videosLength === 1 ? "" : (
+    let videoMain = isEmpty(videos) || videosLength !== typeLength ? "" : <VideoMain video={Object.values(videos)[0]} genres={genres} />;
+    let videoRows = isEmpty(videos) || videosLength !== typeLength ? "" : (
       Object.values(genres).map(genre => {
-        if (genre.name !== "Marvel" && genre.name !== "DC") {
+        // if (genre.name !== "Marvel" && genre.name !== "DC") {
           let videoIds = genre["videoIds"];
           let genreVideos = [];
 
@@ -79,7 +92,7 @@ export default class GenreIndex extends React.Component {
           });
 
           return <VideoRowContainer key={genre.id} videos={genreVideos} genre={genre} />
-        }
+        // }
       })
     );
 
@@ -87,6 +100,7 @@ export default class GenreIndex extends React.Component {
       <div className="video-index-container">
         <span className="video-index-container-bg"></span>
         <div id="video-main-empty">
+          <div className="genre-header">TV Shows</div>
           {videoMain}
         </div>
         <section className="video-row-container">
