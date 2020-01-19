@@ -71,11 +71,14 @@ export default class GenreIndex extends React.Component {
     const { videos, genres, type } = this.props;
     const videosLength = Object.keys(videos).length;
     let typeLength;
+    let genreHeader;
 
     if (type === "MOVIES") {
       typeLength = 24;
+      genreHeader = "Movies";
     } else {
       typeLength = 7;
+      genreHeader = "TV Shows";
     }
 
     // maybe make new slice of state to show that the back button was hit or something
@@ -100,7 +103,7 @@ export default class GenreIndex extends React.Component {
       <div className="video-index-container">
         <span className="video-index-container-bg"></span>
         <div id="video-main-empty">
-          <div className="genre-header">TV Shows</div>
+          <div className="genre-header">{genreHeader}</div>
           {videoMain}
         </div>
         <section className="video-row-container">

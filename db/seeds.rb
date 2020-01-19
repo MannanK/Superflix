@@ -11,18 +11,19 @@ require 'open-uri'
 User.destroy_all
 Video.destroy_all
 Genre.destroy_all
+VideoGenre.destroy_all
 
 demoUser = User.create!(email: "peter@parker.com", password: "uncleben")
 
 # ---------------- GENRES ----------------
 
+marvel = Genre.create!(name: "Marvel")
+dc = Genre.create!(name: "DC")
 action = Genre.create!(name: "Action")
 adventure = Genre.create!(name: "Adventure")
 comedy = Genre.create!(name: "Comedy")
-scifi = Genre.create!(name: "Sci-Fi")
 animated = Genre.create!(name: "Animated")
-marvel = Genre.create!(name: "Marvel")
-dc = Genre.create!(name: "DC")
+scifi = Genre.create!(name: "Sci-Fi")
 
 # ---------------- MOVIES ----------------
 
