@@ -85,25 +85,25 @@ export default class VideoRow extends React.Component {
     };
   }
 
-  closeDetails(testprop) {
+  closeDetails(closePressed) {
     this.setState({
       detailsHidden: {id: null, value: true}
     });
 
-    // DO THIS ONLY IF CLOSE BUTTON IS PRESSED?
-    if (testprop === undefined || testprop === "closing") {
+    // DO THIS ONLY IF CLOSE BUTTON IS PRESSED
+    if (closePressed === undefined || closePressed === "closing") {
       setTimeout(() => {
         this.props.history.push("/browse");
       }, 600);
-    } else if (testprop === "closing-search") {
+    } else if (closePressed === "closing-search") {
       setTimeout(() => {
         this.props.history.push(`/search/${this.props.match.params.query}`);
       }, 600);
-    } else if (testprop === "closing-shows") {
+    } else if (closePressed === "closing-shows") {
       setTimeout(() => {
         this.props.history.push(`/browse/genre/shows`);
       }, 600);
-    } else if (testprop === "closing-movies") {
+    } else if (closePressed === "closing-movies") {
       setTimeout(() => {
         this.props.history.push(`/browse/genre/movies`);
       }, 600);
