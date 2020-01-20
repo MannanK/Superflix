@@ -94,7 +94,7 @@ export default class GenreIndex extends React.Component {
             genreVideos.push(videos[id]);
           });
 
-          return <VideoRowContainer key={genre.id} videos={genreVideos} genre={genre} />
+          return <VideoRowContainer key={genre.id} videos={genreVideos} genre={genre} type={type} />
         // }
       })
     );

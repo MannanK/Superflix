@@ -143,7 +143,21 @@ export default class VideoRow extends React.Component {
 
   renderLessThanSixVideos() {
     const { videos, detailsHidden } = this.state;
-    const { genre } = this.props;
+    const { genre, type } = this.props;
+
+    let route;
+
+    switch (type) {
+      case "SHOWS":
+        route = "/browse/genre/shows";
+        break;
+      case "MOVIES":
+        route = "/browse/genre/movies";
+        break;
+      default:
+        route = "/browse";
+        break;
+    }
     
     let videoItems = videos.map((video, i) => {
       let className = "video-item";
@@ -154,6 +168,7 @@ export default class VideoRow extends React.Component {
         key={i}
         video={video}
         className={className}
+        type={type}
         myGenre={genre}
         playVideo={this.playVideo(video.id)}
         stopVideo={this.stopVideo(video.id)}
@@ -172,7 +187,7 @@ export default class VideoRow extends React.Component {
           </ul>
 
           <Route
-            exact path={`/browse/${genre.name.toLowerCase()}/:movieId`}
+            exact path={`${route}/${genre.name.toLowerCase()}/:movieId`}
             render={(props) => <VideoDetailsContainer closeDetails={this.closeDetails} {...props} />}
           />
         </div>
@@ -182,9 +197,23 @@ export default class VideoRow extends React.Component {
 
   renderMoreThanSixVideos() {
     const { videos, videosRemaining, pageNum, showButtonArrow, detailsHidden } = this.state;
-    const { genre } = this.props;
+    const { genre, type } = this.props;
     let currentIndex = pageNum*6;
     let videoItems;
+
+    let route;
+
+    switch (type) {
+      case "SHOWS":
+        route = "/browse/genre/shows";
+        break;
+      case "MOVIES":
+        route = "/browse/genre/movies";
+        break;
+      default:
+        route = "/browse";
+        break;
+    }
 
     let translateStyle = pageNum === 0 ? ({
       transform: `none`,
@@ -212,6 +241,7 @@ export default class VideoRow extends React.Component {
           key={i}
           video={video}
           className={className}
+          type={type}
           myGenre={genre}
           playVideo={this.playVideo(video.id)}
           stopVideo={this.stopVideo(video.id)}
@@ -232,6 +262,7 @@ export default class VideoRow extends React.Component {
         return <VideoItemContainer
           key={i} video={video}
           className={className}
+          type={type}
           myGenre={genre}
           playVideo={this.playVideo(video.id)}
           stopVideo={this.stopVideo(video.id)}
@@ -279,7 +310,7 @@ export default class VideoRow extends React.Component {
           </ul >
           
           <Route
-            exact path={`/browse/${genre.name.toLowerCase()}/:movieId`}
+            exact path={`${route}/${genre.name.toLowerCase()}/:movieId`}
             render={(props) => <VideoDetailsContainer closeDetails={this.closeDetails} {...props} />}
           />
         </div>

@@ -142,23 +142,68 @@ export default class VideoItem extends React.Component {
   }
 
   render() {
-    const { location, myGenre } = this.props;
+    const { location, myGenre, type } = this.props;
     let { className, myRow } = this.props;
 
-    className = (location.pathname === "/browse" || 
-      location.pathname === "/browse/" ||
-      location.pathname === "/search" ||
-      location.pathname === "/search/"
-    ) ? (
-        className
-    ) : (
-      (location.pathname.split("/")[3] == myRow) ||
-      (myGenre && location.pathname.split("/")[2] === myGenre.name.toLowerCase()) ? (
-        "inbackground-video-item"
-      ) : (
-        className
-      )
-    );
+    let pathname = location.pathname;
+
+    // className = (location.pathname === "/browse" || 
+    //   location.pathname === "/browse/" ||
+    //   location.pathname === "/search" ||
+    //   location.pathname === "/search/" ||
+    //   location.pathname === "/browse/genre/shows" ||
+    //   location.pathname === "/browse/genre/shows/" ||
+    //   location.pathname === "/browse/genre/movies" ||
+    //   location.pathname === "/browse/genre/movies/"
+    // ) ? (
+    //   className
+    // ) : (
+    //   type === 'SHOWS' || type === 'MOVIES' ? (
+    //     (location.pathname.split("/")[3] == myRow) ||
+    //     (myGenre && location.pathname.split("/")[2] === myGenre.name.toLowerCase()) ? (
+    //       "inbackground-video-item"
+    //     ) : (
+    //       className
+    //     )
+    //   ) : (
+    //     (location.pathname.split("/")[3] == myRow) ||
+    //     (myGenre && location.pathname.split("/")[2] === myGenre.name.toLowerCase()) ? (
+    //       "inbackground-video-item"
+    //     ) : (
+    //       className
+    //     )
+    //   )
+    // );
+
+    if ((pathname === "/browse" ||
+      pathname === "/browse/" ||
+      pathname === "/search" ||
+      pathname === "/search/" ||
+      pathname === "/browse/genre/shows" ||
+      pathname === "/browse/genre/shows/" ||
+      pathname === "/browse/genre/movies" ||
+      pathname === "/browse/genre/movies/"
+    )) {
+      className = className;
+    } else {
+      let rowIndex;
+      let genreIndex;
+
+      if (type === 'SHOWS' || type === 'MOVIES') {
+        rowIndex = 5;
+        genreIndex = 4;
+      } else {
+        rowIndex = 3;
+        genreIndex = 2;
+      }
+
+      if (pathname.split("/")[rowIndex] == myRow ||
+          myGenre && pathname.split("/")[genreIndex] === myGenre.name.toLowerCase()) {
+        className = "inbackground-video-item";
+      } else {
+        className = className;
+      }
+    };
 
     return className === "inbackground-video-item" ? (
       this.renderBackgroundItem()
