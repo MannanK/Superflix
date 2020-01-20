@@ -93,11 +93,23 @@ export default class VideoDetails extends React.Component {
       <VideoPlayerContainer video={video} type="detailsPlayer" visibility="closing" />
     );
 
-    let closeDetailsProp = this.props.location.pathname.startsWith("/search") ? (
-      "closing-search"
-    ) : (
-      "closing"
-    );
+    // let closeDetailsProp = this.props.location.pathname.startsWith("/search") ? (
+    //   "closing-search"
+    // ) : (
+    //   "closing"
+    // );
+
+    let pathname = this.props.location.pathname;
+    let closeDetailsProp;
+    if (pathname.startsWith("/search")) {
+      closeDetailsProp = "closing-search";
+    } else if (pathname.startsWith("/browse/genre/shows")) {
+      closeDetailsProp = "closing-shows";
+    } else if (pathname.startsWith("/browse/genre/movies")) {
+      closeDetailsProp = "closing-movies"
+    } else {
+      closeDetailsProp = "closing";
+    }
 
     return (
       <section className={`video-details-container${closingClass}`}>

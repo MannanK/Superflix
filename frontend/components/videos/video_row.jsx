@@ -99,7 +99,15 @@ export default class VideoRow extends React.Component {
       setTimeout(() => {
         this.props.history.push(`/search/${this.props.match.params.query}`);
       }, 600);
-    }
+    } else if (testprop === "closing-shows") {
+      setTimeout(() => {
+        this.props.history.push(`/browse/genre/shows`);
+      }, 600);
+    } else if (testprop === "closing-movies") {
+      setTimeout(() => {
+        this.props.history.push(`/browse/genre/movies`);
+      }, 600);
+    } 
   }
 
   renderSearchVideos() {
