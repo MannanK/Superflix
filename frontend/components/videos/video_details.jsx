@@ -18,40 +18,25 @@ export default class VideoDetails extends React.Component {
   }
 
   componentWillUnmount() {
+    let currentPathname = this.props.location.pathname;
+    let currentPath = currentPathname.split("/");
     let historyPath = this.props.history.location.pathname.split("/");
-    let currentPath = this.props.location.pathname.split("/");
 
-    if (this.props.location.pathname.startsWith("/browse/genre")) {
-      if (this.state.detailsShowing && // detail pane was showing
-        !this.userPressedPlay && // user isn't trying to go to the watch page
-        historyPath[1] !== "watch" && //  user isn't trying to go to the watch page
-        currentPath[4] === historyPath[4]) { // user is trying to close the current details pane
-        if (currentPath[1] === 'search') {
-          this.closeDetails(null);
-        } else {
-          this.closeDetails();
-        }
-      }
+    let pathIndex = currentPathname.startsWith("/browse/genre") ? 4 : 2;
 
-      if (historyPath[1] === currentPath[1]) {
-        this.closeDetails("inRow");
+    if (this.state.detailsShowing && // detail pane was showing
+      !this.userPressedPlay && // user isn't trying to go to the watch page
+      historyPath[1] !== "watch" && //  user isn't trying to go to the watch page
+      currentPath[pathIndex] === historyPath[pathIndex]) { // user is trying to close the current details pane
+      if (currentPath[1] === 'search') {
+        this.closeDetails(null);
+      } else {
+        this.closeDetails();
       }
+    }
 
-    } else {
-      if (this.state.detailsShowing && // detail pane was showing
-        !this.userPressedPlay && // user isn't trying to go to the watch page
-        historyPath[1] !== "watch" && //  user isn't trying to go to the watch page
-        currentPath[2] === historyPath[2]) { // user is trying to close the current details pane
-        if (currentPath[1] === 'search') {
-          this.closeDetails(null);
-        } else {
-          this.closeDetails();
-        }
-      }
-
-      if (historyPath[1] === currentPath[1]) {
-        this.closeDetails("inRow");
-      }
+    if (historyPath[1] === currentPath[1]) {
+      this.closeDetails("inRow");
     }
   }
 
@@ -110,12 +95,6 @@ export default class VideoDetails extends React.Component {
     ) : (
       <VideoPlayerContainer video={video} type="detailsPlayer" visibility="closing" />
     );
-
-    // let closeDetailsProp = this.props.location.pathname.startsWith("/search") ? (
-    //   "closing-search"
-    // ) : (
-    //   "closing"
-    // );
 
     let pathname = this.props.location.pathname;
     let closeDetailsProp;

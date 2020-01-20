@@ -32,11 +32,6 @@ export default class VideoItem extends React.Component {
   renderBackgroundItem() {
     const { video, myGenre, location, type, myRow } = this.props;
     const { backgroundDetails } = this.state;
-    // const isCurrentItem = type === 'search' ? (
-    //   location.pathname.split("/")[4] == video.id
-    // ) : (
-    //   location.pathname.split("/")[3] == video.id
-    // );
 
     let videoIndex;
     if (type === "search") {
@@ -60,23 +55,6 @@ export default class VideoItem extends React.Component {
         <div className="background-play-icon"><i className="far fa-play-circle"></i></div>
       </Link>
     ) : "";
-
-    // let dropdownArrow = isCurrentItem ? "" : (
-    //   type === "search" ? (
-    //     <Link to={`/search/${params.query}/${myRow}/${video.id}`} className="background-link" >
-    //       <div className="background-down-arrow">
-    //         <i className="fas fa-chevron-down"></i>
-    //       </div>
-    //     </Link>
-    //     // ""
-    //   ) : (
-    //     <Link to = {`/browse/${myGenre.name.toLowerCase()}/${video.id}`} className = "background-link" >
-    //       <div className="background-down-arrow">
-    //         <i className="fas fa-chevron-down"></i>
-    //       </div>
-    //     </Link>
-    //   )
-    // );
 
     let dropdownArrow = "";
     if (!isCurrentItem) {
@@ -126,21 +104,6 @@ export default class VideoItem extends React.Component {
 
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
     let params = this.props.match.params;
-
-    // let downArrowLink = type === "search" ? (
-    //   <Link to={`/search/${params.query}/${myRow}/${video.id}`}>
-    //     <div className="details-down-arrow">
-    //       <i className="fas fa-chevron-down"></i>
-    //     </div>
-    //   </Link >
-    //   // ""
-    // ) : (
-    //   <Link to = {`/browse/${myGenre.name.toLowerCase()}/${video.id}`}>
-    //     <div className="details-down-arrow">
-    //       <i className="fas fa-chevron-down"></i>
-    //     </div>
-    //   </Link >
-    // );
 
     let downArrowLink;
     if (type === "search") {
@@ -208,34 +171,6 @@ export default class VideoItem extends React.Component {
     let { className, myRow } = this.props;
 
     let pathname = location.pathname;
-
-    // className = (location.pathname === "/browse" || 
-    //   location.pathname === "/browse/" ||
-    //   location.pathname === "/search" ||
-    //   location.pathname === "/search/" ||
-    //   location.pathname === "/browse/genre/shows" ||
-    //   location.pathname === "/browse/genre/shows/" ||
-    //   location.pathname === "/browse/genre/movies" ||
-    //   location.pathname === "/browse/genre/movies/"
-    // ) ? (
-    //   className
-    // ) : (
-    //   type === 'SHOWS' || type === 'MOVIES' ? (
-    //     (location.pathname.split("/")[3] == myRow) ||
-    //     (myGenre && location.pathname.split("/")[2] === myGenre.name.toLowerCase()) ? (
-    //       "inbackground-video-item"
-    //     ) : (
-    //       className
-    //     )
-    //   ) : (
-    //     (location.pathname.split("/")[3] == myRow) ||
-    //     (myGenre && location.pathname.split("/")[2] === myGenre.name.toLowerCase()) ? (
-    //       "inbackground-video-item"
-    //     ) : (
-    //       className
-    //     )
-    //   )
-    // );
 
     if ((pathname === "/browse" ||
       pathname === "/browse/" ||

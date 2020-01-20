@@ -12,7 +12,6 @@ export default class GenreIndex extends React.Component {
     // fetch based on type prop or location.pathname?
     // need to account for only shows URL or specific shows/<genre> url?
 
-    //superflix-aa.herokuapp.com/browse/genre/shows/marvel/action/24
     let genreQuery = this.props.match.params.genreId;
 
     if (this.props.type === "SHOWS") {
