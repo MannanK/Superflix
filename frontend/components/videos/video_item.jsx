@@ -32,11 +32,21 @@ export default class VideoItem extends React.Component {
   renderBackgroundItem() {
     const { video, myGenre, location, type, myRow } = this.props;
     const { backgroundDetails } = this.state;
-    const isCurrentItem = type === 'search' ? (
-      location.pathname.split("/")[4] == video.id
-    ) : (
-      location.pathname.split("/")[3] == video.id
-    );
+    // const isCurrentItem = type === 'search' ? (
+    //   location.pathname.split("/")[4] == video.id
+    // ) : (
+    //   location.pathname.split("/")[3] == video.id
+    // );
+
+    let videoIndex;
+    if (type === "search") {
+      videoIndex = 4;
+    } else if (type === "SHOWS" || type === "MOVIES") {
+      videoIndex = 5;
+    } else {
+      videoIndex = 3;
+    }
+    const isCurrentItem = location.pathname.split("/")[videoIndex] == video.id;
 
     let params = this.props.match.params;
     let className = isCurrentItem ? (
@@ -51,22 +61,49 @@ export default class VideoItem extends React.Component {
       </Link>
     ) : "";
 
-    let dropdownArrow = isCurrentItem ? "" : (
-      type === "search" ? (
-        <Link to={`/search/${params.query}/${myRow}/${video.id}`} className="background-link" >
+    // let dropdownArrow = isCurrentItem ? "" : (
+    //   type === "search" ? (
+    //     <Link to={`/search/${params.query}/${myRow}/${video.id}`} className="background-link" >
+    //       <div className="background-down-arrow">
+    //         <i className="fas fa-chevron-down"></i>
+    //       </div>
+    //     </Link>
+    //     // ""
+    //   ) : (
+    //     <Link to = {`/browse/${myGenre.name.toLowerCase()}/${video.id}`} className = "background-link" >
+    //       <div className="background-down-arrow">
+    //         <i className="fas fa-chevron-down"></i>
+    //       </div>
+    //     </Link>
+    //   )
+    // );
+
+    let dropdownArrow = "";
+    if (!isCurrentItem) {
+      if (type === "search") {
+        dropdownArrow = <Link to={`/search/${params.query}/${myRow}/${video.id}`} className="background-link" >
+          <div className="background-down-arrow">
+            <i className="fas fa-chevron-down"></i>
+          </div>
+        </Link>;
+      } else {
+        let route;
+
+        if (type === "SHOWS") {
+          route = "/browse/genre/shows";
+        } else if (type === "MOVIES") {
+          route = "/browse/genre/movies";
+        } else {
+          route = "/browse";
+        }
+
+        dropdownArrow = <Link to={`${route}/${myGenre.name.toLowerCase()}/${video.id}`} className="background-link" >
           <div className="background-down-arrow">
             <i className="fas fa-chevron-down"></i>
           </div>
         </Link>
-        // ""
-      ) : (
-        <Link to = {`/browse/${myGenre.name.toLowerCase()}/${video.id}`} className = "background-link" >
-          <div className="background-down-arrow">
-            <i className="fas fa-chevron-down"></i>
-          </div>
-        </Link>
-      )
-    );
+      }
+    }
 
     let details = backgroundDetails ? (
       <section className="background-details-container">
@@ -90,20 +127,45 @@ export default class VideoItem extends React.Component {
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
     let params = this.props.match.params;
 
-    let downArrowLink = type === "search" ? (
-      <Link to={`/search/${params.query}/${myRow}/${video.id}`}>
+    // let downArrowLink = type === "search" ? (
+    //   <Link to={`/search/${params.query}/${myRow}/${video.id}`}>
+    //     <div className="details-down-arrow">
+    //       <i className="fas fa-chevron-down"></i>
+    //     </div>
+    //   </Link >
+    //   // ""
+    // ) : (
+    //   <Link to = {`/browse/${myGenre.name.toLowerCase()}/${video.id}`}>
+    //     <div className="details-down-arrow">
+    //       <i className="fas fa-chevron-down"></i>
+    //     </div>
+    //   </Link >
+    // );
+
+    let downArrowLink;
+    if (type === "search") {
+      downArrowLink = <Link to={`/search/${params.query}/${myRow}/${video.id}`}>
+        <div className="details-down-arrow">
+          <i className="fas fa-chevron-down"></i>
+        </div>
+      </Link>;
+    } else {
+      let route;
+
+      if (type === "SHOWS") {
+        route = "/browse/genre/shows";
+      } else if (type === "MOVIES") {
+        route = "/browse/genre/movies";
+      } else {
+        route = "/browse";
+      }
+
+      downArrowLink = <Link to={`${route}/${myGenre.name.toLowerCase()}/${video.id}`}>
         <div className="details-down-arrow">
           <i className="fas fa-chevron-down"></i>
         </div>
       </Link >
-      // ""
-    ) : (
-      <Link to = {`/browse/${myGenre.name.toLowerCase()}/${video.id}`}>
-        <div className="details-down-arrow">
-          <i className="fas fa-chevron-down"></i>
-        </div>
-      </Link >
-    );
+    }
 
     let videoDetails = (
       <section className="thumbnail-details-container">
