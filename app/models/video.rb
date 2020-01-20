@@ -24,4 +24,11 @@ class Video < ApplicationRecord
   has_many :genres,
     through: :video_genres,
     source: :genre
+
+  has_many :list_videos,
+    dependent: :destroy
+
+  has_many :users,
+    through: :list_videos,
+    source: :user
 end

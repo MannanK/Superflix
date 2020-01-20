@@ -20,6 +20,13 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
+  has_many :list_videos,
+    dependent: :destroy
+
+  has_many :videos,
+    through: :list_videos,
+    source: :video
+
   def self.generate_session_token
     SecureRandom.urlsafe_base64
   end
