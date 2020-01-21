@@ -30,7 +30,7 @@ class Api::ListVideosController < ApplicationController
 
   def destroy
     if logged_in?
-      list_video = currentUser.list_videos.find_by(video_id: params[:id])
+      list_video = current_user.list_videos.find_by(video_id: params[:id])
 
       if list_video
         list_video.destroy

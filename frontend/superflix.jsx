@@ -4,7 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 // TODO: just for testing
-// import { fetchOnlyShows, fetchOnlyMovies } from './actions/video_actions';
+import { addToList, deleteFromList } from './util/list_videos_api_util';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
@@ -25,10 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // TODO: just for testing
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
-  // window.fetchOnlyShows = fetchOnlyShows;
-  // window.fetchOnlyMovies = fetchOnlyMovies;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  window.addToList = addToList;
+  window.deleteFromList = deleteFromList;
 
   ReactDOM.render(<Root store={store} />, root);
 });
