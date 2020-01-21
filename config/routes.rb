@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         get 'movies'
       end
     end
+    resources :list_videos, only: [:index, :create, :destroy]
 
     resource :session, only: [:create, :destroy]
   end
