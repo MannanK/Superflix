@@ -92,7 +92,7 @@ export default class VideoMain extends React.Component {
               </button>
             </Link>
 
-            <Link to="/login">
+            <Link to="#">
               <button className="my-list" onClick={this.toggleList}>
                 <i className={myListButtonClass}></i> My List
               </button>

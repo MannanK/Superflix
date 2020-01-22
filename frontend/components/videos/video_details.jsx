@@ -15,6 +15,7 @@ export default class VideoDetails extends React.Component {
     this.userPressedPlay = false;
     this.closeDetails = this.closeDetails.bind(this);
     this.toggleMute = this.toggleMute.bind(this);
+    this.toggleList = this.toggleList.bind(this);
   }
 
   componentWillUnmount() {
@@ -73,9 +74,20 @@ export default class VideoDetails extends React.Component {
     videoEl.muted = !videoEl.muted;
   }
 
+  toggleList(e) {
+    e.preventDefault();
+    const { watched, video } = this.props;
+
+    if (watched) {
+      this.props.deleteFromList(video.id);
+    } else {
+      this.props.addToList(video.id);
+    }
+  }
+
   render() {
     const { detailsShowing, videoShowing, muted } = this.state;
-    const { video } = this.props;
+    const { video, watched } = this.props;
 
     let closingClass = detailsShowing ? "" : " not-showing";
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
@@ -85,10 +97,12 @@ export default class VideoDetails extends React.Component {
         <i className="material-icons">volume_off</i>
       </button>
     ) : (
-        <button onClick={this.toggleMute}>
-          <i className="material-icons">volume_up</i>
-        </button>
-      );
+      <button onClick={this.toggleMute}>
+        <i className="material-icons">volume_up</i>
+      </button>
+    );
+
+    let myListButtonClass = watched ? "fas fa-check" : "fas fa-plus";
 
     let videoPlayer = videoShowing ? (
       <VideoPlayerContainer video={video} type="detailsPlayer" visibility="visible" />
@@ -135,10 +149,10 @@ export default class VideoDetails extends React.Component {
               </button>
             </Link>
 
-            <Link to={`/login`}>
-              <button className="my-list">
-                <i className="fas fa-check"></i> MY LIST
-            </button>
+            <Link to="#">
+              <button className="my-list" onClick={this.toggleList}>
+                <i className={myListButtonClass}></i> MY LIST
+              </button>
             </Link>
           </section>
         </section>
