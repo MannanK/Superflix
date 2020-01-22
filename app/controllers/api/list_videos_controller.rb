@@ -21,7 +21,7 @@ class Api::ListVideosController < ApplicationController
         @list_videos = current_user.videos
         render :index
       else
-        render json: ["This video is already in the user's list"], status: 400
+        render json: ["This video is already in the user's list or video doesn't exist"], status: 400
       end
     else
       render json: ['Not logged in!'], status: 401
