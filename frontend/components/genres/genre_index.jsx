@@ -1,5 +1,5 @@
 import React from 'react';
-import VideoMain from '../videos/video_main';
+import VideoMainContainer from '../videos/video_main_container';
 import VideoRowContainer from '../videos/video_row_container';
 import { isEmpty } from 'lodash';
 
@@ -82,7 +82,7 @@ export default class GenreIndex extends React.Component {
 
     // maybe make new slice of state to show that the back button was hit or something
     // will prevent having to hardcode checking how many videos are in the store to prevent back-button error
-    let videoMain = isEmpty(videos) || videosLength !== typeLength ? "" : <VideoMain video={Object.values(videos)[0]} genres={genres} />;
+    let videoMain = isEmpty(videos) || videosLength !== typeLength ? "" : <VideoMainContainer video={Object.values(videos)[0]} genres={genres} />;
     let videoRows = isEmpty(videos) || videosLength !== typeLength ? "" : (
       Object.values(genres).map(genre => {
         // if (genre.name !== "Marvel" && genre.name !== "DC") {

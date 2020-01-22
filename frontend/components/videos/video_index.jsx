@@ -1,5 +1,5 @@
 import React from 'react';
-import VideoMain from './video_main';
+import VideoMainContainer from './video_main_container';
 import VideoRowContainer from './video_row_container';
 import { isEmpty } from 'lodash';
 
@@ -27,7 +27,7 @@ export default class VideoIndex extends React.Component {
     const { videos, genres } = this.props;
     const videosLength = Object.keys(videos).length;
 
-    let videoMain = isEmpty(videos) || videosLength === 1 || videosLength !== 31 ? "" : <VideoMain video={Object.values(videos)[0]} genres={genres} />;
+    let videoMain = isEmpty(videos) || videosLength === 1 || videosLength !== 31 ? "" : <VideoMainContainer video={Object.values(videos)[0]} genres={genres} />;
     let videoRows = isEmpty(videos) || videosLength === 1 || videosLength !== 31 ? "" : (
       Object.values(genres).map(genre => {
         if (genre.name !== "Marvel" && genre.name !== "DC") {

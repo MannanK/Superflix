@@ -11,6 +11,7 @@ export default class VideoMain extends React.Component {
     };
 
     this.toggleMute = this.toggleMute.bind(this);
+    this.toggleList = this.toggleList.bind(this);
   }
 
   getGenreNames() {
@@ -27,15 +28,27 @@ export default class VideoMain extends React.Component {
     e.preventDefault();
 
     let videoEl = document.getElementsByClassName("main-video-player-video")[0];
-    
+
     this.setState({
       muted: !this.state.muted
     });
+
     videoEl.muted = !videoEl.muted;
   }
 
+  toggleList(e) {
+    e.preventDefault();
+    const { watched, video } = this.props;
+
+    if (watched) {
+      this.props.deleteFromList(video.id);
+    } else {
+      this.props.addToList(video.id);
+    }
+  }
+
   render() {
-    const { video } = this.props;
+    const { video, watched } = this.props;
     const { muted } = this.state;
 
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
@@ -51,6 +64,8 @@ export default class VideoMain extends React.Component {
         <i className="material-icons">volume_up</i>
       </button>
     );
+
+    let myListButtonClass = watched ? "fas fa-check" : "fas fa-plus";
 
     return (
       <section className={`main-video-details-container`}>
@@ -78,8 +93,8 @@ export default class VideoMain extends React.Component {
             </Link>
 
             <Link to="/login">
-              <button className="my-list">
-                <i className="fas fa-check"></i> My List
+              <button className="my-list" onClick={this.toggleList}>
+                <i className={myListButtonClass}></i> My List
               </button>
             </Link>
           </section>
