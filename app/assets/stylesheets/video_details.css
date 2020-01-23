@@ -237,7 +237,7 @@
   width: fit-content;
 }
 
-.main-video-details aside button {
+.main-video-details aside button, .item-list-button {
   background: rgba(0,0,0,0.5);
   border: 2px solid gray;
   color: white;

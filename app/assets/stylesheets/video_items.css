@@ -179,8 +179,30 @@
 .item-list-link {
   align-self: flex-end;
   position: absolute;
-  bottom: 1vh;
+  bottom: 0.725vh;
   right: 0.7vw;
+}
+
+.item-list-button {
+  border: 1px solid gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.1vw;
+  width: 1.1vw;
+}
+
+.item-list-button i {
+  font-size: 0.5vw;
+}
+
+.item-list-button:hover {
+  transform: scale(1.15);
+  border-color: white;
+}
+
+.item-list-button .fas.fa-plus, .item-list-button .fas.fa-check {
+  margin: 0;
 }
 
 .details-down-arrow {

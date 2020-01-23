@@ -155,7 +155,7 @@ export default class VideoItem extends React.Component {
           <h2>{video.maturity_rating}, {formattedDuration}</h2>
           <h2>{this.getGenreNames()}</h2>
           <Link to="#" className="item-list-link">
-            <button className="my-list" onClick={this.toggleList}>
+            <button className="item-list-button" onClick={this.toggleList}>
               <i className={myListButtonClass}></i>
             </button>
           </Link>
