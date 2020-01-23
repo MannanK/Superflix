@@ -139,6 +139,11 @@ export default class VideoItem extends React.Component {
           <h3>{video.title}</h3>
           <h2>{video.maturity_rating}, {formattedDuration}</h2>
           <h2>{this.getGenreNames()}</h2>
+          <Link to="#" className="item-list-link">
+            <button className="my-list">
+              <i className="fas fa-check"></i>
+            </button>
+          </Link>
         </div>
 
         { downArrowLink }
