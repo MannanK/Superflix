@@ -9,6 +9,8 @@ export default class VideoItem extends React.Component {
     this.state = {
       backgroundDetails: false
     };
+
+    this.toggleList = this.toggleList.bind(this);
   }
 
   getGenreNames() {
@@ -27,6 +29,17 @@ export default class VideoItem extends React.Component {
         backgroundDetails: value
       });
     };
+  }
+
+  toggleList(e) {
+    e.preventDefault();
+    const { watched, video } = this.props;
+
+    if (watched) {
+      this.props.deleteFromList(video.id);
+    } else {
+      this.props.addToList(video.id);
+    }
   }
 
   renderBackgroundItem() {
@@ -100,7 +113,7 @@ export default class VideoItem extends React.Component {
   }
 
   renderThumbnail(className) {
-    const { video, myGenre, detailsHidden, type, myRow } = this.props;
+    const { video, myGenre, detailsHidden, type, myRow, watched } = this.props;
 
     let formattedDuration = `${Math.floor(video.duration / 60)}h ${video.duration % 60}m`;
     let params = this.props.match.params;
@@ -130,6 +143,8 @@ export default class VideoItem extends React.Component {
       </Link >
     }
 
+    let myListButtonClass = watched ? "fas fa-check" : "fas fa-plus";
+
     let videoDetails = (
       <section className="thumbnail-details-container">
         <div className="thumbnail-details">
@@ -140,8 +155,8 @@ export default class VideoItem extends React.Component {
           <h2>{video.maturity_rating}, {formattedDuration}</h2>
           <h2>{this.getGenreNames()}</h2>
           <Link to="#" className="item-list-link">
-            <button className="my-list">
-              <i className="fas fa-check"></i>
+            <button className="my-list" onClick={this.toggleList}>
+              <i className={myListButtonClass}></i>
             </button>
           </Link>
         </div>
