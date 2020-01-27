@@ -46,11 +46,14 @@ export default class NavBar extends React.Component {
         break;
     }
 
-    if (this.props.location.pathname === route) {
+    if (route === "/" && this.props.location.pathname.startsWith("/browse") &&
+        !this.props.location.pathname.startsWith("/browse/genre")) {
       return (
         <Link to={route} className="nav-bar-link active">{linkText}</Link>
       );
-    } else if (route === "/" && this.props.location.pathname === "/browse") {
+    } 
+    else if (this.props.location.pathname.startsWith(route) &&
+              route !== "/" && route !== "/browse") {
       return (
         <Link to={route} className="nav-bar-link active">{linkText}</Link>
       );
