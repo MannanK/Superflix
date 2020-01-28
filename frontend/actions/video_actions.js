@@ -1,4 +1,5 @@
 import * as VideoAPIUtil from '../util/video_api_util';
+import * as ListVideoAPIUtil from '../util/list_videos_api_util';
 
 export const RECEIVE_VIDEOS = "RECEIVE_VIDEOS";
 export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
@@ -38,6 +39,10 @@ export const fetchOnlyMovies = (genre) => dispatch => (
 
 export const fetchVideo = (id) => dispatch => (
   VideoAPIUtil.fetchVideo(id).then(payload => dispatch(receiveVideo(payload)))
+);
+
+export const fetchListVideos = () => dispatch => (
+  VideoAPIUtil.fetchListVideos().then(payload => dispatch(receiveVideos(payload)))
 );
 
 export const searchVideos = (query) => dispatch => (

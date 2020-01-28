@@ -139,4 +139,25 @@ class Api::VideosController < ApplicationController
       render json: ['No videos found'], status: 404
     end
   end
+
+  def mylist
+    if logged_in?
+      @videos = current_user.videos
+        .with_attached_thumbnail
+        .with_attached_url
+        .with_attached_logo
+        .includes(:genres)
+
+      @genres = Genre.all.includes(:videos)
+      
+      if @videos
+        render :index
+      else
+        # Or some other error?
+        render json: ['User has no videos in their list'], status: 400
+      end
+    else
+      render json: ['Not logged in!'], status: 401
+    end
+  end
 end

@@ -41,13 +41,17 @@ export default class NavBar extends React.Component {
       case "/browse/genre/movies":
         linkText = "Movies";
         break;
+      case "/browse/my-list":
+        linkText = "My List";
+        break;
       default:
-        linkText = "This isn't supposed to be here!";
+        linkText = "";
         break;
     }
 
     if (route === "/" && this.props.location.pathname.startsWith("/browse") &&
-        !this.props.location.pathname.startsWith("/browse/genre")) {
+        !this.props.location.pathname.startsWith("/browse/genre") &&
+        !this.props.location.pathname.startsWith("/browse/my-list")) {
       return (
         <Link to={route} className="nav-bar-link active">{linkText}</Link>
       );
@@ -124,7 +128,7 @@ export default class NavBar extends React.Component {
           {this.getLinkTag("/")}
           {this.getLinkTag("/browse/genre/shows")}
           {this.getLinkTag("/browse/genre/movies")}
-          <Link to='#' className="nav-bar-link">My List</Link>
+          {this.getLinkTag("/browse/my-list")}
         </div>
 
         <div className="search-bar-container"

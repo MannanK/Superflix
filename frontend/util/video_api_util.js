@@ -18,6 +18,12 @@ export const fetchOnlyMovies = (genreQuery) => (
   })
 );
 
+export const fetchListVideos = () => (
+  $.ajax({
+    url: "/api/videos/mylist"
+  })
+);
+
 export const fetchVideo = (id) => (
   $.ajax({
     url: `/api/videos/${id}`

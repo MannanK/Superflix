@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         get 'search'
         get 'shows'
         get 'movies'
+        get 'mylist'
       end
     end
     resources :list_videos, only: [:index, :create, :destroy]
