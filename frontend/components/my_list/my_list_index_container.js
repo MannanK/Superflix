@@ -1,16 +1,23 @@
-import { searchVideos, clearVideos } from '../../actions/video_actions';
+import { fetchListVideos, clearVideos } from '../../actions/video_actions';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MyListIndex from './my_list_index';
 
-const msp = state => ({
-  videos: state.entities.videos,
-  genres: state.entities.genres,
-  errors: state.errors.search
-});
+const msp = state => {
+  const users = state.entities.users;
+  const currentUserId = state.session.currentUserId;
+
+  return {
+    users,
+    currentUserId,
+    videos: state.entities.videos,
+    genres: state.entities.genres,
+    errors: state.errors.list
+  };
+};
 
 const mdp = dispatch => ({
-  searchVideos: (query) => dispatch(searchVideos(query)),
+  fetchListVideos: () => dispatch(fetchListVideos()),
   clearVideos: () => dispatch(clearVideos())
 });
 

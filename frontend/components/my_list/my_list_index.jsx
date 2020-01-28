@@ -1,6 +1,6 @@
 import React from 'react';
 import VideoRowContainer from '../videos/video_row_container';
-import { isEmpty } from 'lodash';
+import { isEmpty, isEqual } from 'lodash';
 
 export default class MyListIndex extends React.Component {
   constructor(props) {
@@ -12,24 +12,23 @@ export default class MyListIndex extends React.Component {
   }
 
   componentDidMount() {
-    let queryParams = this.props.match.params.query;
-    this.props.searchVideos(queryParams);
+    this.props.fetchListVideos();
   }
 
   componentDidUpdate(prevProps) {
-    let currentQuery = this.props.match.params.query;
-    let prevQuery = prevProps.match.params.query;
+    let currentListVideoIds = this.props.users[this.props.currentUserId].listVideoIds;
+    let prevListVideoIds = prevProps.users[this.props.currentUserId].listVideoIds;
 
-    if (currentQuery !== prevQuery) {
+    if (!isEqual(currentListVideoIds, prevListVideoIds)) {
       this.props.clearVideos();
-      this.props.searchVideos(currentQuery);
+      this.props.fetchListVideos();
     }
   }
 
   render() {
     const { videos, errors } = this.props;
 
-    let searchResults = [];
+    let myListVideos = [];
 
     if (!isEmpty(videos)) {
       let vidsArray = Object.values(videos);
@@ -39,12 +38,12 @@ export default class MyListIndex extends React.Component {
         videoRow.push(vidsArray[i]);
 
         if ((i + 1) % 6 === 0) {
-          searchResults.push(
+          myListVideos.push(
             <VideoRowContainer key={i} index={i} videos={videoRow} type="search" />
           );
           videoRow = [];
         } else if (i === vidsArray.length-1) {
-          searchResults.push(
+          myListVideos.push(
             <VideoRowContainer key={i} index={i} videos={videoRow} type="search" />
           );
         }
@@ -57,7 +56,7 @@ export default class MyListIndex extends React.Component {
         <div id="search-index-empty"></div>
         <div className="search-video-container">
           <section className="search-row-container">
-            {searchResults}
+            {myListVideos}
           </section>
         </div>
       </div>

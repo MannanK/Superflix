@@ -150,11 +150,10 @@ class Api::VideosController < ApplicationController
 
       @genres = Genre.all.includes(:videos)
       
-      if @videos
+      if !@videos.empty?
         render :index
       else
-        # Or some other error?
-        render json: ['User has no videos in their list'], status: 400
+        render json: ['User has no videos in their list'], status: 404
       end
     else
       render json: ['Not logged in!'], status: 401

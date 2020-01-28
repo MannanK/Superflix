@@ -5,6 +5,7 @@ export const RECEIVE_VIDEOS = "RECEIVE_VIDEOS";
 export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
 export const CLEAR_VIDEOS = "CLEAR_VIDEOS";
 export const RECEIVE_SEARCH_ERRORS = "RECEIVE_SEARCH_ERRORS";
+export const RECEIVE_LIST_ERRORS = "RECEIVE_LIST_ERRORS";
 
 const receiveVideos = payload => ({
   type: RECEIVE_VIDEOS,
@@ -25,6 +26,11 @@ const receiveSearchErrors = errors => ({
   errors
 });
 
+const receiveListErrors = errors => ({
+  type: RECEIVE_LIST_ERRORS,
+  errors
+});
+
 export const fetchVideos = () => dispatch => (
   VideoAPIUtil.fetchVideos().then(payload => dispatch(receiveVideos(payload)))
 );
@@ -42,7 +48,10 @@ export const fetchVideo = (id) => dispatch => (
 );
 
 export const fetchListVideos = () => dispatch => (
-  VideoAPIUtil.fetchListVideos().then(payload => dispatch(receiveVideos(payload)))
+  VideoAPIUtil.fetchListVideos().then(
+    payload => dispatch(receiveVideos(payload)),
+    res => dispatch(receiveListErrors(res.responseJSON))
+  )
 );
 
 export const searchVideos = (query) => dispatch => (
