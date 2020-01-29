@@ -29,7 +29,7 @@ export default class VideoDetails extends React.Component {
       !this.userPressedPlay && // user isn't trying to go to the watch page
       historyPath[1] !== "watch" && //  user isn't trying to go to the watch page
       currentPath[pathIndex] === historyPath[pathIndex]) { // user is trying to close the current details pane
-      if (currentPath[1] === 'search' || currentPath[1] === 'my-list') {
+      if (currentPath[1] === 'search' || currentPath[2] === 'my-list') {
         this.closeDetails(null);
       } else {
         this.closeDetails();
