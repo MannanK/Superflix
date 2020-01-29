@@ -80,6 +80,10 @@ export default class VideoDetails extends React.Component {
 
     if (watched) {
       this.props.deleteFromList(video.id);
+      
+      if (this.props.location.pathname.startsWith("/browse/my-list")) {
+        this.props.history.push(`/browse/my-list`);
+      }
     } else {
       this.props.addToList(video.id);
     }
