@@ -39,12 +39,12 @@ export default class MyListIndex extends React.Component {
 
         if ((i + 1) % 6 === 0) {
           myListVideos.push(
-            <VideoRowContainer key={i} index={i} videos={videoRow} type="search" />
+            <VideoRowContainer key={i} index={i} videos={videoRow} type="my-list" />
           );
           videoRow = [];
         } else if (i === vidsArray.length-1) {
           myListVideos.push(
-            <VideoRowContainer key={i} index={i} videos={videoRow} type="search" />
+            <VideoRowContainer key={i} index={i} videos={videoRow} type="my-list" />
           );
         }
       }

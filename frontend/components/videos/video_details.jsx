@@ -29,7 +29,7 @@ export default class VideoDetails extends React.Component {
       !this.userPressedPlay && // user isn't trying to go to the watch page
       historyPath[1] !== "watch" && //  user isn't trying to go to the watch page
       currentPath[pathIndex] === historyPath[pathIndex]) { // user is trying to close the current details pane
-      if (currentPath[1] === 'search') {
+      if (currentPath[1] === 'search' || currentPath[1] === 'my-list') {
         this.closeDetails(null);
       } else {
         this.closeDetails();
@@ -118,6 +118,8 @@ export default class VideoDetails extends React.Component {
       closeDetailsProp = "closing-shows";
     } else if (pathname.startsWith("/browse/genre/movies")) {
       closeDetailsProp = "closing-movies"
+    } else if (pathname.startsWith("/browse/my-list")) {
+      closeDetailsProp = "closing-list"
     } else {
       closeDetailsProp = "closing";
     }

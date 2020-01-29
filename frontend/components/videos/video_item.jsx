@@ -47,7 +47,7 @@ export default class VideoItem extends React.Component {
     const { backgroundDetails } = this.state;
 
     let videoIndex;
-    if (type === "search") {
+    if (type === "search" || type === "my-list") {
       videoIndex = 4;
     } else if (type === "SHOWS" || type === "MOVIES") {
       videoIndex = 5;
@@ -73,6 +73,12 @@ export default class VideoItem extends React.Component {
     if (!isCurrentItem) {
       if (type === "search") {
         dropdownArrow = <Link to={`/search/${params.query}/${myRow}/${video.id}`} className="background-link" >
+          <div className="background-down-arrow">
+            <i className="fas fa-chevron-down"></i>
+          </div>
+        </Link>;
+      } else if (type === "my-list") {
+        dropdownArrow = <Link to={`/browse/my-list/${myRow}/${video.id}`} className="background-link" >
           <div className="background-down-arrow">
             <i className="fas fa-chevron-down"></i>
           </div>
@@ -121,6 +127,12 @@ export default class VideoItem extends React.Component {
     let downArrowLink;
     if (type === "search") {
       downArrowLink = <Link to={`/search/${params.query}/${myRow}/${video.id}`}>
+        <div className="details-down-arrow">
+          <i className="fas fa-chevron-down"></i>
+        </div>
+      </Link>;
+    } else if (type === "my-list") {
+      downArrowLink = <Link to={`/browse/my-list/${myRow}/${video.id}`}>
         <div className="details-down-arrow">
           <i className="fas fa-chevron-down"></i>
         </div>
@@ -194,12 +206,14 @@ export default class VideoItem extends React.Component {
 
     if ((pathname === "/browse" ||
       pathname === "/browse/" ||
-      pathname === "/search" ||
-      pathname === "/search/" ||
       pathname === "/browse/genre/shows" ||
       pathname === "/browse/genre/shows/" ||
       pathname === "/browse/genre/movies" ||
-      pathname === "/browse/genre/movies/"
+      pathname === "/browse/genre/movies/" ||
+      pathname === "/browse/my-list" ||
+      pathname === "/browse/my-list/" ||
+      pathname === "/search" ||
+      pathname === "/search/"
     )) {
       className = className;
     } else {

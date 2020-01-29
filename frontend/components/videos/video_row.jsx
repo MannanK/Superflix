@@ -107,13 +107,17 @@ export default class VideoRow extends React.Component {
       setTimeout(() => {
         this.props.history.push(`/browse/genre/movies`);
       }, 600);
+    } else if (closePressed === "closing-list") {
+      setTimeout(() => {
+        this.props.history.push(`/browse/my-list`);
+      }, 600);
     } 
   }
 
-  renderSearchVideos() {
+  renderAllVideos() {
     const { videos, detailsHidden } = this.state;
-    const { index } = this.props;
-
+    const { index, type } = this.props;
+    
     let videoItems = videos.map((video, i) => {
       let className = "video-item";
       if (i === 0) className = "first " + className;
@@ -124,16 +128,22 @@ export default class VideoRow extends React.Component {
         myRow={index}
         video={video}
         className={className}
-        type="search"
+        type={type}
         playVideo={this.playVideo(video.id)}
         stopVideo={this.stopVideo(video.id)}
         detailsHidden={detailsHidden}
       />;
     });
 
+    let path = type === "search" ? (
+      `/search/${this.props.match.params.query}/${index}/:movieId`
+    ) : (
+      `/browse/my-list/${index}/:movieId`
+    );
+
     return (
       <>
-        <div className="individual-search-row-container">
+        <div className={`individual-${type}-row-container`}>
           <ul className="video-row-outer">
             <ul className="video-row-inner">
               {videoItems}
@@ -141,7 +151,7 @@ export default class VideoRow extends React.Component {
           </ul>
 
           <Route
-            path={`/search/${this.props.match.params.query}/${index}/:movieId`}
+            path={path}
             render={(props) => <VideoDetailsContainer closeDetails={this.closeDetails} {...props} />}
           />
         </div>
@@ -328,8 +338,11 @@ export default class VideoRow extends React.Component {
 
   render() {
     const { videos } = this.state;
+    const { type } = this.props;
     
-    if (this.props.type === "search") return this.renderSearchVideos();
+    if (type === "search" || type == "my-list") {
+      return this.renderAllVideos();
+    }
 
     return videos.length <= 6 ? (
       this.renderLessThanSixVideos()
