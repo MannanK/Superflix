@@ -51,30 +51,27 @@ export default class MyListIndex extends React.Component {
     }
 
     return errors.length === 0 ? (
-      <div className="search-index-container">
-        <span className="search-index-container-bg"></span>
-        <div id="search-index-empty"></div>
-        <div className="search-video-container">
-          <section className="search-row-container">
+      <div className="my-list-index-container">
+        <span className="my-list-index-container-bg"></span>
+        <div id="my-list-index-empty">
+          <div className="my-list-header">My List</div>
+        </div>
+        <div className="my-list-video-container">
+          <section className="my-list-row-container">
             {myListVideos}
           </section>
         </div>
       </div>
     ) : (
-      <div className="search-index-container">
-        <span className="search-index-container-bg"></span>
-        <div id="search-index-empty"></div>
-        <div className="search-no-results-container">
-          <p id="did-not-match">
-            Your search for "{this.props.match.params.query}" did not have any matches.
+      <div className="my-list-index-container">
+        <span className="my-list-index-container-bg"></span>
+        <div id="my-list-index-empty">
+          <div className="my-list-header">My List</div>
+        </div>
+        <div className="my-list-no-results-container">
+          <p id="no-titles">
+            You haven't added any titles to your list yet.
           </p>
-          <p id="suggestions">Suggestions:</p>
-          <ul className="error-suggestions-list">
-            <li>Try different keywords</li>
-            <li>Looking for a movie or TV show?</li>
-            <li>Try using a movie, TV show title, or year</li>
-            <li>Try a genre, like comedy, action, Marvel, or DC</li>
-          </ul>
         </div>
       </div>
     )
