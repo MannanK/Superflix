@@ -76,7 +76,7 @@ export default class GenreIndex extends React.Component {
       typeLength = 24;
       genreHeader = "Movies";
     } else {
-      typeLength = 7;
+      typeLength = 8;
       genreHeader = "TV Shows";
     }
 

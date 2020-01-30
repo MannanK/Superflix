@@ -210,7 +210,7 @@ marvelsDaredevil = Video.create!(
 )
 marvelsDaredevil.url.attach(io: open("https://superflix-seeds.s3.amazonaws.com/dd_trailer.mp4"), filename: "dd_trailer.mp4")
 marvelsDaredevil.thumbnail.attach(io: open("https://superflix-seeds.s3.amazonaws.com/dd_thumb.jpg"), filename: "dd_thumb.jpg")
-marvelsDaredevil.logo.attach(io: open("https://superflix-seeds.s3.amazonaws.com/dd_logo.png"), filename: "dd_logo.png")
+marvelsDaredevil.logo.attach(io: open("https://superflix-seeds.s3.amazonaws.com/dd_logo.png?versionId=null"), filename: "dd_logo.png")
 marvelsDaredevil.genres += [marvel, action]
 
 marvelsPunisher = Video.create!(
@@ -263,7 +263,7 @@ theBoys = Video.create!(
 theBoys.url.attach(io: open("https://superflix-seeds.s3.amazonaws.com/the_boys_trailer.mp4"), filename: "the_boys_trailer.mp4")
 theBoys.thumbnail.attach(io: open("https://superflix-seeds.s3.amazonaws.com/TheBoys_ws.jfif"), filename: "TheBoys_ws.jfif")
 theBoys.logo.attach(io: open("https://superflix-seeds.s3.amazonaws.com/the_boys_logo.png"), filename: "the_boys_logo.png")
-theBoys.genres += [action]
+theBoys.genres += [action, comedy]
 
 guardiansOfTheGalaxy = Video.create!(
   title: "Guardians of the Galaxy",
@@ -393,7 +393,7 @@ theFlash = Video.create!(
 theFlash.url.attach(io: open("https://superflix-seeds.s3.amazonaws.com/flash_trailer.mp4"), filename: "flash_trailer.mp4")
 theFlash.thumbnail.attach(io: open("https://superflix-seeds.s3.amazonaws.com/flash_ws.jfif"), filename: "flash_ws.jfif")
 theFlash.logo.attach(io: open("https://superflix-seeds.s3.amazonaws.com/flash_logo.jpg"), filename: "flash_logo.jpg")
-theFlash.genres += [dc, action, comedy]
+theFlash.genres += [dc, comedy, scifi]
 
 theIncredibles = Video.create!(
   title: "The Incredibles",
@@ -433,3 +433,16 @@ shazam.url.attach(io: open("https://superflix-seeds.s3.amazonaws.com/shazam_trai
 shazam.thumbnail.attach(io: open("https://superflix-seeds.s3.amazonaws.com/shazam_ws.jfif"), filename: "shazam_ws.jfif")
 shazam.logo.attach(io: open("https://superflix-seeds.s3.amazonaws.com/shazam_logo.png"), filename: "shazam_logo.png")
 shazam.genres += [dc, action, comedy]
+
+agentsOfSHIELD = Video.create!(
+  title: "Agents of S.H.I.E.L.D",
+  description: "The worldwide law-enforcement organization known as S.H.I.E.L.D. (Strategic Homeland Intervention Enforcement and Logistics Division) employs an elite team of agents who investigate strange occurrences around the globe and beyond. Its members -- each of whom brings a specialty to the group -- work to protect those who cannot protect themselves from extraordinary and inconceivable threats.",
+  year: 2013,
+  maturity_rating: "TV-14",
+  video_type: "SHOW",
+  duration: 45
+)
+agentsOfSHIELD.url.attach(io: open("https://superflix-seeds.s3.amazonaws.com/agents_of_shield_trailer.mp4"), filename: "agents_of_shield_trailer.mp4")
+agentsOfSHIELD.thumbnail.attach(io: open("https://superflix-seeds.s3.amazonaws.com/agents_of_shield_thumb.jpg"), filename: "agents_of_shield_thumb.jpg")
+agentsOfSHIELD.logo.attach(io: open("https://superflix-seeds.s3.amazonaws.com/agents_of_shield_logo_1.png"), filename: "agents_of_shield_logo_1.png")
+agentsOfSHIELD.genres += [marvel, scifi, adventure]

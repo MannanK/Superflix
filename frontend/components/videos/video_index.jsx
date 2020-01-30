@@ -27,8 +27,8 @@ export default class VideoIndex extends React.Component {
     const { videos, genres } = this.props;
     const videosLength = Object.keys(videos).length;
 
-    let videoMain = isEmpty(videos) || videosLength === 1 || videosLength !== 31 ? "" : <VideoMainContainer video={Object.values(videos)[0]} genres={genres} />;
-    let videoRows = isEmpty(videos) || videosLength === 1 || videosLength !== 31 ? "" : (
+    let videoMain = isEmpty(videos) || videosLength === 1 || videosLength !== 32 ? "" : <VideoMainContainer video={Object.values(videos)[0]} genres={genres} />;
+    let videoRows = isEmpty(videos) || videosLength === 1 || videosLength !== 32 ? "" : (
       Object.values(genres).map(genre => {
         if (genre.name !== "Marvel" && genre.name !== "DC") {
           let videoIds = genre["videoIds"];
