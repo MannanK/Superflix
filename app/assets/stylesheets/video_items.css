@@ -33,7 +33,7 @@
 /* move all the thumbnails to the right */	
 .first.video-item:hover ~ .video-item {	
    transform: translate3d(90%, 0, 0);	
-   transition-delay: 400ms;	
+   transition-delay: 400ms;
 }
 
 .last.video-item {
@@ -81,6 +81,7 @@
   border-bottom: 0;
   
   transform: translateX(-50%);
+  transition-delay: 400ms;
   /* transition: opacity 400ms ease; */
 }
 
