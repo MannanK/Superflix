@@ -7,10 +7,18 @@ export default class VideoItem extends React.Component {
     super(props);
 
     this.state = {
+      //when item is a background item, show the respective background details
+        // (play button or down arrow)
       backgroundDetails: false
     };
 
+    // https://stackoverflow.com/questions/50466734/delay-react-onmouseover-event
+
+    this.timeoutForHover = false;
+
     this.toggleList = this.toggleList.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   getGenreNames() {
@@ -122,6 +130,23 @@ export default class VideoItem extends React.Component {
     );
   }
 
+  handleMouseEnter(e) {
+    e.persist();
+    e.stopPropagation();
+
+    this.timeoutForHover = setTimeout(() => {
+      this.props.playVideo(e);
+    }, 400);
+
+    // this.props.playVideo(e);
+  }
+
+  handleMouseLeave(e) {
+    clearTimeout(this.timeoutForHover);
+
+    this.props.stopVideo(e);
+  }
+
   renderThumbnail(className) {
     const { video, myGenre, detailsHidden, type, myRow, watched } = this.props;
 
@@ -182,17 +207,18 @@ export default class VideoItem extends React.Component {
     );
 
     return (
-      <li className={`${className}`} onMouseEnter={this.props.playVideo} onMouseLeave={this.props.stopVideo}>
+      <li className={`${className}`} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+        {/* currently the visibility isnt changing because the detailsHidden.id changes after 400ms because of setTimeout */}
         {(detailsHidden.id !== video.id) ? (
           <>
             {/* <img className="video-demo-thumbnail visible" src={video.thumbnail}/> */}
-            <img className="video-demo-thumbnail visible" src={window.demoThumbnail} /> 
+            <img className={`video-demo-thumbnail visible`} src={window.demoThumbnail} /> 
             <VideoPlayerContainer video={video} type="miniplayer" visibility="invisible" />
           </>
         ) : (
           <>
             {/* <img className="video-demo-thumbnail visible" src={video.thumbnail} /> */}
-            <img className="video-demo-thumbnail invisible" src={window.demoThumbnail} />
+            <img className={`video-demo-thumbnail invisible`} src={window.demoThumbnail} />
             <VideoPlayerContainer video={video} type="miniplayer" visibility="visible" />
           </>
         )}

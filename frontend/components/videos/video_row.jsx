@@ -61,7 +61,26 @@ export default class VideoRow extends React.Component {
 
   playVideo(id) {
     return e => {
-      let video = e.currentTarget.childNodes[1].childNodes[0];
+      // debugger;
+      // let video = e.currentTarget.childNodes[1].childNodes[0];
+
+      // let video = e.target.offsetParent.childNodes[1].childNodes[0];
+      let video = e.target.closest(".video-item").childNodes[1].childNodes[0];
+
+      // let video;
+      // if (e.target.className === "thumbnail-details") {
+      //   video = e.target.parentElement.offsetParent.childNodes[1].childNodes[0];
+      // } else if (e.target.className === "thumbnail-details-container") {
+      //   video = e.target.offsetParent.childNodes[1].childNodes[0];
+      // } else if (e.target.tagName === "A") {
+      //   video = e.target.parentElement.offsetParent.childNodes[1].childNodes[0];
+      // } else if (e.target.tagName === "H2" || e.target.className === "details-down-arrow") {
+      //   video = e.target.parentElement.parentElement.offsetParent.childNodes[1].childNodes[0];
+      // } else {
+      //   debugger;
+      //   video = e.currentTarget.childNodes[1].childNodes[0];
+      // }
+
       let isPlaying = video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2;
       
       if (!isPlaying) {
@@ -72,6 +91,8 @@ export default class VideoRow extends React.Component {
     };
   }
 
+  // might need to make this async or something? but detailsHidden is correctly
+    // getting set to null i think
   stopVideo(id) {
     return e => {
       let video = e.currentTarget.childNodes[1].childNodes[0];
