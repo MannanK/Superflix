@@ -92,8 +92,8 @@ export default class VideoPlayer extends React.Component {
         {arrow}
 
         <video
-          // src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-          src={video.url}
+          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          // src={video.url}
           controls
           className="full-video-player-video"
           type="video/mp4"
@@ -111,8 +111,8 @@ export default class VideoPlayer extends React.Component {
     return video ? (
       <div className={`main-video-player ${visibility}`}>
         <video
-          // src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-          src={video.url}
+          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          // src={video.url}
           autoPlay={visibility === "visible" ? true : false}
           // muted={muted ? true : false}
           muted={true}
@@ -131,8 +131,8 @@ export default class VideoPlayer extends React.Component {
     return video ? (
       <div className={`details-video-player ${visibility}`}>
         <video
-          // src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-          src={video.url}
+          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          // src={video.url}
           autoPlay={visibility === "visible" ? true : false} // first autoplay is true, just testing with false right now
           muted={true}
           className="details-video-player-video"
@@ -150,8 +150,8 @@ export default class VideoPlayer extends React.Component {
     return video ? (
       <div className={`mini-video-player ${visibility}`}>
         <video
-          // src="https://media.w3.org/2010/05/sintel/trailer.mp4"
-          src={video.url}
+          src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+          // src={video.url}
           autoPlay={visibility === "invisible" ? false : true}
           muted={true}
           loop={true}

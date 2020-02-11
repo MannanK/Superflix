@@ -134,8 +134,8 @@ export default class VideoDetails extends React.Component {
           <i className="fas fa-times"></i>
         </button>
 
-        <img className="video-logo" src={video.logo} />
-        {/* <img className="video-logo" src={window.logo} /> */}
+        {/* <img className="video-logo" src={video.logo} /> */}
+        <img className="video-logo" src={window.logo} />
 
         <section className="video-details">
           <section className="info">

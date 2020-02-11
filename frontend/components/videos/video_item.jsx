@@ -123,8 +123,8 @@ export default class VideoItem extends React.Component {
 
     return (
       <li className={`${className}`} onMouseEnter={this.showBackgroundDetails(true)} onMouseLeave={this.showBackgroundDetails(false)}>
-        <img className="video-demo-thumbnail visible" src={video.thumbnail} />
-        {/* <img className="video-demo-thumbnail visible" src={window.demoThumbnail} /> */}
+        {/* <img className="video-demo-thumbnail visible" src={video.thumbnail} /> */}
+        <img className="video-demo-thumbnail visible" src={window.demoThumbnail} />
         {details}
       </li>
     );
@@ -211,14 +211,14 @@ export default class VideoItem extends React.Component {
         {/* currently the visibility isnt changing because the detailsHidden.id changes after 400ms because of setTimeout */}
         {(detailsHidden.id !== video.id) ? (
           <>
-            <img className="video-demo-thumbnail visible" src={video.thumbnail}/>
-            {/* <img className={`video-demo-thumbnail visible`} src={window.demoThumbnail} />  */}
+            {/* <img className="video-demo-thumbnail visible" src={video.thumbnail}/> */}
+            <img className={`video-demo-thumbnail visible`} src={window.demoThumbnail} /> 
             <VideoPlayerContainer video={video} type="miniplayer" visibility="invisible" />
           </>
         ) : (
           <>
-            <img className="video-demo-thumbnail visible" src={video.thumbnail} />
-            {/* <img className={`video-demo-thumbnail invisible`} src={window.demoThumbnail} /> */}
+            {/* <img className="video-demo-thumbnail visible" src={video.thumbnail} /> */}
+            <img className={`video-demo-thumbnail invisible`} src={window.demoThumbnail} />
             <VideoPlayerContainer video={video} type="miniplayer" visibility="visible" />
           </>
         )}
