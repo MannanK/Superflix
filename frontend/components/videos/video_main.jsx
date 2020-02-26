@@ -71,8 +71,8 @@ export default class VideoMain extends React.Component {
       <section className={`main-video-details-container`}>
         {videoPlayer}
 
-        {/* <img className="main-video-logo" src={video.logo} /> */}
-        <img className="main-video-logo" src={window.logo} />
+        <img className="main-video-logo" src={video.logo} />
+        {/* <img className="main-video-logo" src={window.logo} /> */}
 
         <section className="main-video-details">
           <section className="info">
